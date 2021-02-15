@@ -4,32 +4,32 @@ import pygame
 
 class Ship:
 
-    def __init__(self, start_x, start_y, end_x, end_y):
+    def __init__(self, start_r, start_c, end_r, end_c):
         self.ship = []
-        self.start_x = start_x
-        self.start_y = start_y
-        self.end_x = end_x
-        self.end_y = end_y
+        self.start_r = start_r
+        self.start_c = start_c
+        self.end_r = end_r
+        self.end_c = end_c
         self.destroyed = False
         
         #determine if horizontal or vertical
-        if self.start_x == self.end_x:
-            self.horizontal = False
-        elif self.start_y == self.end_y:
+        if self.start_r == self.end_r:
             self.horizontal = True
+        else:
+            self.horizontal = False
         
         #determine size of ship
         if self.horizontal:
-            self.size = (self.end_x + 1) - self.start_x
+            self.size = abs(self.end_c - self.start_c) 
         else:
-            self.size = (self.end_y + 1) - self.start_y
+            self.size = abs(self.end_r - self.start_r)
     
         #fill ship array
-        if self.horizontal == True:
-            for col in range(self.size):
-                self.ship.append(tuple((self.start_y,self.start_x + col,False)))
-        elif self.horizontal == False:
-            for row in range(self.size):
-                self.ship.append(tuple((self.start_y + row, start_x, False)))
+        for i in range(self.size):
+            if self.horizontal:
+                self.ship.append(tuple((self.start_r, self.start_c + i, False)))
+            else:
+                self.ship.append(tuple(self.start_r + i, self.start_c, False))
+
                 
         

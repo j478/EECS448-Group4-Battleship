@@ -31,8 +31,5 @@ class Ship:
         elif self.horizontal == False:
             for row in range(self.size):
                 self.ship.append(tuple((self.start_y + row, start_x, False)))
-
-
-        #for x in range(self.size):
-        #    print(self.ship[x])
+                
         

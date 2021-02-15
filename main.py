@@ -1,13 +1,16 @@
 #	Author: Jacob Wagner
 #	Date: 2021.02.13
 
+
 import pygame
 from battleship.constants import WIDTH, HEIGHT
+from battleship.board import *
 
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
+
 
 def main():
     running = True

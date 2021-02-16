@@ -46,7 +46,4 @@ class Ship:
                 part = tuple(part_list)
                 self.ship[i] = part
 
-        for i in range(self.size):
-            print(self.ship[i])  
-
         

@@ -21,9 +21,9 @@ class Ship:
         
         #determine size of ship
         if self.horizontal:
-            self.size = abs(self.end_c - self.start_c) 
+            self.size = abs((self.end_c + 1) - self.start_c) 
         else:
-            self.size = abs(self.end_r - self.start_r)
+            self.size = abs((self.end_r + 1) - self.start_r)
     
         #fill ship array
         for i in range(self.size):
@@ -35,7 +35,7 @@ class Ship:
 
     def draw(self, win):
         square = SQUARE_SIZE
-        pygame.draw.rect(win, WHITE,(100,100,SQUARE_SIZE,SQUARE_SIZE))
+        pygame.draw.ellipse(win, WHITE, (self.start_c*square, self.start_r*square, self.end_c * square, self.end_r*square))
 
 
         

@@ -11,11 +11,11 @@ FPS = 60
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
 
-
+pygame.init()
 def main():
     running = True
     clock = pygame.time.Clock()
-
+    board = Board(WIN)
     while running:
         clock.tick(FPS)
 

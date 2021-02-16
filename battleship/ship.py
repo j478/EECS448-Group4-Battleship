@@ -37,5 +37,13 @@ class Ship:
         square = SQUARE_SIZE
         pygame.draw.ellipse(win, WHITE, (self.start_c*square, self.start_r*square, self.end_c * square, self.end_r*square))
 
+    def mark_hit(self, row, col):
+        for i in range(self.size):
+            part = self.ship[i]
+            part_list = list(part)
+            if (part_list[0] == row and part_list[1] == col):
+                part_list[2] = True
+                part = tuple(part_list)
+                self.ship[i] = part
 
         

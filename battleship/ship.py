@@ -21,9 +21,9 @@ class Ship:
         
         #determine size of ship
         if self.horizontal:
-            self.size = abs(self.end_c - self.start_c) 
+            self.size = abs((self.end_c + 1) - self.start_c) 
         else:
-            self.size = abs(self.end_r - self.start_r)
+            self.size = abs((self.end_r + 1) - self.start_r)
     
         #fill ship array
         for i in range(self.size):
@@ -37,5 +37,16 @@ class Ship:
         square = SQUARE_SIZE
         pygame.draw.rect(win, WHITE,(100,100,SQUARE_SIZE,SQUARE_SIZE))
 
+    def mark_hit(self, row, col):
+        for i in range(self.size):
+            part = self.ship[i]
+            part_list = list(part)
+            if (part_list[0] == row and part_list[1] == col):
+                part_list[2] = True
+                part = tuple(part_list)
+                self.ship[i] = part
+
+        for i in range(self.size):
+            print(self.ship[i])  
 
         

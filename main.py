@@ -11,6 +11,28 @@ FPS = 60
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
 
+board = Board(WIN)
+
+# random test points
+test = Board(WIN)
+test.hit_ship(1, 1, enemy=False)
+test.draw_background(WIN)
+test.hit_ship(0, 0, enemy=True)
+test.draw_background(WIN)
+test.hit_ship(9, 9, enemy=True)
+test.draw_background(WIN)
+test.hit_ship(5, 5, enemy=True)
+test.draw_background(WIN)
+test.hit_ship(4, 4, enemy=True)
+test.draw_background(WIN)
+test.hit_ship(4, 4, enemy=False)
+test.draw_background(WIN)
+test.hit_ship(0, 8, enemy=False)
+test.draw_background(WIN)
+test.hit_ship(4, 5, enemy=False)
+test.draw_background(WIN)
+pygame.display.update()
+
 
 def main():
     running = True

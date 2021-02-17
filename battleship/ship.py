@@ -46,4 +46,7 @@ class Ship:
                 part = tuple(part_list)
                 self.ship[i] = part
 
-        
+    def get_x_y(self):
+        x = (self.end_c*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
+        y = (self.end_r*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
+        return x,y   

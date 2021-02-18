@@ -14,24 +14,34 @@ pygame.display.set_caption('Battleship')
 
 pygame.init()
 
+
+#player 0 = user, player 1 = enemy
 board = Board(WIN)
+u_ship = Ship(7, 1, 7, 3)   # Player 0
+e_ship = Ship(1, 1, 1, 3)   # Player 1
 
-user_ship = Ship(0, 1, 0, 3)
-enemy_ship = Ship(1, 1, 1, 3)
-
-# 0 hitting 1
-board.hit_ship(0, 0, 1, user_ship)
-
-# 1 hitting 0
-board.hit_ship(1, 1, 1, enemy_ship)
-
-# 0 attempt to hit 1 but missed
-board.hit_ship(0, 0, 8, user_ship)
-
-# 1 attempt to hit 0 but missed
-board.hit_ship(1, 1, 9, enemy_ship)
-
-
+# Player 0 turn to attack Player 1. Draws Player 0 ships (LEFT)
+board.draw(0, u_ship)
+# Player 0 picks coordinate to attack Player 1. Green success, red miss (GREEN)
+board.hit_ship(0, 1, 1, e_ship)
+# Player 0 board cleared. Player 1 turn next.
+board.clear_ships(0, u_ship)
+# Player 1 turn to attack Player 0. Draws Player 1 ships (RIGHT)
+board.draw(1, e_ship)
+# Player 1 picks coordinate to attack Player 0. Green success, red miss (GREEN)
+board.hit_ship(1, 7, 1, u_ship)
+# Player 1 board cleared. Player 0 turn next.
+board.clear_ships(1, e_ship)
+# Player 0 turn to attack Player 1. Draws Player 0 ships (LEFT)
+board.draw(0, u_ship)
+# Player 0 picks coordinate to attack Player 1. Green success, red miss (RED)
+board.hit_ship(0, 8, 8, e_ship)
+# Player 0 board cleared. Player 1 turn next.
+board.clear_ships(0, u_ship)
+# Player 1 turn to attack Player 0. Draws Player 1 ships (RIGHT)
+board.draw(1, e_ship)
+# Player 1 picks coordinate to attack Player 0. Green success, red miss (RED)
+board.hit_ship(1, 0, 2, u_ship)
 
 def main():
     running = True

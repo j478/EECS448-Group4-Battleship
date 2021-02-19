@@ -31,5 +31,22 @@ class Ship:
             else:
                 self.ship.append(tuple(self.start_r + i, self.start_c, False))
 
+    def draw(self, win):
+        square = SQUARE_SIZE
+        pygame.draw.ellipse(win, WHITE, (self.start_c*square, self.start_r*square, self.end_c * square, self.end_r*square))
+
+    def mark_hit(self, row, col):
+        for i in range(self.size):
+            part = self.ship[i]
+            part_list = list(part)
+            if (part_list[0] == row and part_list[1] == col):
+                part_list[2] = True
+                part = tuple(part_list)
+                self.ship[i] = part
+
+    def get_x_y(self):
+        x = (self.end_c*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
+        y = (self.end_r*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
+        return x,y   
                 
         

@@ -30,7 +30,7 @@ class Board:
         self.player1_hits_misses = []
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
-        self.draw_background()
+        self.draw(0)
         
     def initialize_hits_misses(self):
         for i in range(10):
@@ -42,12 +42,13 @@ class Board:
                 
     def draw_background(self):
         self.win.fill(BLACK)
-        font = pygame.font.Font('freesansbold.ttf',
-                                32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+        font = pygame.font.Font('freesansbold.ttf', 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
         text = font.render('Select the location you wish to hit', True, WHITE, RED)
         textRect = text.get_rect()
-        # textRect.center = (300,50)
-        textRect.center = ((WIDTH / 2) - 100, 50)
+        textRect.center = (WIDTH // 4, self.TOP_PADDING // 2)
+        self.win.blit(text, textRect)
+        text = font.render("Player ships", True, WHITE, RED)
+        textRect.center = ( (WIDTH // 4) * 3.5, self.TOP_PADDING // 2)
         self.win.blit(text, textRect)
         pygame.draw.rect(self.win, GRAY, (self.LEFT_PADDING, self.TOP_PADDING, self.GRID_WIDTH, self.GRID_HEIGHT))
         pygame.draw.rect(self.win, GRAY, (self.LEFT_PADDING + self.GRID_WIDTH + self.MIDDLE_PADDING, self.TOP_PADDING, self.GRID_WIDTH, self.GRID_HEIGHT))  
@@ -55,14 +56,6 @@ class Board:
 
     def draw_grid(self):
         for i in range(11):
-            ###Would it be possible to make constants here. I.e. WIDTH_PADDING = 200, HEIGHT_PADDING = 100
-            ###I was also thinking it would be cool to have the grids like this:
-            ###  _| 1 | 2 | 3 | 4 | ...
-            ###  A|
-            ###  B|
-            ###  C|
-            ###which would affect the padding but could also be accounted for with a constant where a box with label A would just be the
-            ###same size as a normal box
             # (win, color, (start X, start Y) , (end X, end Y))
             #horizontals
             pygame.draw.line(self.win, WHITE, (self.LEFT_PADDING, self.TOP_PADDING + i * SQUARE_SIZE + 50), 
@@ -74,7 +67,27 @@ class Board:
                                               (self.LEFT_PADDING + i * SQUARE_SIZE + 50, HEIGHT - self.BOTTOM_PADDING))
             pygame.draw.line(self.win, WHITE, (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH + i * SQUARE_SIZE + 50, self.TOP_PADDING),
                                               (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH + i * SQUARE_SIZE + 50, HEIGHT - self.BOTTOM_PADDING))
-            
+
+            if i != 0:
+                font = pygame.font.Font('freesansbold.ttf', 32)
+                txt = "" + str(i)
+                text = font.render(txt, True, BLACK, GRAY)
+                textRect = text.get_rect()
+                
+                #numbers in top row
+                textRect.center = (self.LEFT_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2, self.TOP_PADDING + SQUARE_SIZE // 2 )
+                self.win.blit(text, textRect)
+                textRect.center = (self.LEFT_PADDING + self.GRID_WIDTH + self.MIDDLE_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2, self.TOP_PADDING + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
+
+                #letters on leftmost column
+                txt = chr(64 + i)
+                text = font.render(txt, True, BLACK, GRAY)
+                textRect.center = (self.LEFT_PADDING + SQUARE_SIZE // 2, self.TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
+                textRect.center = (self.LEFT_PADDING + self.GRID_WIDTH + self.MIDDLE_PADDING + SQUARE_SIZE // 2, self.TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
+                #65 - 74 65 = A, 74 = J from https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
 
     def draw(self, player):
         ###Basically I believe it shoudl go like this.
@@ -96,7 +109,7 @@ class Board:
         for ship in self.player_ships[player]:
             ship.draw(self.win)
 
-
+        
         for row, col, state in self.p0_hit_misses:
             # miss
             if state == 1:

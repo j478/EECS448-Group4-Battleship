@@ -1,6 +1,7 @@
 #	Author: 
 #	Date: 
 import pygame
+from .constants import *
 
 class Ship:
 

@@ -2,196 +2,144 @@
 #	Date: 2/15/2021
 #   Start: 8:40 PM
 
-from . constants import *
-import numpy
-import pygame, sys
-from . ship import *
-from. tile import *
 
-#################################
-# This version does not use the Tile class. Attacks work but still working on placing ships.
-# Need to figure out a way to interact with the ship class
-class Board():
-    def __init__(self, win):
-        self.attacked = False
-        self.board_rows = ROWS
-        self.board_cols = COLS
-        self.tile_padding = 1.25
-        self.board = numpy.full((ROWS, COLS), self.attacked)
-        self.tile_size = SQUARE_SIZE / 2 / 2 / 2
-        self.board_layout = BOARD_LAYOUT_test
-        self.user_board = numpy.full((ROWS, COLS), self.attacked)
-        self.enemy_board = numpy.full((ROWS, COLS), self.attacked)
-        self.has_ship = False
+from .constants import *
+from .ship import *
+import time
 
-    def read_board_layout(self, win, board_layout):
-        with open(board_layout, 'r') as f:
-            board = f.readlines()
-        board = [line.strip() for line in board]
-        print(board)
-        return board
+class Board:
 
-    def draw_background(self, win):
-        self.modify_user_file()
-        self.modify_enemy_file()
-        row_label = 0
-        col_label = 0
-        board_lo = self.read_board_layout(win, self.board_layout)
-        for j, tile in enumerate(board_lo):
-            for i, tile_contents in enumerate(tile):
-                rect = pygame.Rect(i * self.tile_size * self.tile_padding, j * self.tile_size * self.tile_padding, self.tile_size, self.tile_size)
-                pygame.draw.rect(win, self.tile_color(tile_contents, board_lo), rect)
+    def __init__(self, win, player0ships, player1ships):  
+        self.player0ships = player0ships
+        self.player1ships = player1ships
+        self.player_ships = [self.player0ships, self.player1ships]
+        self.win = win
+        # 0 = nothing, 1 = hit, 2 = miss
+        self.player0_hits_misses = []
+        self.player1_hits_misses = []
+        self.initialize_hits_misses()
+        self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses] 
+        self.draw(0)
+        
 
-    def tile_color(self, tile_contents, board_lo):
-        # - for label, # for untouched tile, * for user board attacked, X for enemy board attacked, O place ship
-        tile_color = BLACK
-        if tile_contents == '-':
-            tile_color = WHITE
-        if tile_contents == 'O':
-            tile_color = BLUE
-        if tile_contents == "#":
-            tile_color = GRAY
-        if tile_contents == '*' or tile_contents == 'X':
-            tile_color = RED
-        return tile_color
+    def initialize_hits_misses(self):
+        for i in range(10):
+            self.player0_hits_misses.append([])
+            self.player1_hits_misses.append([])
+            for j in range(10):
+                self.player0_hits_misses[i].append(0)
+                self.player1_hits_misses[i].append(0)
 
-    def modify_user_file(self):
-        with open(self.board_layout, "w") as text_file:
-            for row in range(len(self.user_board)):
-                text_file.write('-')
-                for col in range(len(self.user_board[0])):
-                    if row == 0:
-                        text_file.write('-')
-                    # elif self.user_board[row - 1][col - 1].has_ship == True:
-                    #     text_file.write('O')
-                    elif self.user_board[row - 1][col] == False:
-                        text_file.write("#")
-                    elif self.user_board[row - 1][col] == True:
-                        text_file.write('*')
-                    else:
-                        pass
-                text_file.write('\n')
-            text_file.write('\n')
+    def draw_background(self):
+        self.win.fill(BLACK)
+        font = pygame.font.Font('freesansbold.ttf', 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+        text = font.render('Select the location you wish to hit', True, WHITE, RED)
+        textRect = text.get_rect()
+        textRect.center = (WIDTH // 4, TOP_PADDING // 2)
+        self.win.blit(text, textRect)
+        text = font.render("Player ships", True, WHITE, RED)
+        textRect.center = ( (WIDTH // 4) * 3.5, TOP_PADDING // 2)
+        self.win.blit(text, textRect)
+        pygame.draw.rect(self.win, BLUE, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
+        pygame.draw.rect(self.win, BLUE, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
+        self.draw_grid()
 
-    def modify_enemy_file(self):
-        with open(self.board_layout, "a") as text_file:
-            for row in range(len(self.enemy_board)):
-                text_file.write('-')
-                for col in range(len(self.enemy_board[0])):
-                    if row == 0:
-                        text_file.write('-')
-                    elif self.enemy_board[row - 1][col] == False:
-                        text_file.write("#")
-                    elif self.enemy_board[row - 1][col] == True:
-                        text_file.write('X')
-                    else:
-                        pass
-                text_file.write("\n")
+    def draw_grid(self):
+        for i in range(11):
+            # (win, color, (start X, start Y) , (end X, end Y))
+            #horizontals
+            pygame.draw.line(self.win, WHITE, (LEFT_PADDING, TOP_PADDING + i * SQUARE_SIZE + 50), 
+                                              (LEFT_PADDING + GRID_WIDTH, TOP_PADDING + i * SQUARE_SIZE + 50))
+            pygame.draw.line(self.win, WHITE, (WIDTH - RIGHT_PADDING - GRID_WIDTH, TOP_PADDING + i * SQUARE_SIZE + 50),
+                                              (WIDTH - RIGHT_PADDING, TOP_PADDING + i * SQUARE_SIZE + 50))
+            #verticals
+            pygame.draw.line(self.win, WHITE, (LEFT_PADDING + i * SQUARE_SIZE + 50, TOP_PADDING),
+                                              (LEFT_PADDING + i * SQUARE_SIZE + 50, HEIGHT - BOTTOM_PADDING))
+            pygame.draw.line(self.win, WHITE, (WIDTH - RIGHT_PADDING - GRID_WIDTH + i * SQUARE_SIZE + 50, TOP_PADDING),
+                                              (WIDTH - RIGHT_PADDING - GRID_WIDTH + i * SQUARE_SIZE + 50, HEIGHT - BOTTOM_PADDING))
 
-    def hit_ship(self, row, col, enemy):
-        # if enemy is True, then the enemy is attacking user. Affecting user board
-        with open(self.board_layout, "a") as text_file:
-            text_file.close()
-            if enemy == True:
-                self.user_board[row][col] = True
-                self.modify_user_file()
-            else:
-                self.enemy_board[row][col] = True
-                self.modify_enemy_file()
-        print(self.user_board)
+            if i != 0:
+                font = pygame.font.Font('freesansbold.ttf', 32)
+                txt = "" + str(i)
+                text = font.render(txt, True, BLACK, BLUE)
+                textRect = text.get_rect()
+                
+                #numbers in top row
+                textRect.center = (LEFT_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2, TOP_PADDING + SQUARE_SIZE // 2 )
+                self.win.blit(text, textRect)
+                textRect.center = (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2, TOP_PADDING + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
 
-    #################################
+                #letters on leftmost column
+                txt = chr(64 + i)
+                text = font.render(txt, True, BLACK, BLUE)
+                textRect.center = (LEFT_PADDING + SQUARE_SIZE // 2, TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
+                textRect.center = (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING + SQUARE_SIZE // 2, TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)
+                self.win.blit(text, textRect)
+                #65 - 74 65 = A, 74 = J from https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
 
-# !!!!!!!!!!!!!!!!!!
-# This version uses the Tile class. The tile class determines what state each tile is. Not finished implementing so does not work yet
-# class Board():
-#     def __init__(self, win):
-#         #self.attacked = False
-#         self.board_rows = ROWS
-#         self.board_cols = COLS
-#         self.tile_padding = 1.25
-#         #self.board = numpy.full((ROWS, COLS), self.attacked)
-#         self.tile_size = SQUARE_SIZE / 2 / 2 / 2
-#         self.board_layout = BOARD_LAYOUT_test
-#         self.user = 0
-#         self.enemy = 1
-#         self.user_board = [[Tile(i, j, self.user) for j in range(COLS)] for i in range(ROWS)]
-#         self.enemy_board = [[Tile(i, j, self.enemy) for j in range(COLS)] for i in range(ROWS)]
-#         self.has_ship = False
-#
-#     def read_board_layout(self, win, board_layout):
-#         with open(board_layout, 'r') as f:
-#             board = f.readlines()
-#         board = [line.strip() for line in board]
-#         print(board)
-#         return board
-#
-#     def draw_background(self, win):
-#         self.modify_user_file()
-#         self.modify_enemy_file()
-#         row_label = 0
-#         col_label = 0
-#         board_lo = self.read_board_layout(win, self.board_layout)
-#         for j, tile in enumerate(board_lo):
-#             for i, tile_contents in enumerate(tile):
-#                 rect = pygame.Rect(i * self.tile_size * self.tile_padding, j * self.tile_size * self.tile_padding, self.tile_size, self.tile_size)
-#                 pygame.draw.rect(win, self.tile_color(tile_contents, board_lo), rect)
-#
-#     def tile_color(self, tile_contents, board_lo):
-#         # - for label, # for untouched tile, * for user board attacked, X for enemy board attacked, O place ship
-#         # L for label, E for empty tile, M for my ship, + for attacked but missed, X for attacked ship
-#         tile_color = BLACK
-#         if tile_contents == 'L':
-#             tile_color = WHITE
-#         if tile_contents == 'M':
-#             tile_color = BLUE
-#         if tile_contents == "E":
-#             tile_color = GRAY
-#         if tile_contents == '*':
-#             tile_color = RED
-#         return tile_color
-#
-#     def modify_user_file(self):
-#         with open(self.board_layout, "w") as text_file:
-#             for row in range(len(self.user_board)):
-#                 text_file.write('L')
-#                 for col in range(len(self.user_board[0])):
-#                     if row == 0:
-#                         text_file.write('L')
-#                     elif Tile(row - 1, col, 0).attacked_ship == True:
-#                         text_file.write('*')
-#                     elif Tile(row -1, col, 0).my_ship == True:
-#                         text_file.write('M')
-#                     elif Tile(row - 1, col, 0).empty_tile == True:
-#                         text_file.write('E')
-#                     else:
-#                         pass
-#                 text_file.write('\n')
-#             text_file.write('\n')
-#
-#     def modify_enemy_file(self):
-#         with open(self.board_layout, "a") as text_file:
-#             for row in range(len(self.enemy_board)):
-#                 text_file.write('L')
-#                 for col in range(len(self.enemy_board[0])):
-#                     if row == 0:
-#                         text_file.write('L')
-#                     elif Tile(row - 1, col, 1).attacked_ship == True:
-#                         text_file.write('*')
-#                     elif Tile(row - 1, col, 1).my_ship == True:
-#                         text_file.write('M')
-#                     elif Tile(row - 1, col, 1).empty_tile == True:
-#                         text_file.write('E')
-#                     else:
-#                         pass
-#                 text_file.write("\n")
-#
-#     def hit_ship(self, row, col, type):
-#         # if enemy is True, then the enemy is attacking user. Affecting user board
-#         # user attacking enemy
-#         Tile(row, col, type).attacked_ship = True
-#         if type == 0:
-#             self.modify_enemy_file()
-#         else:
-#             self.modify_user_file()
-# !!!!!!!!!!!!!!!!!!!!!!!!
+    def draw(self, player):
+
+        self.draw_background()
+        for ship in self.player_ships[player]:
+            ship.draw(True, self.win) 
+        if player != 0:
+            for ship in self.player_ships[0]:
+                if ship.is_destroyed():
+                    ship.draw(False, self.win)
+        else:
+            for ship in self.player_ships[1]:
+                if ship.is_destroyed():
+                    ship.draw(False, self.win)
+
+        for i, dude in enumerate(self.player_hits_misses):
+            for row,two_d_array in enumerate(dude):
+                for col, state in enumerate(two_d_array):
+                    # 0 = nothing, 1 = hit, 2 = miss for state
+                    if i == player: #current player is active, meaning print right
+                        center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
+                        if state == 1: #miss
+                            pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                        elif state == 2: #hit
+                            pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        #else: #for testing
+                        #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
+                    else: #print left
+                        center_x = (LEFT_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
+                        if state == 1: #miss
+                            pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                        elif state == 2: #hit
+                            pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        #else: #for testing
+                        #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
+
+    def hit_ship(self, player, row, col):
+        #hits and misses against player 0 are in player_hits_misses[0]
+        if player == 0:
+            other_player = 1
+        else:
+            other_player = 0
+        for ship in self.player_ships[other_player]:
+            for tuple in ship.locations:
+                if row == tuple[0] and col == tuple[1]:
+                    ship.mark_hit(row,col)
+                    self.player_hits_misses[other_player][row][col] = 2
+                    print(f'(PLAYER {player}) Successful attack at: ({row}, {col})')
+                    #print(ship.locations)
+                    return True
+        self.player_hits_misses[other_player][row][col] = 1
+        print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
+        return False
+
+    def update(self, player):
+        self.draw(player)
+        pygame.display.update()  
+
+    def info(self):
+        print(f'Player 0 ships: {self.player0ships.ship}')
+        print(f'Player 0 hit/misses: {self.p0_hit_misses}')
+        print(f'Player 1 ships: {self.player1ships.ship}')
+        print(f'Player 1 hit/misses: {self.p1_hit_misses}')

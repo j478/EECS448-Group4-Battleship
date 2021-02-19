@@ -134,7 +134,8 @@ class Board:
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
         return False
 
-    def update(self):
+    def update(self, player):
+        self.draw(player)
         pygame.display.update()  
 
     def info(self):

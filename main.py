@@ -17,8 +17,10 @@ pygame.init()
 def main():
     running = True
     clock = pygame.time.Clock()
+
     p0ships = [Ship(0, 0, 0, 3), Ship(5, 5, 7, 5), Ship(1, 1, 1, 4)] 
     p1ships = [Ship(2, 2, 2, 5), Ship(4, 3, 4 ,5), Ship(8, 8, 6, 8)]
+
     board = Board(WIN, p0ships, p1ships)
     board.hit_ship(0, 2, 2)
     board.hit_ship(0, 3, 4)
@@ -32,7 +34,9 @@ def main():
     board.hit_ship(1, 6, 6)
     board.hit_ship(1, 2, 2)
     board.hit_ship(1, 0, 1)
-    board.draw(0)
+    board.draw(1)
+
+    
     while running:
         clock.tick(FPS)
 
@@ -46,3 +50,5 @@ def main():
 
 
 main()
+
+

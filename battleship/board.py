@@ -20,6 +20,7 @@ class Board:
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses] 
         self.draw(0)
+        
 
     def initialize_hits_misses(self):
         for i in range(10):
@@ -115,40 +116,51 @@ class Board:
                         #else: #for testing
                         #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
 
-    ###the GAME class would be attempting a hit on a square row and col, but it would not know if there is a ship there. So it can not pass ship
-    ### hit_ship(self, player, row, col)
     def hit_ship(self, player, row, col):
-        ###first determine which player it is
-        ###then you may have to loop through the ships and their locations
-        ###if any of the ships contain a row,col == row and col that were passed.
-        ###     Then grab that ship and do ship.hit(row,col)
-        ###     mark a hit for that player in playerxhits_misses
-        ###     return True
-        ###else
-        ###     mark a miss and return False
-
+        #hits and misses against player 0 are in player_hits_misses[0]
         if player == 0:
-            for ship_row, ship_col, state in self.player1ships.ship:
-                if ship_row == row and ship_col == col:
-                    self.player0ships.mark_hit(row, col)
-                    self.p0_hit_misses.append(tuple((row, col, 2)))
-                    print(f'(PLAYER 0) Hit/Miss List: {self.p0_hit_misses}')
-                    print(f'(PLAYER 0) Successful attack at: ({row}, {col})')
-                    return
-            self.p0_hit_misses.append(tuple((row, col, 1)))
-            print(f'(PLAYER 0) Hit/Miss List: {self.p0_hit_misses}')
-            print(f'(PLAYER 0) Missed attack at: ({row}, {col})')
+            other_player = 1
         else:
-            for ship_row, ship_col, state in self.player0ships.ship:
-                if ship_row == row and ship_col == col:
-                    self.player1ships.mark_hit(row, col)
-                    self.p1_hit_misses.append(tuple((row, col, 2)))
-                    print(f'(PLAYER 1) Hit/Miss List: {self.p1_hit_misses}')
-                    print(f'(PLAYER 1) Successful attack at: ({row}, {col})')
-                    return
-            self.p1_hit_misses.append(tuple((row, col, 1)))
-            print(f'(PLAYER 1) Hit/Miss List: {self.p1_hit_misses}')
+            other_player = 0
+        for ship in self.player_ships[other_player]:
+            for tuple in ship.locations:
+                if row == tuple[0] and col == tuple[1]:
+                    ship.mark_hit(row,col)
+                    self.player_hits_misses[other_player][row][col] = 2
+                    print(f'(PLAYER {player}) Successful attack at: ({row}, {col})')
+                    return True
+        self.player_hits_misses[other_player][row][col] = 1
+        print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
+        return False
+        '''
+        if player == 0:
+            for ship in self.player_ships[1]:
+                for tuple in ship.locations:
+                    if row == tuple[0] and col == tuple[1]:
+                        ship.mark_hit(row,col)
+                        self.player_hits_misses[1][row][col] = 2
+                        print(f'(PLAYER 0) Successful attack at: ({row}, {col})')
+                        return True
+            self.player_hits_misses[1][row][col] = 1
+            print(f'(PLAYER 0) Missed attack at: ({row}, {col})')
+            return False
+        else:
+            for ship in self.player_ships[0]:
+                for tuple in ship.locations:
+                    if row == tuple[0] and col == tuple[1]:
+                        ship.mark_hit(row, col)
+                        self.player_hits_misses[0][row][col] = 2
+                        print(f'(PLAYER 1) Hit/Miss List: {self.player_hits_misses[0]}')
+                        print(f'(PLAYER 1) Successful attack at: ({row}, {col})')
+                        return True
+            self.player_hits_misses[0][row][col] = 1
+            print(f'(PLAYER 1) Hit/Miss List: {self.player_hits_misses[0]}')
             print(f'(PLAYER 1) Missed attack at: ({row}, {col})')
+            return False
+        '''
+
+    def update(self):
+        pygame.display.update()  
 
     def info(self):
         print(f'Player 0 ships: {self.player0ships.ship}')

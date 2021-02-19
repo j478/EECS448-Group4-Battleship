@@ -1,7 +1,6 @@
 #	Author: Jacob Wagner
 #	Date: 2021.02.13
 
-# this is a test for github. This is test part3
 import pygame
 from battleship.constants import WIDTH, HEIGHT
 from battleship.board import *
@@ -25,9 +24,14 @@ def main():
     board.hit_ship(0, 3, 4)
     board.hit_ship(0, 6, 6)
     board.hit_ship(0, 7, 8)
+    board.hit_ship(0, 0, 0)
+    board.hit_ship(0, 4, 4)
     board.hit_ship(1, 5, 5)
-    board.hit_ship(1, 4, 4,)
+    board.hit_ship(1, 4, 4)
     board.hit_ship(1, 1, 3)
+    board.hit_ship(1, 6, 6)
+    board.hit_ship(1, 2, 2)
+    board.hit_ship(1, 0, 1)
     board.draw(0)
     while running:
         clock.tick(FPS)

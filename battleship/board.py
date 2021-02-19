@@ -98,8 +98,8 @@ class Board:
                 for col, state in enumerate(two_d_array):
                     # 0 = nothing, 1 = hit, 2 = miss for state
                     if i == player: #current player is active, meaning print right
-                        center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                        center_y = (TOP_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
                         if state == 1: #miss
                             pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
                         elif state == 2: #hit
@@ -107,8 +107,8 @@ class Board:
                         #else: #for testing
                         #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
                     else: #print left
-                        center_x = (LEFT_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                        center_y = (TOP_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_x = (LEFT_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
                         if state == 1: #miss
                             pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
                         elif state == 2: #hit
@@ -128,36 +128,11 @@ class Board:
                     ship.mark_hit(row,col)
                     self.player_hits_misses[other_player][row][col] = 2
                     print(f'(PLAYER {player}) Successful attack at: ({row}, {col})')
+                    #print(ship.locations)
                     return True
         self.player_hits_misses[other_player][row][col] = 1
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
         return False
-        '''
-        if player == 0:
-            for ship in self.player_ships[1]:
-                for tuple in ship.locations:
-                    if row == tuple[0] and col == tuple[1]:
-                        ship.mark_hit(row,col)
-                        self.player_hits_misses[1][row][col] = 2
-                        print(f'(PLAYER 0) Successful attack at: ({row}, {col})')
-                        return True
-            self.player_hits_misses[1][row][col] = 1
-            print(f'(PLAYER 0) Missed attack at: ({row}, {col})')
-            return False
-        else:
-            for ship in self.player_ships[0]:
-                for tuple in ship.locations:
-                    if row == tuple[0] and col == tuple[1]:
-                        ship.mark_hit(row, col)
-                        self.player_hits_misses[0][row][col] = 2
-                        print(f'(PLAYER 1) Hit/Miss List: {self.player_hits_misses[0]}')
-                        print(f'(PLAYER 1) Successful attack at: ({row}, {col})')
-                        return True
-            self.player_hits_misses[0][row][col] = 1
-            print(f'(PLAYER 1) Hit/Miss List: {self.player_hits_misses[0]}')
-            print(f'(PLAYER 1) Missed attack at: ({row}, {col})')
-            return False
-        '''
 
     def update(self):
         pygame.display.update()  

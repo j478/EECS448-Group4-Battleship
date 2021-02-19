@@ -28,9 +28,9 @@ class Ship:
         #fill ship array
         for i in range(self.size):
             if self.horizontal:
-                self.locations.append([self.start_r, self.start_c + i, False])
+                self.locations.append([self.start_r, min(self.start_c, self.end_c) + i, False])
             else:
-                self.locations.append([self.start_r + i, self.start_c, False])
+                self.locations.append([min(self.start_r, self.end_r) + i, self.start_c, False])
 
     def draw(self, right, win): #right is a boolean which if True means draw on the right 
         #pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))

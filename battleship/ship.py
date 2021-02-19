@@ -32,7 +32,7 @@ class Ship:
             else:
                 self.ship.append(tuple(self.start_r + i, self.start_c, False))
 
-    def draw(self, win):
+    def draw(self, right, win): #right is a boolean which if True means draw on the right 
         square = SQUARE_SIZE
         pygame.draw.ellipse(win, WHITE, (self.start_c*square, self.start_r*square, self.end_c * square, self.end_r*square))
 

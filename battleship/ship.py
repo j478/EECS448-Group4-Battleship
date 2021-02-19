@@ -28,9 +28,9 @@ class Ship:
         #fill ship array
         for i in range(self.size):
             if self.horizontal:
-                self.locations.append([self.start_r, self.start_c, False])
+                self.locations.append([self.start_r, self.start_c + i, False])
             else:
-                self.locations.append([self.start_r, self.start_c, False])
+                self.locations.append([self.start_r + i, self.start_c, False])
 
     def draw(self, right, win): #right is a boolean which if True means draw on the right 
         #pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
@@ -41,9 +41,9 @@ class Ship:
                 pygame.draw.ellipse(win, DGRAY, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
                                    (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, self.size * SQUARE_SIZE - SQUARE_SIZE // 3, SQUARE_SIZE - SQUARE_SIZE // (self.size * 3)))
             else:
-                pygame.draw.ellipse(win, BLACK, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE, 
+                pygame.draw.ellipse(win, BLACK, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
                                    (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, SQUARE_SIZE, self.size * SQUARE_SIZE))
-                pygame.draw.ellipse(win, DGRAY, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE //15, 
+                pygame.draw.ellipse(win, DGRAY, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE //15, 
                                    (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, SQUARE_SIZE - SQUARE_SIZE // (self.size * 3), self.size * SQUARE_SIZE - SQUARE_SIZE// 3))
         else:
                 if self.horizontal:
@@ -64,10 +64,11 @@ class Ship:
         return x,y   
 
     def is_destroyed(self):
-        for loc in self.locations:
-            if loc[2] == False:
+        for i in range(self.size):
+            if self.locations[i][2] == False:
                 return False
         return True
+
 
                 
     

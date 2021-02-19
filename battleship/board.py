@@ -7,24 +7,37 @@ from .ship import *
 
 
 class Board:
+
+    LEFT_PADDING = 50
+    RIGHT_PADDING = 50
+    
     def __init__(self, win, player0ships, player1ships):  # p0ships, p1ships
-        # self.p0ships = p0ships
-        # self.p1ships = p1ships
+        self.player0ships = player0ships
+        self.player1ships = player1ships
+        self.player_ships = [self.player0ships, self.player1ships]
         self.grid_width = 500
         self.grid_height = 500  # buffer of 200 for the labels and gaps in between the two different grids
         self.win = win
-        self.draw_background()
         ###could combine both of them into a single grid where you initialize say self.p0_hits_misses = [0,0,1,2, ....]
         ###where a 0 would be nothing has happened here, a 1 was a miss and a 2 was a hit. This would make for much
         ###easier printing
         ###there is also not one user as there is player 0 and player 1. So, you would be designating one of the players as
         ###an enemy which is fine, but seems to be more confusing. There will only be one board class
         # 0 = nothing, 1 = hit, 2 = miss
-        self.p0_hit_misses = []
-        self.player0ships = player0ships
-        self.p1_hit_misses = []
-        self.player1ships = player1ships
-
+        self.player0_hit_misses = []
+        self.player1_hit_misses = []
+        self.initialize_hits_misses()
+        self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
+        self.draw_background()
+        
+    def initialize_hits_misses(self):
+        for i in range(10):
+            self.player0_hits_misses.append([])
+            self.player1_hits_misses.append([])
+            for j in range(10):
+                self.player0_hits_misses[i].append(0)
+                self.player1_hits_misses[i].append(0)
+                
     def draw_background(self):
         self.win.fill(BLACK)
         font = pygame.font.Font('freesansbold.ttf',
@@ -75,14 +88,9 @@ class Board:
 
         self.draw_background()
 
-        if player == 0:
-            # for ship in self.player0ships.ship:
-            #     self.player0ships.ship.draw(self.win)
-            self.player0ships.draw(self.win)
-        else:
-            # for ship in self.player1ships.ship:
-            #     self.player0ships.ship.draw(self.win)
-            self.player1ships.draw(self.win)
+        for ship in self.player_ships[player]:
+            ship.draw(self.win)
+
 
         for row, col, state in self.p0_hit_misses:
             # miss

@@ -18,8 +18,8 @@ pygame.init()
 def main():
     running = True
     clock = pygame.time.Clock()
-    p0ships = [Ship(0, 0, 0, 3), Ship(1, 1, 1, 4)]
-    p1ships = [Ship(2, 2, 2, 3), Ship(3, 3, 3 ,4)]
+    p0ships = [Ship(0, 0, 0, 3), Ship(5, 5, 7, 5), Ship(1, 1, 1, 4)] 
+    p1ships = [Ship(2, 2, 2, 5), Ship(4, 3, 4 ,5), Ship(8, 8, 6, 8)]
     board = Board(WIN, p0ships, p1ships)
 
     while running:

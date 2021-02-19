@@ -39,8 +39,8 @@ class Board:
         text = font.render("Player ships", True, WHITE, RED)
         textRect.center = ( (WIDTH // 4) * 3.5, TOP_PADDING // 2)
         self.win.blit(text, textRect)
-        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
-        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
+        pygame.draw.rect(self.win, BLUE, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
+        pygame.draw.rect(self.win, BLUE, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
         self.draw_grid()
 
     def draw_grid(self):
@@ -60,7 +60,7 @@ class Board:
             if i != 0:
                 font = pygame.font.Font('freesansbold.ttf', 32)
                 txt = "" + str(i)
-                text = font.render(txt, True, BLACK, GRAY)
+                text = font.render(txt, True, BLACK, BLUE)
                 textRect = text.get_rect()
                 
                 #numbers in top row
@@ -71,7 +71,7 @@ class Board:
 
                 #letters on leftmost column
                 txt = chr(64 + i)
-                text = font.render(txt, True, BLACK, GRAY)
+                text = font.render(txt, True, BLACK, BLUE)
                 textRect.center = (LEFT_PADDING + SQUARE_SIZE // 2, TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)
                 self.win.blit(text, textRect)
                 textRect.center = (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING + SQUARE_SIZE // 2, TOP_PADDING + i * SQUARE_SIZE + SQUARE_SIZE // 2)

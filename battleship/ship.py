@@ -21,20 +21,41 @@ class Ship:
         
         #determine size of ship
         if self.horizontal:
-            self.size = abs(self.end_c - self.start_c) 
+            self.size = abs(self.end_c - self.start_c) + 1
         else:
-            self.size = abs(self.end_r - self.start_r)
+            self.size = abs(self.end_r - self.start_r) + 1
     
         #fill ship array
         for i in range(self.size):
             if self.horizontal:
                 self.ship.append(tuple((self.start_r, self.start_c + i, False)))
             else:
-                self.ship.append(tuple(self.start_r + i, self.start_c, False))
+                self.ship.append(tuple((self.start_r + i, self.start_c, False)))
 
     def draw(self, right, win): #right is a boolean which if True means draw on the right 
-        square = SQUARE_SIZE
-        pygame.draw.ellipse(win, WHITE, (self.start_c*square, self.start_r*square, self.end_c * square, self.end_r*square))
+        #pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
+        if right:
+            if self.horizontal:
+                pygame.draw.ellipse(win, BLACK, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
+                                   (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, self.size * SQUARE_SIZE, SQUARE_SIZE))
+                pygame.draw.ellipse(win, DGRAY, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
+                                   (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, self.size * SQUARE_SIZE - SQUARE_SIZE // 3, SQUARE_SIZE - SQUARE_SIZE // (self.size * 3)))
+            else:
+                pygame.draw.ellipse(win, BLACK, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE, 
+                                   (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, SQUARE_SIZE, self.size * SQUARE_SIZE))
+                pygame.draw.ellipse(win, DGRAY, ( (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE //15, 
+                                   (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, SQUARE_SIZE - SQUARE_SIZE // (self.size * 3), self.size * SQUARE_SIZE - SQUARE_SIZE// 3))
+        else:
+                if self.horizontal:
+                    pygame.draw.ellipse(win, BLACK, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
+                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, self.size * SQUARE_SIZE, SQUARE_SIZE))
+                    pygame.draw.ellipse(win, DGRAY, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
+                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, self.size * SQUARE_SIZE - SQUARE_SIZE // 3, SQUARE_SIZE - SQUARE_SIZE // 3 * self.size))
+                else:
+                    pygame.draw.ellipse(win, BLACK, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
+                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, SQUARE_SIZE, self.size * SQUARE_SIZE))
+                    pygame.draw.ellipse(win, DGRAY, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
+                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE  // 15, SQUARE_SIZE - SQUARE_SIZE // 3*self.size, self.size * SQUARE_SIZE - SQUARE_SIZE // 3))
 
     def mark_hit(self, row, col):
         for i in range(self.size):

@@ -49,13 +49,9 @@ class Ship:
                 if self.horizontal:
                     pygame.draw.ellipse(win, BLACK, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
                                        (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, self.size * SQUARE_SIZE, SQUARE_SIZE))
-                    pygame.draw.ellipse(win, DGRAY, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
-                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE // 15, self.size * SQUARE_SIZE - SQUARE_SIZE // 3, SQUARE_SIZE - SQUARE_SIZE // 3 * self.size))
                 else:
                     pygame.draw.ellipse(win, BLACK, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE, 
                                        (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE, SQUARE_SIZE, self.size * SQUARE_SIZE))
-                    pygame.draw.ellipse(win, DGRAY, ( (LEFT_PADDING + 50) + min(self.start_c, self.end_c) * SQUARE_SIZE + SQUARE_SIZE // 15, 
-                                       (TOP_PADDING + 50) + min(self.start_r, self.end_r) * SQUARE_SIZE + SQUARE_SIZE  // 15, SQUARE_SIZE - SQUARE_SIZE // 3*self.size, self.size * SQUARE_SIZE - SQUARE_SIZE // 3))
 
     def mark_hit(self, row, col):
         for i in range(self.size):
@@ -66,9 +62,16 @@ class Ship:
                 part = tuple(part_list)
                 self.ship[i] = part
 
-    def get_x_y(self):
+    def get_x_y(self): ##NOT Necessary anymore
         x = (self.end_c*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
         y = (self.end_r*SQUARE_SIZE - self.start_r*SQUARE_SIZE)//2
         return x,y   
+
+    def is_destroyed(self):
+        for loc in self.ship:
+            if loc[2] == False
+            return False
+        return True
+
                 
-        
+    

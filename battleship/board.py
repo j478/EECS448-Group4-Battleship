@@ -19,7 +19,7 @@ class Board:
         self.player1_hits_misses = []
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses] 
-        self.draw(1)
+        self.draw(0)
 
     def initialize_hits_misses(self):
         for i in range(10):
@@ -83,6 +83,14 @@ class Board:
         self.draw_background()
         for ship in self.player_ships[player]:
             ship.draw(True, self.win) 
+        if player != 0:
+            for ship in self.player_ships[0]:
+                if ship.is_destroyed():
+                    ship.draw(False, self.win)
+        else:
+            for ship in self.player_ships[1]:
+                if ship.is_destroyed():
+                    ship.draw(False, self.win)
 
         for i, dude in enumerate(self.player_hits_misses):
             for row,two_d_array in enumerate(dude):

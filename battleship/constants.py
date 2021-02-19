@@ -1,6 +1,6 @@
 import pygame
 
-WIDTH, HEIGHT = 1200, 600
+WIDTH, HEIGHT = 1200, 650
 
 SQUARE_SIZE = 50
 

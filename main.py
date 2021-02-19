@@ -15,11 +15,6 @@ pygame.display.set_caption('Battleship')
 
 pygame.init()
 
-
-
-
-
-
 def main():
     running = True
     clock = pygame.time.Clock()

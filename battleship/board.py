@@ -2,18 +2,19 @@
 #	Date: 2/14/2021
 #   Start: 8:40 PM
 
+
 from .constants import *
 from .ship import *
 
 
 class Board:
-
     LEFT_PADDING = 25
     RIGHT_PADDING = 25
     MIDDLE_PADDING = 50 
-    TOP_PADDING = 100
-    GRID_WIDTH = 500
-    GRID_HEIGHT = 500
+    TOP_PADDING = 75
+    BOTTOM_PADDING = 25
+    GRID_WIDTH = 550
+    GRID_HEIGHT = 550
     def __init__(self, win, player0ships, player1ships):  # p0ships, p1ships
         self.player0ships = player0ships
         self.player1ships = player1ships
@@ -25,8 +26,8 @@ class Board:
         ###there is also not one user as there is player 0 and player 1. So, you would be designating one of the players as
         ###an enemy which is fine, but seems to be more confusing. There will only be one board class
         # 0 = nothing, 1 = hit, 2 = miss
-        self.player0_hit_misses = []
-        self.player1_hit_misses = []
+        self.player0_hits_misses = []
+        self.player1_hits_misses = []
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
         self.draw_background()
@@ -48,13 +49,12 @@ class Board:
         # textRect.center = (300,50)
         textRect.center = ((WIDTH / 2) - 100, 50)
         self.win.blit(text, textRect)
-        ###constants here with the padding, explained in draw_grid
-        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
-        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
+        pygame.draw.rect(self.win, GRAY, (self.LEFT_PADDING, self.TOP_PADDING, self.GRID_WIDTH, self.GRID_HEIGHT))
+        pygame.draw.rect(self.win, GRAY, (self.LEFT_PADDING + self.GRID_WIDTH + self.MIDDLE_PADDING, self.TOP_PADDING, self.GRID_WIDTH, self.GRID_HEIGHT))  
         self.draw_grid()
 
     def draw_grid(self):
-        for i in range(10):
+        for i in range(11):
             ###Would it be possible to make constants here. I.e. WIDTH_PADDING = 200, HEIGHT_PADDING = 100
             ###I was also thinking it would be cool to have the grids like this:
             ###  _| 1 | 2 | 3 | 4 | ...
@@ -63,14 +63,18 @@ class Board:
             ###  C|
             ###which would affect the padding but could also be accounted for with a constant where a box with label A would just be the
             ###same size as a normal box
-            pygame.draw.line(self.win, WHITE, (0, HEIGHT - self.grid_height + i * SQUARE_SIZE),
-                             (self.grid_width, HEIGHT - self.grid_height + i * SQUARE_SIZE), 3)
-            pygame.draw.line(self.win, WHITE, (WIDTH - self.grid_width, HEIGHT - self.grid_height + i * SQUARE_SIZE),
-                             (WIDTH, HEIGHT - self.grid_width + i * SQUARE_SIZE), 3)
-            pygame.draw.line(self.win, WHITE, (0 + i * SQUARE_SIZE, HEIGHT - self.grid_height),
-                             (0 + i * SQUARE_SIZE, HEIGHT), 3)
-            pygame.draw.line(self.win, WHITE, (self.grid_width + 200 + i * SQUARE_SIZE, HEIGHT - self.grid_height),
-                             (self.grid_width + 200 + i * SQUARE_SIZE, HEIGHT), 3)
+            # (win, color, (start X, start Y) , (end X, end Y))
+            #horizontals
+            pygame.draw.line(self.win, WHITE, (self.LEFT_PADDING, self.TOP_PADDING + i * SQUARE_SIZE + 50), 
+                                              (self.LEFT_PADDING + self.GRID_WIDTH, self.TOP_PADDING + i * SQUARE_SIZE + 50))
+            pygame.draw.line(self.win, WHITE, (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH, self.TOP_PADDING + i * SQUARE_SIZE + 50),
+                                              (WIDTH - self.RIGHT_PADDING, self.TOP_PADDING + i * SQUARE_SIZE + 50))
+            #verticals
+            pygame.draw.line(self.win, WHITE, (self.LEFT_PADDING + i * SQUARE_SIZE + 50, self.TOP_PADDING),
+                                              (self.LEFT_PADDING + i * SQUARE_SIZE + 50, HEIGHT - self.BOTTOM_PADDING))
+            pygame.draw.line(self.win, WHITE, (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH + i * SQUARE_SIZE + 50, self.TOP_PADDING),
+                                              (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH + i * SQUARE_SIZE + 50, HEIGHT - self.BOTTOM_PADDING))
+            
 
     def draw(self, player):
         ###Basically I believe it shoudl go like this.

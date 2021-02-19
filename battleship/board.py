@@ -5,7 +5,7 @@
 
 from .constants import *
 from .ship import *
-
+import time
 
 class Board:
     LEFT_PADDING = 25
@@ -20,17 +20,14 @@ class Board:
         self.player1ships = player1ships
         self.player_ships = [self.player0ships, self.player1ships]
         self.win = win
-        ###could combine both of them into a single grid where you initialize say self.p0_hits_misses = [0,0,1,2, ....]
-        ###where a 0 would be nothing has happened here, a 1 was a miss and a 2 was a hit. This would make for much
-        ###easier printing
-        ###there is also not one user as there is player 0 and player 1. So, you would be designating one of the players as
-        ###an enemy which is fine, but seems to be more confusing. There will only be one board class
         # 0 = nothing, 1 = hit, 2 = miss
         self.player0_hits_misses = []
         self.player1_hits_misses = []
         self.initialize_hits_misses()
-        self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
-        self.draw(0)
+        self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses] 
+        self.draw(1)
+
+
         
     def initialize_hits_misses(self):
         for i in range(10):
@@ -39,7 +36,12 @@ class Board:
             for j in range(10):
                 self.player0_hits_misses[i].append(0)
                 self.player1_hits_misses[i].append(0)
-                
+        self.player0_hits_misses[3][3] = 1
+        self.player0_hits_misses[7][7] = 2
+        self.player0_hits_misses[4][4] = 2
+        self.player1_hits_misses[5][3] = 1
+        self.player1_hits_misses[5][7] = 2
+        self.player1_hits_misses[5][4] = 1
     def draw_background(self):
         self.win.fill(BLACK)
         font = pygame.font.Font('freesansbold.ttf', 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
@@ -109,40 +111,28 @@ class Board:
         for ship in self.player_ships[player]:
             ship.draw(self.win)
 
-        
-        for row, col, state in self.p0_hit_misses:
-            # miss
-            if state == 1:
-                center_x = row * SQUARE_SIZE + (SQUARE_SIZE / 2)
-                center_y = col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE + (SQUARE_SIZE / 2)
-                pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE / 2)
-                # pygame.draw.rect(self.win, BLACK, (row * SQUARE_SIZE, col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            # hit
-            elif state == 2:
-                center_x = row * SQUARE_SIZE + (SQUARE_SIZE / 2)
-                center_y = col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE + (SQUARE_SIZE / 2)
-                pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE / 2)
-                # pygame.draw.rect(self.win, RED, (row * SQUARE_SIZE, col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            else:
-                pass
-
-        for row, col, state in self.p1_hit_misses:
-            # miss
-            if state == 1:
-                center_x = row * SQUARE_SIZE + 700 + (SQUARE_SIZE / 2)
-                center_y = col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE +  (SQUARE_SIZE / 2)
-                pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE / 2)
-                # pygame.draw.rect(self.win, BLACK, (
-                # row * SQUARE_SIZE, col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            # hit
-            elif state == 2:
-                center_x = row * SQUARE_SIZE + 700 + (SQUARE_SIZE / 2)
-                center_y = col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE +  (SQUARE_SIZE / 2)
-                pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE / 2)
-                # pygame.draw.rect(self.win, RED, (
-                # row * SQUARE_SIZE, col * SQUARE_SIZE + SQUARE_SIZE + SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
-            else:
-                pass
+        for i, dude in enumerate(self.player_hits_misses):
+            for row,two_d_array in enumerate(dude):
+                for col, state in enumerate(two_d_array):
+                    # 0 = nothing, 1 = hit, 2 = miss for state
+                    if i == player: #current player is active, meaning print right
+                        center_x = (WIDTH - self.RIGHT_PADDING - self.GRID_WIDTH + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (self.TOP_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        if state == 1: #miss
+                            pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                        elif state == 2: #hit
+                            pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        #else: #for testing
+                        #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
+                    else: #print left
+                        center_x = (self.LEFT_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
+                        center_y = (self.TOP_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        if state == 1: #miss
+                            pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                        elif state == 2: #hit
+                            pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        #else: #for testing
+                        #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
 
     ###the GAME class would be attempting a hit on a square row and col, but it would not know if there is a ship there. So it can not pass ship
     ### hit_ship(self, player, row, col)

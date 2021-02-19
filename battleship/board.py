@@ -8,15 +8,16 @@ from .ship import *
 
 class Board:
 
-    LEFT_PADDING = 50
-    RIGHT_PADDING = 50
-    
+    LEFT_PADDING = 25
+    RIGHT_PADDING = 25
+    MIDDLE_PADDING = 50 
+    TOP_PADDING = 100
+    GRID_WIDTH = 500
+    GRID_HEIGHT = 500
     def __init__(self, win, player0ships, player1ships):  # p0ships, p1ships
         self.player0ships = player0ships
         self.player1ships = player1ships
         self.player_ships = [self.player0ships, self.player1ships]
-        self.grid_width = 500
-        self.grid_height = 500  # buffer of 200 for the labels and gaps in between the two different grids
         self.win = win
         ###could combine both of them into a single grid where you initialize say self.p0_hits_misses = [0,0,1,2, ....]
         ###where a 0 would be nothing has happened here, a 1 was a miss and a 2 was a hit. This would make for much
@@ -48,8 +49,8 @@ class Board:
         textRect.center = ((WIDTH / 2) - 100, 50)
         self.win.blit(text, textRect)
         ###constants here with the padding, explained in draw_grid
-        pygame.draw.rect(self.win, GRAY, (0, 100, 500, 500))
-        pygame.draw.rect(self.win, GRAY, (700, 100, 500, 500))  # hardcoded of course
+        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
+        pygame.draw.rect(self.win, GRAY, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
         self.draw_grid()
 
     def draw_grid(self):

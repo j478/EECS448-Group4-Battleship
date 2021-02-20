@@ -44,7 +44,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        board.update()
+        board.update(1)
 
     pygame.quit()
 

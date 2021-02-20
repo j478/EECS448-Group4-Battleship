@@ -5,11 +5,10 @@ from .constants import *
 from .ship import Ship
 class Initialize():
 
-    def __init__(self, win):
+    def __init__(self, win, ChooseGameSize, GameSize):
         self.gameSizeSelected = False
         self.win = win
         self.shipsSelected = 0
-        self.shipCount = 0
         self.shipList = []
 
         self.b1 = Button((0,250,0), 0, 0, 500, 99, '1 Ship')
@@ -35,7 +34,12 @@ class Initialize():
         self.s6 = Button((0,250,0), 0, 500, 600, 50, '1x6')
 
         self.shipArray =[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
-        self.gameSize()
+        if ChooseGameSize:
+            self.shipCount = 0
+            self.gameSize()  
+        else:
+            self.shipCount = GameSize
+            self.pickShips(self.shipCount)
                             
     def gameSize(self):
         while self.gameSizeSelected == False:

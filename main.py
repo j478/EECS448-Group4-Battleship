@@ -21,12 +21,13 @@ def main():
     clock = pygame.time.Clock()
 
     
-    initial1 = Initialize(WIN)
-    #initial2 = Initialize(WIN)
+    initial1 = Initialize(WIN, True, 0)
+
+    initial2 = Initialize(WIN, False, initial1.shipCount)
 
     p0ships = initial1.returnShip() 
-    p1ships = [Ship(2, 2, 2, 5), Ship(4, 3, 4 ,5), Ship(8, 8, 6, 8)]
-
+    p1ships = initial2.returnShip()
+    
     board = Board(WIN, p0ships, p1ships)
     board.hit_ship(0, 2, 2)
     board.hit_ship(0, 3, 4)

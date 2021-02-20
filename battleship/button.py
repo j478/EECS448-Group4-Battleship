@@ -1,6 +1,6 @@
 import pygame
 
-class button():
+class Button():
     # initializes any variables needed for button
     def __init__(self, color, x, y, width, height, text=''):
         self.color = color

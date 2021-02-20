@@ -21,8 +21,10 @@ def main():
     clock = pygame.time.Clock()
 
     
-    initial = Initialize(WIN)
-    p0ships = [Ship(0, 0, 0, 3), Ship(5, 5, 7, 5), Ship(1, 1, 1, 4)] 
+    initial1 = Initialize(WIN)
+    #initial2 = Initialize(WIN)
+
+    p0ships = initial1.returnShip() 
     p1ships = [Ship(2, 2, 2, 5), Ship(4, 3, 4 ,5), Ship(8, 8, 6, 8)]
 
     board = Board(WIN, p0ships, p1ships)
@@ -38,7 +40,7 @@ def main():
     board.hit_ship(1, 6, 6)
     board.hit_ship(1, 2, 2)
     board.hit_ship(1, 0, 1)
-    board.draw(1)
+    board.draw(0)
 
     
     while running:
@@ -48,7 +50,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        board.update(1)
+        board.update(0)
 
     pygame.quit()
 

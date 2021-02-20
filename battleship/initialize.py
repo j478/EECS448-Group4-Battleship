@@ -10,6 +10,7 @@ class Initialize():
         self.win = win
         self.shipsSelected = 0
         self.shipCount = 0
+        self.shipList = []
 
         self.b1 = Button((0,250,0), 0, 0, 500, 99, '1 Ship')
         self.b2 = Button((0,250,0), 0, 100, 500, 99, '2 Ship')
@@ -35,8 +36,7 @@ class Initialize():
 
         self.shipArray =[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
         self.gameSize()
-        
-                    
+                            
     def gameSize(self):
         while self.gameSizeSelected == False:
             pygame.display.update()
@@ -164,6 +164,10 @@ class Initialize():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     ##Left click
                     if event.button == 1 and self.isValid(pos,vertical, shipNum):
+                        if vertical:
+                            self.shipList.append(Ship(self.row, self.column, self.row+shipNum, self.column)) 
+                        if not vertical:
+                            self.shipList.append(Ship(self.row, self.column, self.row, self.column+shipNum))
                         print('placed')
                         self.shipPlaced = True
                     ##Right click
@@ -193,50 +197,50 @@ class Initialize():
     def isValid(self,pos, vertical, shipNum):
         validColumn = False
         validRow = False
-        column=0
-        row=0
+        self.column=0
+        self.row=0
         for i in range(10):
             if pos[0] >= (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+1)*SQUARE_SIZE) and pos[0] < (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+2)*SQUARE_SIZE):
                 validColumn = True
-                column = i
+                self.column = i
                 print('column'+str(i))
         for j in range(10):
             if pos[1] >=(TOP_PADDING+(j+1)*SQUARE_SIZE) and pos[1] <(TOP_PADDING+(j+2)*SQUARE_SIZE):
                 validRow = True 
-                row = j
+                self.row = j
                 print('row'+str(j))
 
         #vertical check past bottom of board
-        if vertical == True and shipNum + row > 10:
+        if vertical == True and shipNum + self.row > 10:
             validRow = False
 
         #horizontal check past side of board
-        if vertical == False and shipNum + column > 10:
+        if vertical == False and shipNum + self.column > 10:
             validColumn = False
 
         #check if vertical ship is going to overlap
         if vertical == True:
             for i in range(10):
-                if i >= row and i<row+shipNum:
-                    if self.shipArray[i][column]== 1:
+                if i >= self.row and i<self.row+shipNum:
+                    if self.shipArray[i][self.column]== 1:
                         validColumn = False
         #check if Horizontal ship is going to overlap
         if vertical == False:
             for i in range(10):
-                if i >= column and i<column+shipNum:
-                    if self.shipArray[row][i] ==1:
+                if i >= self.column and i<self.column+shipNum:
+                    if self.shipArray[self.row][i] ==1:
                         validRow = False
         
         if validColumn and validRow:
             
             if vertical == True:
                 for i in range(10):
-                    if i >= row and i<row+shipNum:
-                        self.shipArray[i][column]=1
+                    if i >= self.row and i<self.row+shipNum:
+                        self.shipArray[i][self.column]=1
             if vertical == False:
                 for i in range(10):
-                    if i >= column and i<column+shipNum:
-                        self.shipArray[row][i]=1
+                    if i >= self.column and i<self.column+shipNum:
+                        self.shipArray[self.row][i]=1
 
             for r in self.shipArray:
                 for c in r:

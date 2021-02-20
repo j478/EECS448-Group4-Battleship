@@ -253,6 +253,11 @@ class Initialize():
 
     def drawPlayerBoard (self):
         self.win.fill(BLACK)
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render("Right Click to Rotate", True, WHITE, RED)
+        textRect = text.get_rect()
+        textRect.center = ( (WIDTH // 4) * 3, TOP_PADDING // 2)
+        self.win.blit(text, textRect)
         pygame.draw.rect(self.win, BLUE, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
         for i in range(11):
             # (win, color, (start X, start Y) , (end X, end Y))

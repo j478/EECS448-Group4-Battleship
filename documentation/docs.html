@@ -1,14 +1,91 @@
 <b> Classes<b><br><br><br>
+
+<!--SHIP CLASS-->
 Ship<br><br>
+
 Variables: <br><br>
 self.locations #list of lists containing (row, col, hit(boolean)) for each ship spot<br>
 self.start_r #stores start row<br>
 self.start_c #stores start column<br>
 self.end_r #stores end row<br>
 self.end_c #stores end column<br>
-self.destroyed #boolean for ship destroyed or not<br><br>
+self.destroyed #boolean for ship destroyed or not<br><br><br>
+
 Methods: <br><br>
 #@pre --> initialize ship object<br>
 #@param --> passed starting row and column, ending row and column<br>
 #@post --> no return<br>
-__init__(self, start_r, start_c, end_r, end_c)<br>
+__init__(self, start_r, start_c, end_r, end_c)<br><br>
+
+#@pre --> draw the ship on the appropriate board<br>
+#@param --> passed which board it belongs on, drawing surface<br>
+#@post --> no return<br>
+draw(self,right,win)<br><br>
+
+#@pre --> marks ship segment as hit<br>
+#@param --> passed row and column to change<br>
+#@post --> no return<br>
+mark_hit(self, row, col)<br><br>
+
+#@pre --> returns the x,y coordinates of the ship's center<br>
+#@param --> no passed variables<br>
+#@post --> returns x, y coordinates<br>
+get_x_y(self)<br><br>
+
+#@pre --> determines if the ship is destroyed<br>
+#@param --> no passed variables<br>
+#@post --> returns true if ship is destroyed, false otherwise<br>
+is_destroyed(self)<br><br><br><br>
+
+<!--BOARD CLASS-->
+Board<br><br>
+
+Variables: <br><br>
+self.player0ships #stores player 0 ships<br>
+self.player1ships #stores player 1 ships<br>
+self.player_ships #stores player0ships and player1ships<br>
+self.win #stores drawing surface<br>
+self.player0_hits_misses #stores player 0 shots<br>
+self.player1_hits_misses #stores player 1 shots<br>
+self.player_hits_misses #stores player 1 and player 0 shot arrays<br><br><br>
+
+Methods:<br><br>
+#@pre --> initialize board object<br>
+#@param --> passed player 0 and player 1 ships, drawing surface<br>
+#@post --> returns true if ship is destroyed, false otherwise<br>
+__init__(self, win, player0ships, player1ships)<br><br>
+
+#@pre --> initialize player shot variables<br>
+#@param --> no passed variables<br>
+#@post --> no return<br>
+initialize_hits_misses(self)<br><br>
+
+#@pre --> draw the board background<br>
+#@param --> no passed variables<br>
+#@post --> no return<br>
+draw_background(self)<br><br>
+
+#@pre --> draw the grid on the board<br>
+#@param --> no passed variables<br>
+#@post --> no return<br>
+draw_grid(self)<br><br>
+
+#@pre --> draw the complete board for respective player<br>
+#@param --> passed player to draw board for<br>
+#@post --> no return<br>
+draw(self, player)<br><br>
+
+#@pre --> determine if attack was a hit or miss<br>
+#@param --> passed attacking player, attack row and column<br>
+#@post --> return true if hit, false otherwise<br>
+hit_ship(self, player, row, col)<br><br>
+
+#@pre --> update board window<br>
+#@param --> passed player to draw board for<br>
+#@post --> no return<br>
+update(self, player)<br><br>
+
+#@pre --> print player ships, hits and misses<br>
+#@param --> no passed variables<br>
+#@post --> no return<br>
+info(self)<br><br>

@@ -30,14 +30,14 @@ class Board:
                 self.player0_hits_misses[i].append(0)
                 self.player1_hits_misses[i].append(0)
 
-    def draw_background(self):
+    def draw_background(self, player):
         self.win.fill(BLACK)
         font = pygame.font.Font('freesansbold.ttf', 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
         text = font.render('Select the location you wish to hit', True, WHITE, RED)
         textRect = text.get_rect()
         textRect.center = (WIDTH // 4, TOP_PADDING // 2)
         self.win.blit(text, textRect)
-        text = font.render("Player ships", True, WHITE, RED)
+        text = font.render(f"Player {player + 1} ships", True, WHITE, RED)
         textRect.center = ( (WIDTH // 4) * 3.5, TOP_PADDING // 2)
         self.win.blit(text, textRect)
         pygame.draw.rect(self.win, BLUE, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
@@ -81,7 +81,7 @@ class Board:
 
     def draw(self, player):
 
-        self.draw_background()
+        self.draw_background(player)
         for ship in self.player_ships[player]:
             ship.draw(True, self.win) 
         if player != 0:
@@ -129,10 +129,10 @@ class Board:
                     self.player_hits_misses[other_player][row][col] = 2
                     print(f'(PLAYER {player}) Successful attack at: ({row}, {col})')
                     #print(ship.locations)
-                    return True
+                    return ship
         self.player_hits_misses[other_player][row][col] = 1
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
-        return False
+        return 0
 
     def update(self, player):
         self.draw(player)

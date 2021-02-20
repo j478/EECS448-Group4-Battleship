@@ -1,5 +1,5 @@
-#	Author: 
-#	Date: 
+#	Author: Mitch Reeves
+#	Date: 2/20/2021
 import pygame
 from .constants import *
 

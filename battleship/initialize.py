@@ -5,11 +5,10 @@ from .constants import *
 from .ship import Ship
 class Initialize():
 
-    def __init__(self, win):
+    def __init__(self, win, ChooseGameSize, GameSize):
         self.gameSizeSelected = False
         self.win = win
         self.shipsSelected = 0
-        self.shipCount = 0
         self.shipList = []
 
         self.b1 = Button((0,250,0), 0, 0, 500, 99, '1 Ship')
@@ -35,7 +34,12 @@ class Initialize():
         self.s6 = Button((0,250,0), 0, 500, 600, 50, '1x6')
 
         self.shipArray =[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
-        self.gameSize()
+        if ChooseGameSize:
+            self.shipCount = 0
+            self.gameSize()  
+        else:
+            self.shipCount = GameSize
+            self.pickShips(self.shipCount)
                             
     def gameSize(self):
         while self.gameSizeSelected == False:
@@ -253,6 +257,11 @@ class Initialize():
 
     def drawPlayerBoard (self):
         self.win.fill(BLACK)
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render("Right Click to Rotate", True, WHITE, RED)
+        textRect = text.get_rect()
+        textRect.center = ( (WIDTH // 4) * 3, TOP_PADDING // 2)
+        self.win.blit(text, textRect)
         pygame.draw.rect(self.win, BLUE, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
         for i in range(11):
             # (win, color, (start X, start Y) , (end X, end Y))

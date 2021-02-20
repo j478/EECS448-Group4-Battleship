@@ -32,6 +32,8 @@ class Initialize():
         self.s4 = Button((0,250,0), 0, 300, 400, 50, '1x4')
         self.s5 = Button((0,250,0), 0, 400, 500, 50, '1x5')
         self.s6 = Button((0,250,0), 0, 500, 600, 50, '1x6')
+
+        self.shipArray =[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
         self.gameSize()
         
                     
@@ -161,8 +163,7 @@ class Initialize():
                 pygame.display.update()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     ##Left click
-                    if event.button == 1:
-                        self.isValid(pos,vertical, shipNum)
+                    if event.button == 1 and self.isValid(pos,vertical, shipNum):
                         print('placed')
                         self.shipPlaced = True
                     ##Right click
@@ -189,14 +190,62 @@ class Initialize():
                     if i == 6:
                         self.s6.draw(self.win)
 
-    def isValid(self,pos, orient, shipNum):
-
+    def isValid(self,pos, vertical, shipNum):
+        validColumn = False
+        validRow = False
+        column=0
+        row=0
         for i in range(10):
             if pos[0] >= (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+1)*SQUARE_SIZE) and pos[0] < (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+2)*SQUARE_SIZE):
+                validColumn = True
+                column = i
                 print('column'+str(i))
         for j in range(10):
-            if pos[1] >=(TOP_PADDING+(j+1)*SQUARE_SIZE) and pos[1] <(TOP_PADDING+(j+2)*SQUARE_SIZE): 
+            if pos[1] >=(TOP_PADDING+(j+1)*SQUARE_SIZE) and pos[1] <(TOP_PADDING+(j+2)*SQUARE_SIZE):
+                validRow = True 
+                row = j
                 print('row'+str(j))
+
+        #vertical check past bottom of board
+        if vertical == True and shipNum + row > 10:
+            validRow = False
+
+        #horizontal check past side of board
+        if vertical == False and shipNum + column > 10:
+            validColumn = False
+
+        #check if vertical ship is going to overlap
+        if vertical == True:
+            for i in range(10):
+                if i >= row and i<row+shipNum:
+                    if self.shipArray[i][column]== 1:
+                        validColumn = False
+        #check if Horizontal ship is going to overlap
+        if vertical == False:
+            for i in range(10):
+                if i >= column and i<column+shipNum:
+                    if self.shipArray[row][i] ==1:
+                        validRow = False
+        
+        if validColumn and validRow:
+            
+            if vertical == True:
+                for i in range(10):
+                    if i >= row and i<row+shipNum:
+                        self.shipArray[i][column]=1
+            if vertical == False:
+                for i in range(10):
+                    if i >= column and i<column+shipNum:
+                        self.shipArray[row][i]=1
+
+            for r in self.shipArray:
+                for c in r:
+                    print(c, end = " ")
+                print()
+
+            return True
+        else:
+            return False
 
     def drawPlayerBoard (self):
         self.win.fill(BLACK)

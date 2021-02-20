@@ -5,12 +5,14 @@
 import pygame
 from battleship.constants import WIDTH, HEIGHT
 from battleship.board import *
+from battleship.initialize import *
 
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
 
+initial = Initialize(WIN)
 board = Board(WIN)
 
 # random test points

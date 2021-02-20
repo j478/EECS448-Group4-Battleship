@@ -22,20 +22,36 @@ class Initialize():
             b6.draw(win)
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if b1.hover == True:
-                        pickShips(1)
-                    if b2.hover == True:
-                        pickShips(2)
-                    if b3.hover == True:
-                        pickShips(3)
-                    if b4.hover == True:
-                        pickShips(4)
-                    if b5.hover == True:
-                        pickShips(5)
-                    if b6.hover == True:
-                        pickShips(6)
+                    pos = pygame.mouse.get_pos()
+                    if b1.hover(pos) == True:
+                        self.pickShips(1)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
+                    if b2.hover(pos) == True:
+                        self.pickShips(2)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
+                    if b3.hover(pos) == True:
+                        self.pickShips(3)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
+                    if b4.hover(pos) == True:
+                        self.pickShips(4)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
+                    if b5.hover(pos) == True:
+                        self.pickShips(5)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
+                    if b6.hover(pos) == True:
+                        self.pickShips(6)
+                        self.gameSizeSelected = True
+                        pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
                     print('mouse clicked')
-                    self.gameSizeSelected = True
+                    
+                    
 
-    def pickShips (self, shipCount):
+    def pickShips (self, shipCount,):
+        
+        pygame.display.update()
         print (shipCount)

@@ -6,7 +6,7 @@ from . constants import *
 import numpy
 import pygame, sys
 from . ship import *
-from. tile import *
+#from. tile import *
 
 #################################
 # This version does not use the Tile class. Attacks work but still working on placing ships.

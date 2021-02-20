@@ -62,96 +62,130 @@ class Initialize():
 
     def pickShips (self, shipCount,win):
         self.shipsSelected = 0
-        s1 = Button((0,250,0), 0, 0, 100, 50, 'Jet ski')
-        s2 = Button((0,250,0), 0, 100, 200, 50, 'Destroyer')
-        s3 = Button((0,250,0), 0, 200, 300, 50, 'Submarine')
-        s4 = Button((0,250,0), 0, 300, 400, 50, 'Cruiser')
-        s5 = Button((0,250,0), 0, 400, 500, 50, 'Battle Ship')
-        s6 = Button((0,250,0), 0, 500, 600, 50, 'Carrier')
+        self.shipCount = shipCount
+        self.s1 = Button((0,250,0), 0, 0, 100, 50, '1x1')
+        self.s2 = Button((0,250,0), 0, 100, 200, 50, '1x2')
+        self.s3 = Button((0,250,0), 0, 200, 300, 50, '1x3')
+        self.s4 = Button((0,250,0), 0, 300, 400, 50, '1x4')
+        self.s5 = Button((0,250,0), 0, 400, 500, 50, '1x5')
+        self.s6 = Button((0,250,0), 0, 500, 600, 50, '1x6')
         pygame.draw.rect(win,(0,0,0),(0,0,1300, 800),0)
         self.drawPlayerBoard(win)
         
-        for i in range(shipCount+1):
+        for i in range(self.shipCount+1):
             if i == 1: 
-                s1.draw(win)
+                self.s1.draw(win)
                 
             if i == 2:
-                s2.draw(win)
+                self.s2.draw(win)
 
             if i == 3:
-                s3.draw(win)
+                self.s3.draw(win)
 
             if i == 4: 
-                s4.draw(win)
+                self.s4.draw(win)
 
             if i == 5: 
-                s5.draw(win)
+                self.s5.draw(win)
 
             if i == 6:
-                s6.draw(win)
+                self.s6.draw(win)
 
-        while self.shipsSelected < shipCount:
+        while self.shipsSelected < self.shipCount:
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
-                    if s1.hover(pos) == True and shipCount >= 1 and self.placed1 == False:
-                        s1 = Button((64,64,64), 0, 0, 100, 50, 'Jet ski')
-                        s1.draw(win)
+                    if self.s1.hover(pos) == True and self.shipCount >= 1 and self.placed1 == False:
+                        self.s1 = Button((64,64,64), 0, 0, 100, 50, '1x1')
+                        self.s1.draw(win)
                         pygame.display.update()
                         self.placeShip(1,win)
                         self.placed1 = True
                         self.shipsSelected += 1
 
-                    if s2.hover(pos) == True and shipCount >= 2 and self.placed2 is False:
-                        s2 = Button((64,64,64), 0, 100, 200, 50, 'Destroyer')
-                        s2.draw(win)
+                    if self.s2.hover(pos) == True and self.shipCount >= 2 and self.placed2 is False:
+                        self.s2 = Button((64,64,64), 0, 100, 200, 50, '1x2')
+                        self.s2.draw(win)
                         pygame.display.update()
+                        self.placeShip(2,win)
                         self.placed2 = True
                         self.shipsSelected += 1
 
-                    if s3.hover(pos) == True and shipCount >= 3 and self.placed3 is False:
-                        s3 = Button((64,64,64), 0, 200, 300, 50, 'Submarine')
-                        s3.draw(win)
+                    if self.s3.hover(pos) == True and self.shipCount >= 3 and self.placed3 is False:
+                        self.s3 = Button((64,64,64), 0, 200, 300, 50, '1x3')
+                        self.s3.draw(win)
                         pygame.display.update()
+                        self.placeShip(3,win)
                         self.placed3 = True
                         self.shipsSelected += 1
 
 
-                    if s4.hover(pos) == True and shipCount >= 4 and self.placed4 is False:
-                        s4 = Button((64,64,64), 0, 300, 400, 50, 'Cruiser')
-                        s4.draw(win)
+                    if self.s4.hover(pos) == True and self.shipCount >= 4 and self.placed4 is False:
+                        self.s4 = Button((64,64,64), 0, 300, 400, 50, '1x4')
+                        self.s4.draw(win)
                         pygame.display.update()
+                        self.placeShip(4,win)
                         self.placed4 = True
                         self.shipsSelected += 1
 
 
-                    if s5.hover(pos) == True and shipCount >= 5 and self.placed5 is False:
-                        s5 = Button((64,64,64), 0, 400, 500, 50, 'Battle Ship')
-                        s5.draw(win)
+                    if self.s5.hover(pos) == True and self.shipCount >= 5 and self.placed5 is False:
+                        self.s5 = Button((64,64,64), 0, 400, 500, 50, '1x5')
+                        self.s5.draw(win)
                         pygame.display.update()
+                        self.placeShip(5,win)
                         self.placed5 = True
                         self.shipsSelected += 1
 
 
-                    if s6.hover(pos) == True and shipCount is 6 and self.placed6 is False:
-                        s6 = Button((64,64,64), 0, 500, 600, 50, 'Carrier')
-                        s6.draw(win)
+                    if self.s6.hover(pos) == True and self.shipCount is 6 and self.placed6 is False:
+                        self.s6 = Button((64,64,64), 0, 500, 600, 50, '1x6')
+                        self.s6.draw(win)
                         pygame.display.update()
+                        self.placeShip(6,win)
                         self.placed6 = True
                         self.shipsSelected += 1
 
     def placeShip (self, shipNum,win):
         self.shipPlaced = False
+        toggled = False
         while self.shipPlaced is False:
             for event in pygame.event.get():
-                self.drawPlayerBoard(win)
                 pos = pygame.mouse.get_pos()
-                pygame.draw.rect(win,(70, 70, 70),(pos[0],pos[1],50*shipNum, 50))
+                if toggled is False:
+                    pygame.draw.rect(win,(70, 70, 70),(pos[0]-25,pos[1]-25,50*shipNum, 50))
+                if toggled is True:
+                    pygame.draw.rect(win,(70, 70, 70),(pos[0]-25,pos[1]-25,50, 50*shipNum))
                 pygame.display.update()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    print('mouse clicked')
-                    self.shipPlace = True
+                    ##Left click
+                    if event.button == 1:
+                        print('placed')
+                        self.shipPlaced = True
+                    ##Right click
+                    if event.button == 3:
+                        print('rotated')
+                        toggled = not toggled
+                self.drawPlayerBoard(win)
+                for i in range(self.shipCount+1):
+                    if i == 1: 
+                        self.s1.draw(win)
+                
+                    if i == 2:
+                        self.s2.draw(win)
+
+                    if i == 3:
+                        self.s3.draw(win)
+
+                    if i == 4: 
+                        self.s4.draw(win)
+
+                    if i == 5: 
+                        self.s5.draw(win)
+
+                    if i == 6:
+                        self.s6.draw(win)
 
 
     def drawPlayerBoard (self,win):

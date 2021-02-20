@@ -165,9 +165,9 @@ class Initialize():
                     ##Left click
                     if event.button == 1 and self.isValid(pos,vertical, shipNum):
                         if vertical:
-                            self.shipList.append(Ship(self.row, self.column, self.row+shipNum, self.column)) 
+                            self.shipList.append(Ship(self.row, self.column, self.row+shipNum-1, self.column)) 
                         if not vertical:
-                            self.shipList.append(Ship(self.row, self.column, self.row, self.column+shipNum))
+                            self.shipList.append(Ship(self.row, self.column, self.row, self.column+shipNum-1))
                         print('placed')
                         self.shipPlaced = True
                     ##Right click
@@ -280,4 +280,9 @@ class Initialize():
                 self.win.blit(text, textRect)
                 #65 - 74 65 = A, 74 = J from https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
 
+        for i in self.shipList:
+            i.draw(True,self.win)
 
+
+    def returnShip(self):
+        return self.shipList

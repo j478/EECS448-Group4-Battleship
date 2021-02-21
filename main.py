@@ -8,12 +8,10 @@ from battleship.initialize import *
 from battleship.ship import Ship
 from battleship.game import Game
 
-
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
-
 pygame.init()
 
 #@pre - will print to the screen the winner of the game if the proper stipulations are met
@@ -55,12 +53,9 @@ def main():
     while running:
         clock.tick(FPS)
 
-
         if game.game_over():
             winner(game)
             running = False
-
-
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

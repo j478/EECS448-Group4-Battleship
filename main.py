@@ -30,7 +30,7 @@ def winner(game):
     textRect.center = (WIDTH // 2, HEIGHT // 2)
     WIN.blit(text, textRect)
     pygame.display.update()
-    time.sleep(10)
+    time.sleep(4)
 
 def main():
     running = True

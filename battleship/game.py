@@ -6,10 +6,7 @@ from .board import *
 import time
 
 class Game:
-
-    
     def __init__(self, win, p0ships, p1ships):
-
         self.board = Board(win, p0ships, p1ships)
         self.player_turn = 0
         self.player_0_ships, self.player_1_ships = len(p0ships), len(p1ships)
@@ -17,6 +14,7 @@ class Game:
 
     def hit_ship(self, row, col):
         ship = self.board.hit_ship(self.player_turn, row,col)
+        self.print_hit(ship)
         if ship != 0:
             if ship.is_destroyed():
                 if self.player_turn == 0:
@@ -24,29 +22,36 @@ class Game:
                 else:
                     self.player_0_ships -= 1
 
+    def print_hit(self, ship):
+        self.win.fill(GRAY)
+        if ship != 0:
+            if ship.is_destroyed():
+                txt = f"Player {self.player_turn + 1} sunk a battleship!"
+            else:
+                txt = f"Player {self.player_turn + 1} hit a battleship!"
+        else:
+            txt = f"Player {self.player_turn + 1} miss!"
+        font = pygame.font.Font('freesansbold.ttf', 50)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+        text = font.render(txt, True, WHITE, RED)
+        textRect = text.get_rect()
+        textRect.center = (WIDTH // 2, HEIGHT // 2)
+        self.win.blit(text, textRect)
+        pygame.display.update()
+        time.sleep(1)   
 
     def update(self):
         self.hover()
         self.board.update(self.player_turn)
         
-
-
- 
-
     def switch_players(self):
         self.win.fill(BLACK)
-        
         font = pygame.font.Font('freesansbold.ttf', 50)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
-        text = font.render(f'Switching to Player {self.player_turn +1} in three seconds', True, WHITE, RED)
+        text = font.render(f'Switching to Player {self.player_turn +1} in two seconds', True, WHITE, RED)
         textRect = text.get_rect()
         textRect.center = (WIDTH // 2, HEIGHT // 2)
         self.win.blit(text, textRect)
         pygame.display.update()
-        time.sleep(3)
-
-        
-
-    
+        time.sleep(2)
 
     def change_turn(self):
          if self.player_turn == 0:
@@ -54,24 +59,19 @@ class Game:
          elif self.player_turn == 1:
             self.player_turn = 0
     
-
     def game_over(self):
-
         if self.player_0_ships == 0 or self.player_1_ships == 0:
-
             return True
         else: 
             return False
-
-   
 
     def hover(self):
         pos = pygame.mouse.get_pos()
         row, col = self.get_row_col_from_pos(pos)
         if row != -1 and col != -1:
             pygame.draw.circle(self.win, GREEN, (TOP_PADDING + col * SQUARE_SIZE + SQUARE_SIZE // 2, LEFT_PADDING + SQUARE_SIZE + SQUARE_SIZE + row * SQUARE_SIZE + SQUARE_SIZE //2), SQUARE_SIZE // 4)
-            
             pygame.display.update()
+
     def get_row_col_from_pos(self, pos):
         x,y = pos
         if (x > LEFT_PADDING + SQUARE_SIZE) and x < (LEFT_PADDING +  GRID_WIDTH):

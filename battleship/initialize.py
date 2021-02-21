@@ -214,11 +214,11 @@ class Initialize():
                             self.shipList.append(Ship(self.row, self.column, self.row+shipNum-1, self.column)) 
                         if not vertical:
                             self.shipList.append(Ship(self.row, self.column, self.row, self.column+shipNum-1))
-                        print('placed')
+                        #print('placed')
                         self.shipPlaced = True
                     ##Right click: rotates ship
                     if event.button == 3:
-                        print('rotated')
+                        #print('rotated')
                         vertical = not vertical
                 #redraws the buttons after the board has been refreshed. the board needs to refresh every frame otherwise the ship following the cursor turns into a paint brush
                 self.drawPlayerBoard()
@@ -259,12 +259,12 @@ class Initialize():
             if pos[0] >= (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+1)*SQUARE_SIZE) and pos[0] < (LEFT_PADDING+GRID_WIDTH+MIDDLE_PADDING+(i+2)*SQUARE_SIZE):
                 validColumn = True
                 self.column = i
-                print('column'+str(i))
+                #print('column'+str(i))
         for j in range(10):
             if pos[1] >=(TOP_PADDING+(j+1)*SQUARE_SIZE) and pos[1] <(TOP_PADDING+(j+2)*SQUARE_SIZE):
                 validRow = True 
                 self.row = j
-                print('row'+str(j))
+                #print('row'+str(j))
 
         #checks if the part of the boat on different squares go past the bottom
         if vertical == True and shipNum + self.row > 10:
@@ -300,7 +300,8 @@ class Initialize():
 
             for r in self.shipArray:
                 for c in r:
-                    print(c, end = " ")
+                    pass
+                    #print(c, end = " ")
                 print()
 
             return True

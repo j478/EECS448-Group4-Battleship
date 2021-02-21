@@ -8,7 +8,10 @@ from .ship import *
 import time
 
 class Board:
-
+    #@pre - Initializes a Board class
+    #@param - passes the pygame window, and arrays of each players ships
+    #@post - if the position is valid, then it will attempt a hit and then change players
+    #@return - None
     def __init__(self, win, player0ships, player1ships):  
         self.player0ships = player0ships
         self.player1ships = player1ships
@@ -19,9 +22,11 @@ class Board:
         self.player1_hits_misses = []
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses] 
-        self.draw(0)
         
-
+    #@pre - player_hits_misses array is empty
+    #@param - None
+    #@post - initialize the arrays with zeros
+    #@return - None
     def initialize_hits_misses(self):
         for i in range(10):
             self.player0_hits_misses.append([])
@@ -30,6 +35,10 @@ class Board:
                 self.player0_hits_misses[i].append(0)
                 self.player1_hits_misses[i].append(0)
 
+    #@pre - draws the text and grids of the battleship display
+    #@param - player
+    #@post - draws the given player's text label
+    #@return - None
     def draw_background(self, player):
         self.win.fill(BLACK)
         font = pygame.font.Font('freesansbold.ttf', 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
@@ -44,6 +53,10 @@ class Board:
         pygame.draw.rect(self.win, BLUE, (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))  
         self.draw_grid()
 
+    #@pre - draws the right and left grids
+    #@param - None
+    #@post - draws the right and left grids
+    #@return - None
     def draw_grid(self):
         for i in range(11):
             # (win, color, (start X, start Y) , (end X, end Y))
@@ -79,6 +92,10 @@ class Board:
                 self.win.blit(text, textRect)
                 #65 - 74 65 = A, 74 = J from https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
 
+    #@pre - will display the hits and misses of both players, and the ships of the current player on the right grid
+    #@param - player
+    #@post - draws the display
+    #@return - None
     def draw(self, player):
 
         self.draw_background(player)
@@ -116,6 +133,10 @@ class Board:
                         #else: #for testing
                         #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
 
+    #@pre - determines if the hit is a ship, if it does it marks the hit in self.player_hits_misses and the Ship class
+    #@param - player, row, col
+    #@post - marks a hit in the Ship class if relevant, and marks either hit or miss in self.player_hits_misses
+    #@return - None
     def hit_ship(self, player, row, col):
         #hits and misses against player 0 are in player_hits_misses[0]
         if player == 0:
@@ -134,12 +155,20 @@ class Board:
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
         return 0
 
+    #@pre - draws the display and updates the pygame display
+    #@param - player
+    #@post - draws the display and updates the pygame display
+    #@return - None
     def update(self, player):
         self.draw(player)
         pygame.display.update()  
 
+    #@pre - for testing 
+    #@param - None
+    #@post - prints current state of data structures to the console
+    #@return - None
     def info(self):
-        print(f'Player 0 ships: {self.player0ships.ship}')
-        print(f'Player 0 hit/misses: {self.p0_hit_misses}')
-        print(f'Player 1 ships: {self.player1ships.ship}')
-        print(f'Player 1 hit/misses: {self.p1_hit_misses}')
+        print(f'Player 0 ships: {self.player_ships[0]}')
+        print(f'Player 0 hit/misses: {self.player_hits_misses[0]}')
+        print(f'Player 1 ships: {self.player_ships[1]}')
+        print(f'Player 1 hit/misses: {self.player_hits_misses[1]}')

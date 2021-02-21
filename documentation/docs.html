@@ -1,7 +1,5 @@
-<b> Classes<b><br><br><br>
-
 <!--SHIP CLASS-->
-Ship<br><br>
+SHIP<br><br>
 
 Variables: <br><br>
 self.locations #list of lists containing (row, col, hit(boolean)) for each ship spot<br>
@@ -38,7 +36,7 @@ get_x_y(self)<br><br>
 is_destroyed(self)<br><br><br><br>
 
 <!--BOARD CLASS-->
-Board<br><br>
+BOARD<br><br>
 
 Variables: <br><br>
 self.player0ships #stores player 0 ships<br>
@@ -90,9 +88,54 @@ update(self, player)<br><br>
 #@post --> no return<br>
 info(self)<br><br><br><br>
 
+<!--GAME CLASS-->
+GAME<br><br>
+Variables<br><br><br>
+self.board #stores a Board object <br>
+self.player_turn #stores current player turn <br>
+self.player_0_ships, self.player_1_ships #store array of Ship objects <br>
+self.win #pygame window <br><br>
+Methods<br><br><br>
+    #@pre - initialize Game Class<br>
+    #@param - passed Pygame window and arrays of ships for players 1 and 2<br>
+    #@post - Creates a Board class. Stores the current player's turn<br>
+    #@return - None<br>
+    def __init__(self, win, p0ships, p1ships):<br><br>
+	
+	#@pre - Checks for a hit in the Board class on the opposing player's ship<br>
+    #@param - passed row and col of attempted hit<br>
+    #@post - updates data structures in Board class and any hit Ship<br>
+    #@return - None<br>
+    def hit_ship(self, row, col):<br><br>
+	
+	#@pre - Prints the result of an attempted hit or miss<br>
+    #@param - passed a Ship object or 0<br>
+    #@post - prints result of attempt to User<br>
+    #@return - None<br>
+    def print_hit(self, ship):<br><br>
+	
+	#@pre - Updates the output to the screen<br>
+    #@param - None<br>
+    #@post - prints the grids and ships of the window<br> 
+    #@return - None<br>
+    def update(self):<br><br>
+	
+	#@pre - will print to the players to switch users <br>
+    #@param - None<br>
+    #@post - Prints to the board "Switching player in 2 seconds" <br>
+    #@return - None <br>
+    def switch_players(self):
+
 <!--MAIN CLASS-->
-Main<br><br>
+MAIN<br><br>
 Main Method:<br><br>
 #@pre --> loops, looks for events in game<br>
 #@post --> no return<br>
 main()<br><br>
+
+#@pre - will print to the screen the winner of the game if the proper stipulations are met<br><br>
+#@param - Game class<br>
+#@post - prints to the screen the winner and ends the game<br>
+#@return - None<br>
+def winner(game):<br><br><br><br>
+

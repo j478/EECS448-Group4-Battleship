@@ -1,0 +1,11 @@
+Youtube Tutorial:
+
+Tech With Tim -- Pt 1 -> https://www.youtube.com/watch?v=vnd3RfeG3NM&ab_channel=TechWithTim
+		 Pt 2 -> https://www.youtube.com/watch?v=LSYj8GZMjWY&ab_channel=TechWithTim
+		 Pt 3 -> https://www.youtube.com/watch?v=_kOXGzkbnps&t=1s&ab_channel=TechWithTim
+
+Pygame Documentation -- https://www.pygame.org/docs/
+
+Text display Pygame -- https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+
+ASCII conversion Python -- https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python

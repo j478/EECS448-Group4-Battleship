@@ -24,7 +24,6 @@ class Game:
                 else:
                     self.player_0_ships -= 1
 
-    
 
     def update(self):
         self.hover()
@@ -43,7 +42,7 @@ class Game:
         textRect.center = (WIDTH // 2, HEIGHT // 2)
         self.win.blit(text, textRect)
         pygame.display.update()
-      #  time.sleep(3)
+        time.sleep(3)
 
         
 

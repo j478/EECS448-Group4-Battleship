@@ -86,7 +86,7 @@ update(self, player)<br><br>
 #@pre --> print player ships, hits and misses<br>
 #@param --> no passed variables<br>
 #@post --> no return<br>
-info(self)<br><br><br><br>
+info(self)<br><br><br>
 
 <!--GAME CLASS-->
 GAME<br><br>
@@ -124,10 +124,97 @@ Methods<br><br><br>
     #@param - None<br>
     #@post - Prints to the board "Switching player in 2 seconds" <br>
     #@return - None <br>
-    def switch_players(self):
+    def switch_players(self):<br><br>
+	
+	#@pre - Changes the player_turn<br>
+    #@param - None<br>
+    #@post - self.player_turn is reversed<br>
+    #@return - None<br>
+    def change_turn(self):<br><br>
+	
+	#@pre - determines if the game should be over<br>
+    #@param - None<br>
+    #@post - causes game to end if one of the players has 0 ships left<br>
+    #@return - True or False<br>
+    def game_over(self):<br><br>
+	
+    #@pre - If the mouse is on the left grid, it will show to the user which row and col is currently selected<br>
+    #@param - None<br>
+    #@post - draws a green circle in the middle of a box if the mouse is on the grid<br>
+    #@return - None<br>
+    def hover(self):<br><br>
+	
+    #@pre - uses the pixel position in x and y to get the row and column on the left grid<br>
+    #@param - passed pos (x,y)<br>
+    #@post - gives corresponding row and column to the hover() method<br>
+    #@return - row, col<br>
+    def get_row_col_from_pos(self, pos):<br><br>
+	
+    #@pre - if the mouse makes a click in a relevant position(on the left grid), then it attepts a hit<br>
+    #@param - pos (x,y) in pixels<br>
+    #@post - if the position is valid, then it will attempt a hit and then change players<br>
+    #@return - None<br>
+    def select(self, pos):<br><br><br>
+
+<!--Initialize-->
+INITIALIZE<br><br>
+
+Variables<br><br><br>
+self.gameSizeSelected #determines if the number of ships needs to be selected<br>
+self.win #contains pygame window<br>
+self.shipsSelected #number of ships to be picked<br>
+self.shipList #contains array of Ship objects<br>
+self.b1-b6 #Button objects <br>
+self.placed1-placed6 #booleans for if ship is placed <br>
+self.s1-s6 # buttons for actual Ship location placement <br>
+self.shipArray # 10x10 grid for placement of ships<br><br>
+
+Methods<br><br><br>
+#@pre - needs a game size if choose gamesize is false<br>
+#@param - the window/surface, a boolean of whether the gamesize is already decided and a game size that only matters if choosegamesize is false<br> 
+#@post - defines variables and either calls gameSize() or skips to pickShips()<br>
+#@return - none<br>
+def __init__(self, win, ChooseGameSize, GameSize):<br><br>
+
+#@pre - none<br>    
+#@param - none<br>         
+#@post - draws the first set of buttons to determine ship count and checks when theyve been clicked<br>
+#@return - none<br>                          
+def gameSize(self):<br><br>
+
+#@pre - needs to have the amount of ships already decided<br>
+#@param - amount of ships in the game<br>         
+#@post - clears the window then draws the correct amount of buttons then when a button is selected calls the place ship function and grays-out and disables the button until all buttons have been selected<br>
+#@return - none<br>
+def pickShips (self, shipCount):<br><br>
+
+#@pre - needs a ship to have already been selected<br>
+#@param - ship length  <br>       
+#@post - continuously draws a the ship on the cursor and the ship buttons and allows the user to rotate it until a valid position is clicked on<br>
+#@return - none<br>
+def placeShip (self, shipNum):<br><br>
+
+#@pre - requires that the board is drawn correctly<br>
+#@param - mouse position, a boolean of whether the ship is placed vertically and the size of the specific ship<br>        
+#@post - using the parameters given, this function decides if the user can place a piece there<br>
+#@return - boolean of whether location is valid<br>
+def isValid(self,pos, vertical, shipNum):<br><br>
+
+#@pre - needs window to be defined <br>
+#@param - none<br>        
+#@post - Redraws the screen starting with a black fill, then the text, grid, then the ships on the board<br>
+#@return - none<br>
+def drawPlayerBoard (self):<br><br>
+
+
+#@pre - needs a list of ships<br>
+#@param - no param<br>        
+#@post - returns the array of ship objects<br>
+#@return - Returns list of ships<br>
+def returnShip(self):<br><br><br>
 
 <!--MAIN CLASS-->
-MAIN<br><br>
+MAIN<br><br><br>
 Main Method:<br><br>
 #@pre --> loops, looks for events in game<br>
 #@post --> no return<br>

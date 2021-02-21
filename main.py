@@ -16,6 +16,10 @@ pygame.display.set_caption('Battleship')
 
 pygame.init()
 
+#@pre - will print to the screen the winner of the game if the proper stipulations are met
+#@param - Game class
+#@post - prints to the screen the winner and ends the game
+#@return - None
 def winner(game):
 
     if game.player_0_ships == 0: 
@@ -32,6 +36,10 @@ def winner(game):
     pygame.display.update()
     time.sleep(4)
 
+#@pre - starts the game loop of updating the model and rendering the screen
+#@param - None
+#@post - determines if the game should be over. If one of the players has 0 ships left, game ends
+#@return - None
 def main():
     running = True
     clock = pygame.time.Clock()

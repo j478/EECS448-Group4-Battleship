@@ -37,7 +37,7 @@ class Game:
         textRect.center = (WIDTH // 2, HEIGHT // 2)
         self.win.blit(text, textRect)
         pygame.display.update()
-        time.sleep(1)   
+        time.sleep(0.75)   
 
     def update(self):
         self.hover()

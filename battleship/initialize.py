@@ -302,7 +302,7 @@ class Initialize():
                 for c in r:
                     pass
                     #print(c, end = " ")
-                print()
+                #print()
 
             return True
         else:

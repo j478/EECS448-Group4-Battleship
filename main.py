@@ -49,7 +49,7 @@ def main():
     p1ships = initial2.returnShip()
     
     game = Game(WIN, p0ships, p1ships)
-      
+    game.switch_players()  
     while running:
         clock.tick(FPS)
 

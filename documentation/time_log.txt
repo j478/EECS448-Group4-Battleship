@@ -92,3 +92,23 @@ RB:
 2/20 -- 2.5 hour team meeting 
 
 TOTAL HOURS ==> 6.5 hours of team meetings + 58 individual hours
+
+——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+Team 6 Time log 
+
+Estimation:
+2hr 30min group meeting + 30hr individual work = 32hr 30min total
+
+Estimation Explanation: 
+We arrive at the estimation by comparing the level of difficulty of this lab with our last project. 
+Looking at the project requirement, we believe this project should take approximately 8hr less of invividual work time compared to our last project. 
+
+TIME_LOG
+
+KL: 
+BL:
+AJ:
+AG:
+JD:
+
+TOTAL HOURS ==> X of team meetings + X individual hours

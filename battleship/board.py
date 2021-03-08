@@ -6,6 +6,7 @@
 from .constants import *
 from .ship import *
 import time
+import pygame
 
 
 class Board:

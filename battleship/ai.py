@@ -1,6 +1,6 @@
 import pygame
 import random #random library
-import 
+import .ship import Ship
 #random number generator: random.randint(1, 10)
 #random choice generator (used for rotation): random.choice(['h', 'v'])
 
@@ -46,16 +46,13 @@ class AI:
     def is_valid():
         
     def place_ship(self, shipNum):
-    rot = random.choice(['h', 'v'])
-    row = random.randint(1, 10)
-    col = random.randint(1, 10)
-        while (is_valid(rot, row, col)==false):
-            rot = random.choice(['h', 'v'])
-            row = random.randint(1, 10)
-            col = random.randint(1, 10)
+    while (is_valid(rot, row, col)==false):
+        rot = random.choice(['h', 'v'])
+        row = random.randint(1, 10)
+        col = random.randint(1, 10)
     if rot=='v':
-        Ship(self.row, self.column, self.row + shipNum - 1, self.column))
+        Ship(row, column, row + shipNum - 1, column))
     else:
-        Ship(self.row, self.column, self.row, self.column + shipNum - 1))
+        Ship(row, column, row, column + shipNum - 1))
       
         

@@ -5,14 +5,14 @@ class AI:
     # @param -
     # @post -
     # @return -
-    # spit out a random number from 1 to 10
     def random_number():
+         return random.randint(1, 10)
     # @pre -
     # @param -
     # @post -
     # @return -
-    # spit out h or v
     def random_rotation():
+        return choice(['h', 'v'])
     # @pre -
     # @param -
     # @post -

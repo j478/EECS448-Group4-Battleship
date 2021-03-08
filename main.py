@@ -1,5 +1,5 @@
-#	Author: Jacob Wagner
-#	Date: 2021.02.13
+# Author: Jacob Wagner
+# Date: 2021.02.13
 
 import pygame
 from battleship.constants import WIDTH, HEIGHT
@@ -14,30 +14,32 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Battleship')
 pygame.init()
 
-#@pre - will print to the screen the winner of the game if the proper stipulations are met
-#@param - Game class
-#@post - prints to the screen the winner and ends the game
-#@return - None
-def winner(game):
 
-    if game.player_0_ships == 0: 
+# @pre - will print to the screen the winner of the game if the proper stipulations are met
+# @param - Game class
+# @post - prints to the screen the winner and ends the game
+# @return - None
+def winner(game):
+    if game.player_0_ships == 0:
         player = 1
     else:
         player = 0
     WIN.fill(BLACK)
-        
-    font = pygame.font.Font('freesansbold.ttf', 50)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
-    text = font.render(f'Player {player +1} WON!', True, WHITE, RED)
+
+    font = pygame.font.Font('freesansbold.ttf',
+                            50)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+    text = font.render(f'Player {player + 1} WON!', True, WHITE, RED)
     textRect = text.get_rect()
     textRect.center = (WIDTH // 2, HEIGHT // 2)
     WIN.blit(text, textRect)
     pygame.display.update()
     time.sleep(4)
 
-#@pre - starts the game loop of updating the model and rendering the screen
-#@param - None
-#@post - determines if the game should be over. If one of the players has 0 ships left, game ends
-#@return - None
+
+# @pre - starts the game loop of updating the model and rendering the screen
+# @param - None
+# @post - determines if the game should be over. If one of the players has 0 ships left, game ends
+# @return - None
 def main():
     running = True
     clock = pygame.time.Clock()
@@ -45,11 +47,11 @@ def main():
     initial1 = Initialize(WIN, True, 0)
     initial2 = Initialize(WIN, False, initial1.shipCount)
 
-    p0ships = initial1.returnShip() 
+    p0ships = initial1.returnShip()
     p1ships = initial2.returnShip()
-    
+
     game = Game(WIN, p0ships, p1ships)
-    game.switch_players()  
+    game.switch_players()
     while running:
         clock.tick(FPS)
 
@@ -68,6 +70,5 @@ def main():
 
     pygame.quit()
 
+
 main()
-
-

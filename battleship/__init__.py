@@ -1,6 +1,5 @@
 import pygame
 
-
 # draw starting window
 # -window
 # -board
@@ -16,9 +15,9 @@ import pygame
 # -creates an array based on mouse position and piece size and orientation
 # -if mouseclick and isValid then placePiece
 
-#isValid placement (takes array of inputs)
+# isValid placement (takes array of inputs)
 # -if array is available on board returns true
 
 
-#placePiece (ship, location, orientation)
+# placePiece (ship, location, orientation)
 # -finalizes piece placement

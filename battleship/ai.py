@@ -24,6 +24,12 @@ class AI:
     # @param -
     # @post -
     # @return -
+    # return true if hit, false if not
+    def is_placed():
+    # @pre -
+    # @param -
+    # @post -
+    # @return -
     #take row from random number_generator
     #take col from random number_generator
     #take rotation from random random_rotation

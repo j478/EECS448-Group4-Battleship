@@ -1,4 +1,5 @@
 import pygame
+import random
 
 class AI:
     # @pre -
@@ -12,7 +13,7 @@ class AI:
     # @post -
     # @return -
     def random_rotation():
-        return choice(['h', 'v'])
+        return random.choice(['h', 'v'])
     # @pre -
     # @param -
     # @post -

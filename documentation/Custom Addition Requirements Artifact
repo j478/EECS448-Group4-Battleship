@@ -1,0 +1,9 @@
+Collection of Features: Power-up
+- Place a power-up randomly on the board
+- Allow power-up to be activated upon hit
+- Modify power-up depending on difficulty
+    - Easy: 3x3 square
+    - Medium: Horizontal and vertical cross – “rook”
+    - Hard: Horizontal, vertical, and diagonal lines – “queen”
+- Give square highlighting to indicate where power-up will hit
+- Allow power-up ship sinking

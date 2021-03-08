@@ -38,13 +38,12 @@ class AI:
     # @return -
     # read the player's board and attak
     def hard_mode():
+    def is_valid():
     # @pre -
     # @param -
     # @post -
     # @return -
     # AI place ship at the begining of the game
-    def is_valid():
-        
     def place_ship(self, shipNum):
     rot = random.choice(['h', 'v'])
     row = random.randint(1, 10)

@@ -110,5 +110,6 @@ BL:
 AJ:
 AG:
 JD:
+3/5 -- .5 hr team meeting disucssing individual roles and organization
 
 TOTAL HOURS ==> X of team meetings + X individual hours

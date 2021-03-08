@@ -46,12 +46,13 @@ class AI:
     def is_valid():
         
     def place_ship(self, shipNum):
+    rot = random.choice(['h', 'v'])
+    row = random.randint(1, 10)
+    col = random.randint(1, 10)
     while (is_valid(rot, row, col)==false):
         rot = random.choice(['h', 'v'])
         row = random.randint(1, 10)
         col = random.randint(1, 10)
-        if(is_valid(rot, row, col)==true)
-            break
     if rot=='v':
         Ship(row, column, row + shipNum - 1, column))
     else:

@@ -1,19 +1,9 @@
 import pygame
-import random
+import random #random library
+#random number generator: random.randint(1, 10)
+#random choice generator (used for rotation): random.choice(['h', 'v'])
 
 class AI:
-    # @pre -
-    # @param -
-    # @post -
-    # @return -
-    def random_number():
-         return random.randint(1, 10)
-    # @pre -
-    # @param -
-    # @post -
-    # @return -
-    def random_rotation():
-        return random.choice(['h', 'v'])
     # @pre -
     # @param -
     # @post -

@@ -1,11 +1,11 @@
-import pygame, sys
+import pygame
 
 from .button import Button
 from .constants import *
 from .ship import Ship
 
 
-class Initialize():
+class Initialize:
 
     # @pre - needs a game size if choose gamesize is false
     #
@@ -214,7 +214,7 @@ class Initialize():
                     pygame.draw.rect(self.win, (70, 70, 70), (pos[0] - 25, pos[1] - 25, 50, 50 * shipNum))
                 pygame.display.update()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    ##Left click: checks if valid placement then if so adds the ship to the list in that location
+                    # Left click: checks if valid placement then if so adds the ship to the list in that location
                     if event.button == 1 and self.isValid(pos, vertical, shipNum):
                         if vertical:
                             self.shipList.append(Ship(self.row, self.column, self.row + shipNum - 1, self.column))
@@ -222,7 +222,7 @@ class Initialize():
                             self.shipList.append(Ship(self.row, self.column, self.row, self.column + shipNum - 1))
                         # print('placed')
                         self.shipPlaced = True
-                    ##Right click: rotates ship
+                    # Right click: rotates ship
                     if event.button == 3:
                         # print('rotated')
                         vertical = not vertical

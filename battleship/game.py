@@ -1,5 +1,5 @@
-#	Author: Rishab Bhat
-#	Date: 2/18/21
+# Author: Rishab Bhat
+# Date: 2/18/21
 import pygame
 from .constants import *
 from .board import *

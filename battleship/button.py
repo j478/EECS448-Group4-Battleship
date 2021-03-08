@@ -6,7 +6,7 @@ pygame.init()
 class Button():
     # @pre - none
     #
-    # @param - color of button, position, deminsions and text
+    # @param - color of button, position, dimensions and text
     #
     # @post - defines the passed in variables
     #

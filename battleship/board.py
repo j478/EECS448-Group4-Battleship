@@ -1,6 +1,6 @@
-#	Author: Umar Khan
-#	Date: 2/15/2021
-#   Start: 8:40 PM
+# Author: Umar Khan
+# Date: 2/15/2021
+# Start: 8:40 PM
 
 
 from .constants import *
@@ -169,8 +169,7 @@ class Board:
         self.draw(player)
         pygame.display.update()
 
-        # @pre - for testing
-
+    # @pre - for testing
     # @param - None
     # @post - prints current state of data structures to the console
     # @return - None

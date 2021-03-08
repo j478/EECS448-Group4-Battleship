@@ -48,6 +48,7 @@ class AI:
         col = random.randint(1, 10)
         if(is_place(rot, row, col) == false)
             #place the ship
-        else(place_ship)
+        else
+            place_ship()
       
         

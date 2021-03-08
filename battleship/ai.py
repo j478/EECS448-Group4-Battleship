@@ -15,7 +15,7 @@ class AI:
     # @post -
     # @return -
     # return true if hit, false if not
-    def is_placed():
+    def is_placed(rot,row,col):
     # @pre -
     # @param -
     # @post -
@@ -43,3 +43,11 @@ class AI:
     # @return -
     # AI place ship at the begining of the game
     def place_ship():
+        rot = random.choice(['h', 'v'])
+        row = random.randint(1, 10)
+        col = random.randint(1, 10)
+        if(is_place(rot, row, col) == false)
+            #place the ship
+        else(place_ship)
+      
+        

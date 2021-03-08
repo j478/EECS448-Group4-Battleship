@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 
-class Button():
+class Button:
     # @pre - none
     #
     # @param - color of button, position, dimensions and text

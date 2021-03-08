@@ -1,5 +1,6 @@
 # Author: Rishab Bhat
 # Date: 2/18/21
+
 import pygame
 from .constants import *
 from .board import *
@@ -22,9 +23,17 @@ class Game:
     # @post - updates data structures in Board class and any hit Ship
     # @return - None
     def hit_ship(self, row, col):
+        # TODO: check if player hits power-up and assign if so.
+        # TODO: check if player has power-up and modify shot if so.
+        if self.player_turn == 0 and self.board.player0_power is not None:
+            pass  # TODO: Player 0 power.
+        elif self.player_turn == 1 and self.board.player1_power is not None:
+            pass  # TODO: Player 1 power.
+
         ship = self.board.hit_ship(self.player_turn, row, col)
         self.print_hit(ship)
-        if ship != 0:
+
+        if ship is not None:
             if ship.is_destroyed():
                 if self.player_turn == 0:
                     self.player_1_ships -= 1

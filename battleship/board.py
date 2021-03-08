@@ -7,6 +7,8 @@ from .constants import *
 from .ship import *
 import time
 import pygame
+from .power import Power
+import random
 
 
 class Board:
@@ -25,8 +27,12 @@ class Board:
         self.initialize_hits_misses()
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
 
-        # @pre - player_hits_misses array is empty
+        # Power up data.
+        self.power = Power(row=random.randint(1, 10), col=random.randint(1, 10), difficulty=0)  # TODO: set difficulty
+        self.player0_power = None
+        self.player1_power = None
 
+    # @pre - player_hits_misses array is empty
     # @param - None
     # @post - initialize the arrays with zeros
     # @return - None
@@ -151,8 +157,8 @@ class Board:
         else:
             other_player = 0
         for ship in self.player_ships[other_player]:
-            for tuple in ship.locations:
-                if row == tuple[0] and col == tuple[1]:
+            for coord in ship.locations:
+                if row == coord[0] and col == coord[1]:
                     ship.mark_hit(row, col)
                     self.player_hits_misses[other_player][row][col] = 2
                     print(f'(PLAYER {player}) Successful attack at: ({row}, {col})')
@@ -160,7 +166,7 @@ class Board:
                     return ship
         self.player_hits_misses[other_player][row][col] = 1
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
-        return 0
+        return None
 
     # @pre - draws the display and updates the pygame display
     # @param - player

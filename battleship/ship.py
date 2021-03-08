@@ -1,6 +1,7 @@
 # Author: Mitch Reeves
 # Date: 2/20/2021
 from .constants import *
+import pygame
 
 
 class Ship:

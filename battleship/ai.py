@@ -1,5 +1,6 @@
 import pygame
 import random #random library
+import 
 #random number generator: random.randint(1, 10)
 #random choice generator (used for rotation): random.choice(['h', 'v'])
 
@@ -42,13 +43,19 @@ class AI:
     # @post -
     # @return -
     # AI place ship at the begining of the game
-    def place_ship():
-        rot = random.choice(['h', 'v'])
-        row = random.randint(1, 10)
-        col = random.randint(1, 10)
-        if(is_placed(rot, row, col) == false)
-            #place the ship
-        else
-            place_ship()
+    def is_valid():
+        
+    def place_ship(self, shipNum):
+    rot = random.choice(['h', 'v'])
+    row = random.randint(1, 10)
+    col = random.randint(1, 10)
+        while (is_valid(rot, row, col)==false):
+            rot = random.choice(['h', 'v'])
+            row = random.randint(1, 10)
+            col = random.randint(1, 10)
+    if rot=='v':
+        Ship(self.row, self.column, self.row + shipNum - 1, self.column))
+    else:
+        Ship(self.row, self.column, self.row, self.column + shipNum - 1))
       
         

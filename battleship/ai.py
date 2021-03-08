@@ -46,7 +46,7 @@ class AI:
     def is_valid():
         
     def place_ship(self, shipNum):
-    while false:
+    while (is_valid(rot, row, col)==false):
         rot = random.choice(['h', 'v'])
         row = random.randint(1, 10)
         col = random.randint(1, 10)

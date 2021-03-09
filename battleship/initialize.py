@@ -215,6 +215,7 @@ class Initialize:
                 pygame.display.update()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # Left click: checks if valid placement then if so adds the ship to the list in that location
+                    # JAKE D: We will need to add a condition here for passing in the CPUs ship selectment
                     if event.button == 1 and self.isValid(pos, vertical, shipNum):
                         if vertical:
                             self.shipList.append(Ship(self.row, self.column, self.row + shipNum - 1, self.column))

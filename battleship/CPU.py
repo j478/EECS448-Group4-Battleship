@@ -32,7 +32,7 @@ class CPU:
     self.ship_count = 0
   
   def place_ships(self):
-    vert = False;
+    vert = False
     if randint(0,1) == 0:
       vert = True
     row = randint(0,9)

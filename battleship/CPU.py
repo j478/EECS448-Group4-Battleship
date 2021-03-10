@@ -30,6 +30,7 @@ class CPU:
     self.ship_direction = [0,0]
     self.direction_counter = 1
     self.ship_count = 0
+    self.active = False
   
   def place_ships(self):
     vert = False

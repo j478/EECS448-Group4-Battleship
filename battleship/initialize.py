@@ -366,12 +366,8 @@ class Initialize:
             i.draw(True, self.win)
 
     # @pre - needs a list of ships
-    #
     # @param - no param
-    #
     # @post - returns the array of ship objects
-    #
     # @return - Returns list of ships
-
     def returnShip(self):
         return self.shipList

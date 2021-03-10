@@ -106,7 +106,7 @@ Looking at the project requirement, we believe this project should take approxim
 TIME_LOG
 
 KL: 
-3/9 -- 3hr 45min learninh/coding
+3/9 -- 3.5 hr learning/coding
 
 BL:
 
@@ -117,6 +117,6 @@ AG:
 JD:
 
 Group:
-3/5 -- 30min team meeting disucssing individual roles and organization
+3/5 -- 0.5 hr team meeting disucssing individual roles and organization
 
 TOTAL HOURS ==> X of team meetings + X individual hours

@@ -33,12 +33,7 @@ class CPU:
     self.active = False
   
   def place_ships(self):
-    vert = False
-    if randint(0,1) == 0:
-      vert = True
-    row = randint(0,9)
-    col = randint(0,9)
-    return(row,col,vert)
+    #definition
 
   def find_direction(self,first_hit,last_hit):
     if (first_hit - last_hit) < 0:

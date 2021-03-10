@@ -15,7 +15,7 @@ class AI:
     # @param -
     # @post -
     # @return -
-    # return true if hit, false if not
+    # return true if placed, false if not
     def is_placed(rot,row,col):
     # @pre -
     # @param -

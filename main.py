@@ -2,6 +2,7 @@
 # Date: 2021.02.13
 
 import pygame
+from battleship.CPU import *
 from battleship.constants import WIDTH, HEIGHT
 from battleship.board import *
 from battleship.initialize import *

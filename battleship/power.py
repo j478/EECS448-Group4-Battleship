@@ -1,6 +1,6 @@
 class Power:
     # @pre - Difficulty selected.
-    # @param - row for row, col for column, difficulty (int) Easy (0), medium (1), or hard (2).
+    # @param - row, colum, level of difficulty (easy = 0, medium = 1, hard = 2)
     # @post - None
     # @return -None
     def __init__(self, row, col, difficulty):

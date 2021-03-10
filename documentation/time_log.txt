@@ -97,7 +97,7 @@ TOTAL HOURS ==> 6.5 hours of team meetings + 58 individual hours
 Team 6 Time log 
 
 Estimation:
-2hr 30min group meeting + 30hr individual work = 32hr 30min total
+2.5 hr group meeting + 30 hr individual work = 32.5 hr total
 
 Estimation Explanation: 
 We arrive at the estimation by comparing the level of difficulty of this lab with our last project. 

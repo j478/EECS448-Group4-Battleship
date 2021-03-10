@@ -8,15 +8,10 @@ from .ship import Ship
 class Initialize:
 
     # @pre - needs a game size if choose gamesize is false
-    #
     # @param - the window/surface, a boolean of whether the gamesize is already decided and a game size that only
     # matters if choosegamesize is false
-    #
     # @post - defines variables and either calls gameSize() or skips to pickShips()
-    #
     # @return - none
-    #
-
     def __init__(self, win, ChooseGameSize, GameSize):
         self.gameSizeSelected = False  # boolean used in the while loop of gamesize selected
         self.win = win  # window
@@ -61,13 +56,9 @@ class Initialize:
             self.pickShips(self.shipCount)
 
     # @pre - none
-    #
     # @param - none
-    #
     # @post - draws the first set of buttons to determine ship count and checks when theyve been clicked
-    #
     # @return - none
-    #
     def gameSize(self):
         while self.gameSizeSelected == False:
             pygame.display.update()
@@ -104,12 +95,9 @@ class Initialize:
                     print('mouse clicked')
 
     # @pre - needs to have the amount of ships already decided
-    #
     # @param - amount of ships in the game
-    #
     # @post - clears the window then draws the correct amount of buttons then when a button is selected calls the place
     # ship function and grays-out and disables the button until all buttons have been selected
-    #
     # @return - none
 
     def pickShips(self, shipCount):
@@ -192,14 +180,10 @@ class Initialize:
                         self.shipsSelected += 1
 
     # @pre - needs a ship to have already been selected
-    #
     # @param - ship length
-    #
     # @post - continuously draws a the ship on the cursor and the ship buttons and allows the user to rotate it until a
     # valid position is clicked on
-    #
     # @return - none
-
     def placeShip(self, shipNum):
         self.shipPlaced = False
         # boolean used to toggle between ship orientation
@@ -250,13 +234,9 @@ class Initialize:
                         self.s6.draw(self.win)
 
     # @pre - requires that the board is drawn correctly
-    #
     # @param - mouse position, a boolean of whether the ship is placed vertically and the size of the specific ship
-    #
     # @post - using the parameters given, this function decides if the user can place a piece there
-    #
     # @return - boolean of whether location is valid
-
     def isValid(self, pos, vertical, shipNum):
         validColumn = False
         validRow = False
@@ -318,13 +298,9 @@ class Initialize:
             return False
 
     # @pre - needs window to be defined and
-    #
     # @param - none
-    #
     # @post - Redraws the screen starting with a black fill, then the text, grid, then the ships on the board
-    #
     # @return - none
-
     def drawPlayerBoard(self):
         # whole method is a modified method from board that draws one board instead of two
         self.win.fill(BLACK)

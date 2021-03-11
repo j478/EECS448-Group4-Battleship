@@ -1,6 +1,7 @@
 import pygame
 from .constants import *
 import random
+import .ship import Ship
 import code
 
 # When placing ships, randomly generate rows and columns.

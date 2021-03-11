@@ -12,8 +12,8 @@ class Game:
     # @param - passed Pygame window and arrays of ships for players 1 and 2
     # @post - Creates a Board class. Stores the current player's turn
     # @return - None
-    def __init__(self, win, p0ships, p1ships):
-        self.board = Board(win, p0ships, p1ships)
+    def __init__(self, win, p0ships, p1ships, active, ai):
+        self.board = Board(win, p0ships, p1ships,self.active)
         self.player_turn = 0
         self.player_0_ships, self.player_1_ships = len(p0ships), len(p1ships)
         self.win = win
@@ -29,7 +29,8 @@ class Game:
             pass  # TODO: Player 0 power.
         elif self.player_turn == 1 and self.board.player1_power is not None:
             pass  # TODO: Player 1 power.
-
+     
+      #  if self.player_turn==0 or self.active==False
         ship = self.board.hit_ship(self.player_turn, row, col)
         self.print_hit(ship)
 
@@ -68,8 +69,10 @@ class Game:
     # @post - prints the grids and ships of the window
     # @return - None
     def update(self):
-        self.hover()
-        self.board.update(self.player_turn)
+        #updated to only display if its not the CPU's turn
+        if self.active==False or self.player_turn==0
+          self.hover()
+            self.board.update(self.player_turn)
 
     # @pre - will print to the players to switch users
     # @param - None
@@ -95,6 +98,8 @@ class Game:
             self.player_turn = 1
         elif self.player_turn == 1:
             self.player_turn = 0
+        
+
 
     # @pre - determines if the game should be over
     # @param - None
@@ -147,3 +152,13 @@ class Game:
             self.hit_ship(row, col)
             self.change_turn()
             self.switch_players()
+            if player_turn==1 and self.active==True
+                if ai.difficulty==1
+                    row, col = ai.easy()
+                elif ai.difficulty==2
+                    row, col = ai.medium()
+                elif ai.difficulty==3
+                    row, col = ai.hard()
+                self.hit_ship(row, col)
+                self.change_turn()
+                self.switch_players()                

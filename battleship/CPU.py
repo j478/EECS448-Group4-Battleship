@@ -37,9 +37,9 @@ class CPU:
     self.ship_count = 0
     self.active = False
     
-  # @pre -
+  # @pre - cpu mode is active
   # @param - number of ships
-  # @post -
+  # @post - cpu ships placed on game board
   # @return - none
   def place_ship(self, shipNum):
     rot = random.choice(['h', 'v'])

@@ -38,22 +38,16 @@ class CPU:
     self.active = False
     
   # @pre - AI mode is activated
-  # @param - number of ships
+  # @param - none
   # @post - AI ships placed on game board
   # @return - none
-  def place_ship(self, shipNum):
-    rot = random.choice(['h', 'v'])
-    row = random.randint(0, 9)
-    col = random.randint(0, 9)
-    while (is_valid(rot, row, col)==false):
-        rot = random.choice(['h', 'v'])
-        row = random.randint(1, 10)
-        col = random.randint(1, 10)
-    if rot=='v':
-        Ship(row, column, row + shipNum - 1, column))
-    else:
-        Ship(row, column, row, column + shipNum - 1))
-
+  def place_ship(self):
+    vert = False
+    if randint(0,1)==0:
+      vert=True
+    row = randint(0,9)
+    col = randint(0,9)
+    return (row, col, vert)
   # @pre -
   # @param - first hit, last hit
   # @post -

@@ -97,7 +97,7 @@ class CPU:
 
   # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
-  # @post -
+  # @post - AI fires at the player's board
   # @return - the location of where the cpu will fire at
   def easy_AI(self):
     row = randint(0,9)
@@ -106,7 +106,7 @@ class CPU:
 
   # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
-  # @post -
+  # @post - AI fires at the player's board
   # @return - the location of where cpu will fire at
   def mid_AI(self):
     if self.found_ship and self.current_ship_status:
@@ -144,7 +144,7 @@ class CPU:
   
   # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
-  # @post -
+  # @post - AI fires at the player's board
   # @return - none
   def hard_AI(self):
     print("Hard Shot")

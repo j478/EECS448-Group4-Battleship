@@ -12,7 +12,7 @@ class Initialize:
     # matters if choosegamesize is false
     # @post - defines variables and either calls gameSize() or skips to pickShips()
     # @return - none
-    def __init__(self, win, ChooseGameSize, GameSize):
+    def __init__(self, win, ChooseGameSize, GameSize,active,ai):
         self.gameSizeSelected = False  # boolean used in the while loop of gamesize selected
         self.win = win  # window
         self.shipsSelected = 0  # amount of ships in the game
@@ -46,15 +46,32 @@ class Initialize:
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+         
+         
+         
+         #here we need to add a way to choose CPU or no CPU -alexj 
+        active=true
+        dif=1
+        ai.difficulty=dif
+        self.active=True
+        #here it goes
+       
+       
         # player 1 will take this path
         if ChooseGameSize:
             self.shipCount = 0
             self.gameSize()
             # player 2 will take this path (this is when the gameSize is needed)
-        else:
+        elif (self.active==False):
             self.shipCount = GameSize
             self.pickShips(self.shipCount)
+        else
+            self.shipcount=GameSize
+            #here is where we need to place the cpu's ships
+            
 
+
+      
     # @pre - none
     # @param - none
     # @post - draws the first set of buttons to determine ship count and checks when theyve been clicked

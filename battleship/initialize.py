@@ -32,8 +32,7 @@ class Initialize:
         self.placed5 = False
         self.placed6 = False
 
-        self.s1 = Button((0, 250, 0), 0, 0, 100, 50,
-                         '1x1')  # definitions for second set of buttons used to drag the ships
+        self.s1 = Button((0, 250, 0), 0, 0, 100, 50,'1x1')  # definitions for second set of buttons used to drag the ships
         self.s2 = Button((0, 250, 0), 0, 100, 200, 50, '1x2')
         self.s3 = Button((0, 250, 0), 0, 200, 300, 50, '1x3')
         self.s4 = Button((0, 250, 0), 0, 300, 400, 50, '1x4')

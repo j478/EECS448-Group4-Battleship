@@ -7,6 +7,7 @@ from battleship.board import *
 from battleship.initialize import *
 from battleship.ship import Ship
 from battleship.game import Game
+from battleship.CPU import CPU
 
 FPS = 60
 
@@ -44,13 +45,19 @@ def main():
     running = True
     clock = pygame.time.Clock()
 
-    initial1 = Initialize(WIN, True, 0)
-    initial2 = Initialize(WIN, False, initial1.shipCount)
+
+    ai=CPU(None)
+    initial1 = Initialize(WIN, True, 0,None, ai)
+    initial2 = Initialize(WIN, False, initial1.shipCount, None, ai)
+
+    if initial1.active==True
+        initial2.active=True
 
     p0ships = initial1.returnShip()
     p1ships = initial2.returnShip()
-
-    game = Game(WIN, p0ships, p1ships)
+    #this can be left unchanged as long as we allow the CPU to change the shiplist
+    
+    game = Game(WIN, p0ships, p1ships, initial1.active, ai)
     game.switch_players()
     while running:
         clock.tick(FPS)

@@ -16,9 +16,9 @@ import code
 
 class CPU:
   # @pre -
-  # @param -
+  # @param - AI mode difficulty
   # @post -
-  # @return -
+  # @return - none
   def __init__(self, difficulty):
     self.difficulty = difficulty
     self.switcher = {
@@ -38,9 +38,9 @@ class CPU:
     self.active = False
     
   # @pre -
-  # @param -
+  # @param - number of ships
   # @post -
-  # @return -
+  # @return - none
   def place_ship(self, shipNum):
     rot = random.choice(['h', 'v'])
     row = random.randint(0, 9)
@@ -54,6 +54,10 @@ class CPU:
     else:
         Ship(row, column, row, column + shipNum - 1))
 
+  # @pre -
+  # @param - first hit, last hit
+  # @post -
+  # @return - 
   def find_direction(self,first_hit,last_hit):
     if (first_hit - last_hit) < 0:
       direction = 1
@@ -66,7 +70,7 @@ class CPU:
   # @pre -
   # @param -
   # @post -
-  # @return -
+  # @return - none
   def CPU_update(self,hm,row,col):
     self.last_shot = hm
     if hm:
@@ -92,18 +96,18 @@ class CPU:
           self.found_direction = True
 
   # @pre -
-  # @param -
+  # @param - self
   # @post -
-  # @return -
+  # @return - the location of where the cpu will fire at
   def easy_AI(self):
     row = randint(0,9)
     col = randint(0,9)
     return(row,col)
 
   # @pre -
-  # @param -
+  # @param - self
   # @post -
-  # @return -
+  # @return - the location of where cpu will fire at
   def mid_AI(self):
     if self.found_ship and self.current_ship_status:
       if self.last_shot and self.found_direction:
@@ -139,16 +143,16 @@ class CPU:
     return(row,col)
   
   # @pre -
-  # @param -
+  # @param - self
   # @post -
-  # @return -
+  # @return - none
   def hard_AI(self):
     print("Hard Shot")
       
   # @pre -
-  # @param -
+  # @param - self
   # @post -
-  # @return -
+  # @return - 
   def take_shot(self):
     return self.switcher[self.difficulty]()
 

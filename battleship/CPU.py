@@ -15,9 +15,9 @@ import code
 # needs to be able to see the other player's ship locations(hard mode)
 
 class CPU:
-  # @pre -
+  # @pre - AI mode is activated, player selected level of difficulty
   # @param - AI mode difficulty
-  # @post -
+  # @post - AI mode is initialized 
   # @return - none
   def __init__(self, difficulty):
     self.difficulty = difficulty
@@ -37,9 +37,9 @@ class CPU:
     self.ship_count = 0
     self.active = False
     
-  # @pre - cpu mode is active
+  # @pre - AI mode is activated
   # @param - number of ships
-  # @post - cpu ships placed on game board
+  # @post - AI ships placed on game board
   # @return - none
   def place_ship(self, shipNum):
     rot = random.choice(['h', 'v'])
@@ -95,7 +95,7 @@ class CPU:
         if self.ship_direction[0] != 0 or self.ship_direction[1] != 0:
           self.found_direction = True
 
-  # @pre -
+  # @pre - 
   # @param - self
   # @post -
   # @return - the location of where the cpu will fire at

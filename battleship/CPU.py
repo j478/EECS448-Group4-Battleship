@@ -15,6 +15,10 @@ import code
 # needs to be able to see the other player's ship locations(hard mode)
 
 class CPU:
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def __init__(self, difficulty):
     self.difficulty = difficulty
     self.switcher = {
@@ -32,7 +36,11 @@ class CPU:
     self.direction_counter = 1
     self.ship_count = 0
     self.active = False
-  
+    
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def place_ship(self, shipNum):
     rot = random.choice(['h', 'v'])
     row = random.randint(0, 9)
@@ -55,6 +63,10 @@ class CPU:
       direction = 0
     return direction
 
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def CPU_update(self,hm,row,col):
     self.last_shot = hm
     if hm:
@@ -79,11 +91,19 @@ class CPU:
         if self.ship_direction[0] != 0 or self.ship_direction[1] != 0:
           self.found_direction = True
 
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def easy_AI(self):
     row = randint(0,9)
     col = randint(0,9)
     return(row,col)
 
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def mid_AI(self):
     if self.found_ship and self.current_ship_status:
       if self.last_shot and self.found_direction:
@@ -117,10 +137,18 @@ class CPU:
       row = randint(0,9)
       col = randint(0,9)
     return(row,col)
-      
+  
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def hard_AI(self):
     print("Hard Shot")
       
+  # @pre -
+  # @param -
+  # @post -
+  # @return -
   def take_shot(self):
     return self.switcher[self.difficulty]()
 

@@ -1,6 +1,6 @@
 import pygame
 from .constants import *
-from random import randint
+import random
 import code
 
 # When placing ships, randomly generate rows and columns.
@@ -32,8 +32,18 @@ class CPU:
     self.ship_count = 0
     self.active = False
   
-  def place_ships(self):
-    #definition
+  def place_ship(self, shipNum):
+    rot = random.choice(['h', 'v'])
+    row = random.randint(0, 9)
+    col = random.randint(0, 9)
+    while (is_valid(rot, row, col)==false):
+        rot = random.choice(['h', 'v'])
+        row = random.randint(1, 10)
+        col = random.randint(1, 10)
+    if rot=='v':
+        Ship(row, column, row + shipNum - 1, column))
+    else:
+        Ship(row, column, row, column + shipNum - 1))
 
   def find_direction(self,first_hit,last_hit):
     if (first_hit - last_hit) < 0:

@@ -95,7 +95,7 @@ class CPU:
         if self.ship_direction[0] != 0 or self.ship_direction[1] != 0:
           self.found_direction = True
 
-  # @pre - 
+  # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
   # @post -
   # @return - the location of where the cpu will fire at
@@ -104,7 +104,7 @@ class CPU:
     col = randint(0,9)
     return(row,col)
 
-  # @pre -
+  # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
   # @post -
   # @return - the location of where cpu will fire at
@@ -142,7 +142,7 @@ class CPU:
       col = randint(0,9)
     return(row,col)
   
-  # @pre -
+  # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
   # @post -
   # @return - none

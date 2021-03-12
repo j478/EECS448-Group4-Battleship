@@ -19,12 +19,12 @@ class Initialize:
         self.shipList = []  # list that will be appended later and passed to the board
 
         #AI buttons
-        #self.m1 = Button((0, 250, 0), 0,...'Player Mode')
-        #self.m2 = Button((0, 250, 0), 0,...'CPU Mode')
+        #self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
+        #self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
         
-        #self.d1 = Button((0, 250, 0), 0,...'Easy Mode')
-        #self.d2 = Button((0, 250, 0), 0,...'Medium Mode')
-        #self.d3 = Button((0, 250, 0), 0,...'Hard Mode')
+        #self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
+        #self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
+        #self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
     
         self.b1 = Button((0, 250, 0), 0, 0, 500, 99, '1 Ship')  # first set of buttons definition
         self.b2 = Button((0, 250, 0), 0, 100, 500, 99, '2 Ship')

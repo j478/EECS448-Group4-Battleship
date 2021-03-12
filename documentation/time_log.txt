@@ -115,6 +115,10 @@ AJ:
 AG:
 
 JD:
+3/6 -- 1 hr Reviewed python syntax and functionality
+3/7 -- 0.5 hr Reviewed pygame syntax and functionality
+3/9 -- 0.5 hr Started on the AI/CPU class
+
 
 Group:
 3/5 -- 0.5 hr team meeting disucssing individual roles and organization

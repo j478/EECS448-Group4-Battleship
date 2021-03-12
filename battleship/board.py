@@ -117,12 +117,12 @@ class Board:
                 ship.draw(True, self.win)
             if player != 0:
               for ship in self.player_ships[0]:
-                 if ship.is_destroyed():
+                if ship.is_destroyed():
                      ship.draw(False, self.win)
             else:
-              for ship in self.player_ships[1]:
-                  if ship.is_destroyed():
-                     ship.draw(False, self.win)
+                for ship in self.player_ships[1]:
+                    if ship.is_destroyed():
+                        ship.draw(False, self.win)
 
            for i, dude in enumerate(self.player_hits_misses):
                for row, two_d_array in enumerate(dude):

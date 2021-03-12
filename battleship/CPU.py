@@ -1,7 +1,7 @@
 import pygame
 from .constants import *
 import random
-import .ship import Ship
+from .ship import Ship
 import code
 
 # When placing ships, randomly generate rows and columns.
@@ -43,10 +43,10 @@ class CPU:
   # @return - none
   def place_ship(self):
     vert = False
-    if randint(0,1)==0:
+    if random.randint(0,1)==0:
       vert=True
-    row = randint(0,9)
-    col = randint(0,9)
+    row = random.randint(0,9)
+    col = random.randint(0,9)
     return (row, col, vert)
   # @pre -
   # @param - first hit, last hit
@@ -94,8 +94,8 @@ class CPU:
   # @post - AI fires at the player's board
   # @return - the location of where the cpu will fire at
   def easy_AI(self):
-    row = randint(0,9)
-    col = randint(0,9)
+    row = random.randint(0,9)
+    col = random.randint(0,9)
     return(row,col)
 
   # @pre - AI mode is activated, player selected level of difficulty
@@ -132,8 +132,8 @@ class CPU:
       self.direction_counter += 1
     else:
       print("guessing random")
-      row = randint(0,9)
-      col = randint(0,9)
+      row = random.randint(0,9)
+      col = random.randint(0,9)
     return(row,col)
   
   # @pre - AI mode is activated, player selected level of difficulty

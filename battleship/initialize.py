@@ -57,10 +57,10 @@ class Initialize:
          
          
          #here we need to add a way to choose CPU or no CPU -alexj 
-        active=True
-        dif=1
-        ai.difficulty=dif
-        self.active=True
+       # active=True
+        #dif=1
+        #ai.difficulty=dif
+        #self.active=True
         #here it goes
        
        

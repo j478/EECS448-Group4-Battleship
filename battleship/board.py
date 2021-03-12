@@ -49,8 +49,8 @@ class Board:
     # @post - draws the given player's text label
     # @return - None
     def draw_background(self, player):
-        if player==0 or self.active==False
-         self.win.fill(BLACK)
+        if player==0 or self.active==False:
+            self.win.fill(BLACK)
             font = pygame.font.Font('freesansbold.ttf',
                                 32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
             text = font.render('Select the location you wish to hit', True, WHITE, RED)
@@ -111,15 +111,15 @@ class Board:
     # @post - draws the display
     # @return - None
     def draw(self, player):
-        if player==0 or self.active==False
-         self.draw_background(player)
-         for ship in self.player_ships[player]:
-             ship.draw(True, self.win)
-          if player != 0:
+        if player==0 or self.active==False:
+            self.draw_background(player)
+            for ship in self.player_ships[player]:
+                ship.draw(True, self.win)
+            if player != 0:
               for ship in self.player_ships[0]:
                  if ship.is_destroyed():
                      ship.draw(False, self.win)
-          else:
+            else:
               for ship in self.player_ships[1]:
                   if ship.is_destroyed():
                      ship.draw(False, self.win)

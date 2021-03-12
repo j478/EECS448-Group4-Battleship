@@ -17,7 +17,7 @@ import code
 class CPU:
   # @pre - AI mode is activated, player selected level of difficulty
   # @param - AI mode difficulty
-  # @post - AI mode is initialized 
+  # @post - AI mode is initialized
   # @return - none
   def __init__(self, difficulty):
     self.difficulty = difficulty
@@ -36,7 +36,7 @@ class CPU:
     self.direction_counter = 1
     self.ship_count = 0
     self.active = False
-    
+
   # @pre - AI mode is activated
   # @param - none
   # @post - AI ships placed on game board
@@ -51,7 +51,7 @@ class CPU:
   # @pre -
   # @param - first hit, last hit
   # @post -
-  # @return - 
+  # @return -
   def find_direction(self,first_hit,last_hit):
     if (first_hit - last_hit) < 0:
       direction = 1
@@ -135,22 +135,23 @@ class CPU:
       row = random.randint(0,9)
       col = random.randint(0,9)
     return(row,col)
-  
+
   # @pre - AI mode is activated, player selected level of difficulty
   # @param - self
   # @post - AI fires at the player's board
   # @return - none
   def hard_AI(self):
     print("Hard Shot")
-      
+
   # @pre -
   # @param - self
   # @post -
-  # @return - 
+  # @return -
   def take_shot(self):
     return self.switcher[self.difficulty]()
 
 
-bot = CPU(2)
-bot.take_shot()
-code.interact(local=locals())
+# Note that the below lines broke the game when they were uncommented.
+# bot = CPU(2)
+# bot.take_shot()
+# code.interact(local=locals())

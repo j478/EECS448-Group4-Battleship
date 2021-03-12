@@ -52,12 +52,12 @@ def main():
     initial2 = Initialize(WIN, False, initial1.shipCount, None, ai)
 
     if initial1.active==True:
-        initial2.active==True
+        initial2.active = True
 
     p0ships = initial1.returnShip()
     p1ships = initial2.returnShip()
     #this can be left unchanged as long as we allow the CPU to change the shiplist
-    
+
     game = Game(WIN, p0ships, p1ships, initial1.active, ai)
     game.switch_players()
     while running:
@@ -79,4 +79,5 @@ def main():
     pygame.quit()
 
 
-main()
+if __name__ == '__main__':
+    main()

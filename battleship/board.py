@@ -16,7 +16,7 @@ class Board:
     # @param - passes the pygame window, and arrays of each players ships
     # @post - if the position is valid, then it will attempt a hit and then change players
     # @return - None
-    def __init__(self, win, player0ships, player1ships,active):
+    def __init__(self, win, player0ships, player1ships, active):
         self.player0ships = player0ships
         self.player1ships = player1ships
         self.player_ships = [self.player0ships, self.player1ships]
@@ -51,10 +51,10 @@ class Board:
     # @post - draws the given player's text label
     # @return - None
     def draw_background(self, player):
-        if player==0 or self.active==False:
+        if player == 0 or self.active == False:
             self.win.fill(BLACK)
             font = pygame.font.Font('freesansbold.ttf',
-                                32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
+                                    32)  # https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
             text = font.render('Select the location you wish to hit', True, WHITE, RED)
             textRect = text.get_rect()
             textRect.center = (WIDTH // 4, TOP_PADDING // 2)
@@ -64,7 +64,7 @@ class Board:
             self.win.blit(text, textRect)
             pygame.draw.rect(self.win, BLUE, (LEFT_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
             pygame.draw.rect(self.win, BLUE,
-                          (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
+                             (LEFT_PADDING + GRID_WIDTH + MIDDLE_PADDING, TOP_PADDING, GRID_WIDTH, GRID_HEIGHT))
             self.draw_grid()
 
     # @pre - draws the right and left grids
@@ -113,41 +113,41 @@ class Board:
     # @post - draws the display
     # @return - None
     def draw(self, player):
-        if player==0 or self.active==False:
+        if player == 0 or self.active == False:
             self.draw_background(player)
             for ship in self.player_ships[player]:
                 ship.draw(True, self.win)
             if player != 0:
-              for ship in self.player_ships[0]:
-                if ship.is_destroyed():
-                     ship.draw(False, self.win)
+                for ship in self.player_ships[0]:
+                    if ship.is_destroyed():
+                        ship.draw(False, self.win)
             else:
                 for ship in self.player_ships[1]:
                     if ship.is_destroyed():
                         ship.draw(False, self.win)
 
-           for i, dude in enumerate(self.player_hits_misses):
-               for row, two_d_array in enumerate(dude):
-                  for col, state in enumerate(two_d_array):
-                      # 0 = nothing, 1 = hit, 2 = miss for state
+            for i, dude in enumerate(self.player_hits_misses):
+                for row, two_d_array in enumerate(dude):
+                    for col, state in enumerate(two_d_array):
+                        # 0 = nothing, 1 = hit, 2 = miss for state
                         if i == player:  # current player is active, meaning print right
                             center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
                             center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                                if state == 1:  # miss
-                                    pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
-                                elif state == 2:  # hit
-                                    pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
-                           # else: #for testing
-                            #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
+                            if state == 1:  # miss
+                                pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                            elif state == 2:  # hit
+                                pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        # else: #for testing
+                        #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
                         else:  # print left
                             center_x = (LEFT_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
                             center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                                if state == 1:  # miss
-                                    pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
-                                elif state == 2:  # hit
-                                    pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
-                           # else: #for testing
-                            #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
+                            if state == 1:  # miss
+                                pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                            elif state == 2:  # hit
+                                pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                        # else: #for testing
+                        #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
 
     # @pre - determines if the hit is a ship, if it does it marks the hit in self.player_hits_misses and the Ship class
     # @param - player, row, col

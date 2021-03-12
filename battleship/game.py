@@ -17,6 +17,8 @@ class Game:
         self.player_turn = 0
         self.player_0_ships, self.player_1_ships = len(p0ships), len(p1ships)
         self.win = win
+        self.active = active
+        self.ai = ai
 
     # @pre - Checks for a hit in the Board class on the opposing player's ship
     # @param - passed row and col of attempted hit
@@ -29,7 +31,7 @@ class Game:
             pass  # TODO: Player 0 power.
         elif self.player_turn == 1 and self.board.player1_power is not None:
             pass  # TODO: Player 1 power.
-     
+
       #  if self.player_turn==0 or self.active==False
         ship = self.board.hit_ship(self.player_turn, row, col)
         self.print_hit(ship)
@@ -70,7 +72,7 @@ class Game:
     # @return - None
     def update(self):
         #updated to only display if its not the CPU's turn
-        if: self.active==False or self.player_turn==0
+        if self.active==False or self.player_turn==0:
             self.hover()
             self.board.update(self.player_turn)
 
@@ -98,7 +100,7 @@ class Game:
             self.player_turn = 1
         elif self.player_turn == 1:
             self.player_turn = 0
-        
+
 
 
     # @pre - determines if the game should be over
@@ -152,13 +154,13 @@ class Game:
             self.hit_ship(row, col)
             self.change_turn()
             self.switch_players()
-            if: player_turn==1 and self.active==True
-                if: ai.difficulty==1
-                    row, col = ai.easy()
-                elif: ai.difficulty==2
-                    row, col = ai.medium()
-                elif: ai.difficulty==3
-                    row, col = ai.hard()
+            if self.player_turn == 1 and self.active == True:
+                if self.ai.difficulty == 1:
+                    row, col = self.ai.easy()
+                elif self.ai.difficulty==2:
+                    row, col = self.ai.medium()
+                elif self.ai.difficulty==3:
+                    row, col = self.ai.hard()
                 self.hit_ship(row, col)
                 self.change_turn()
-                self.switch_players()                
+                self.switch_players()

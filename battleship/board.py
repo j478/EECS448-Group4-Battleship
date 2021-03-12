@@ -21,6 +21,8 @@ class Board:
         self.player1ships = player1ships
         self.player_ships = [self.player0ships, self.player1ships]
         self.win = win
+        self.active = active
+
         # 0 = nothing, 1 = hit, 2 = miss
         self.player0_hits_misses = []
         self.player1_hits_misses = []

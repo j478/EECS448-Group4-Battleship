@@ -13,7 +13,7 @@ class Game:
     # @post - Creates a Board class. Stores the current player's turn
     # @return - None
     def __init__(self, win, p0ships, p1ships, active, ai):
-        self.board = Board(win, p0ships, p1ships,self.active)
+        self.board = Board(win, p0ships, p1ships, active)
         self.player_turn = 0
         self.player_0_ships, self.player_1_ships = len(p0ships), len(p1ships)
         self.win = win

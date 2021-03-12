@@ -70,8 +70,8 @@ class Game:
     # @return - None
     def update(self):
         #updated to only display if its not the CPU's turn
-        if self.active==False or self.player_turn==0
-          self.hover()
+        if: self.active==False or self.player_turn==0
+            self.hover()
             self.board.update(self.player_turn)
 
     # @pre - will print to the players to switch users
@@ -152,12 +152,12 @@ class Game:
             self.hit_ship(row, col)
             self.change_turn()
             self.switch_players()
-            if player_turn==1 and self.active==True
-                if ai.difficulty==1
+            if: player_turn==1 and self.active==True
+                if: ai.difficulty==1
                     row, col = ai.easy()
-                elif ai.difficulty==2
+                elif: ai.difficulty==2
                     row, col = ai.medium()
-                elif ai.difficulty==3
+                elif: ai.difficulty==3
                     row, col = ai.hard()
                 self.hit_ship(row, col)
                 self.change_turn()

@@ -130,22 +130,22 @@ class Board:
                for row, two_d_array in enumerate(dude):
                   for col, state in enumerate(two_d_array):
                       # 0 = nothing, 1 = hit, 2 = miss for state
-                     if i == player:  # current player is active, meaning print right
-                         center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                        if i == player:  # current player is active, meaning print right
+                            center_x = (WIDTH - RIGHT_PADDING - GRID_WIDTH + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
                             center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                            if state == 1:  # miss
-                                pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
-                            elif state == 2:  # hit
-                                pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                                if state == 1:  # miss
+                                    pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                                elif state == 2:  # hit
+                                    pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
                            # else: #for testing
                             #    pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
                         else:  # print left
-                           center_x = (LEFT_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
-                           center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
-                           if state == 1:  # miss
-                              pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
-                          elif state == 2:  # hit
-                              pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
+                            center_x = (LEFT_PADDING + 50) + col * SQUARE_SIZE + SQUARE_SIZE // 2
+                            center_y = (TOP_PADDING + 50) + row * SQUARE_SIZE + SQUARE_SIZE // 2
+                                if state == 1:  # miss
+                                    pygame.draw.circle(self.win, BLACK, (center_x, center_y), SQUARE_SIZE // 4)
+                                elif state == 2:  # hit
+                                    pygame.draw.circle(self.win, RED, (center_x, center_y), SQUARE_SIZE // 4)
                            # else: #for testing
                             #   pygame.draw.circle(self.win, WHITE, (center_x, center_y), SQUARE_SIZE // 4)
 

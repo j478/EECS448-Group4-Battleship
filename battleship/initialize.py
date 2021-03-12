@@ -57,7 +57,7 @@ class Initialize:
          
          
          #here we need to add a way to choose CPU or no CPU -alexj 
-        active=true
+        active=True
         dif=1
         ai.difficulty=dif
         self.active=True
@@ -72,7 +72,7 @@ class Initialize:
         elif (self.active==False):
             self.shipCount = GameSize
             self.pickShips(self.shipCount)
-        else
+        else:
             self.shipcount=GameSize
             #here is where we need to place the cpu's ships
             

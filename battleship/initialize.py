@@ -18,7 +18,6 @@ class Initialize:
         self.shipsSelected = 0  # amount of ships in the game
         self.shipList = []  # list that will be appended later and passed to the board
         self.ai= ai
-        self.aishipList =[]
         # AI buttons
         # self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
         # self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
@@ -78,9 +77,9 @@ class Initialize:
             self.ai.place_ship()
             for i in self.shipcount:
                 if ai.vert[i]==0:
-                    aishipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - 1, self.ai.col[i]))
+                    shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - 1, self.ai.col[i]))
                 if ai.vert[i]==1:
-                    aishipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - 1))
+                    shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - 1))
 
 
 

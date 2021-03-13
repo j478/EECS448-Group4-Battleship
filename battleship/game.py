@@ -32,7 +32,7 @@ class Game:
         elif self.player_turn == 1 and self.board.player1_power is not None:
             pass  # TODO: Player 1 power.
 
-      #  if self.player_turn==0 or self.active==False
+        #  if self.player_turn==0 or self.active==False
         ship = self.board.hit_ship(self.player_turn, row, col)
         self.print_hit(ship)
 
@@ -71,8 +71,8 @@ class Game:
     # @post - prints the grids and ships of the window
     # @return - None
     def update(self):
-        #updated to only display if its not the CPU's turn
-        if self.active==False or self.player_turn==0:
+        # updated to only display if its not the CPU's turn
+        if self.active == False or self.player_turn == 0:
             self.hover()
             self.board.update(self.player_turn)
 
@@ -100,8 +100,6 @@ class Game:
             self.player_turn = 1
         elif self.player_turn == 1:
             self.player_turn = 0
-
-
 
     # @pre - determines if the game should be over
     # @param - None
@@ -157,9 +155,9 @@ class Game:
             if self.player_turn == 1 and self.active == True:
                 if self.ai.difficulty == 1:
                     row, col = self.ai.easy()
-                elif self.ai.difficulty==2:
+                elif self.ai.difficulty == 2:
                     row, col = self.ai.medium()
-                elif self.ai.difficulty==3:
+                elif self.ai.difficulty == 3:
                     row, col = self.ai.hard()
                 self.hit_ship(row, col)
                 self.change_turn()

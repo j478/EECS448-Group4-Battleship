@@ -12,19 +12,19 @@ class Initialize:
     # matters if choosegamesize is false
     # @post - defines variables and either calls gameSize() or skips to pickShips()
     # @return - none
-    def __init__(self, win, ChooseGameSize, GameSize,active,ai):
+    def __init__(self, win, ChooseGameSize, GameSize, active, ai):
         self.gameSizeSelected = False  # boolean used in the while loop of gamesize selected
         self.win = win  # window
         self.shipsSelected = 0  # amount of ships in the game
         self.shipList = []  # list that will be appended later and passed to the board
 
-        #AI buttons
-        #self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
-        #self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
+        # AI buttons
+        # self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
+        # self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
 
-        #self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
-        #self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
-        #self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
+        # self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
+        # self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
+        # self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
 
         self.b1 = Button((0, 250, 0), 0, 0, 500, 99, '1 Ship')  # first set of buttons definition
         self.b2 = Button((0, 250, 0), 0, 100, 500, 99, '2 Ship')
@@ -40,7 +40,8 @@ class Initialize:
         self.placed5 = False
         self.placed6 = False
 
-        self.s1 = Button((0, 250, 0), 0, 0, 100, 50,'1x1')  # definitions for second set of buttons used to drag the ships
+        self.s1 = Button((0, 250, 0), 0, 0, 100, 50,
+                         '1x1')  # definitions for second set of buttons used to drag the ships
         self.s2 = Button((0, 250, 0), 0, 100, 200, 50, '1x2')
         self.s3 = Button((0, 250, 0), 0, 200, 300, 50, '1x3')
         self.s4 = Button((0, 250, 0), 0, 300, 400, 50, '1x4')
@@ -54,15 +55,13 @@ class Initialize:
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
-
-
-         #here we need to add a way to choose CPU or no CPU -alexj
+        # here we need to add a way to choose CPU or no CPU -alexj
         self.active = active
-        #dif=1
-        #ai.difficulty=dif
-        #self.active=True
-        #here it goes
-        ai.shipnum=GameSize
+        # dif=1
+        # ai.difficulty=dif
+        # self.active=True
+        # here it goes
+        ai.shipnum = GameSize
         ai.place_ship()
 
         # player 1 will take this path
@@ -70,15 +69,12 @@ class Initialize:
             self.shipCount = 0
             self.gameSize()
             # player 2 will take this path (this is when the gameSize is needed)
-        elif (self.active==False):
+        elif (self.active == False):
             self.shipCount = GameSize
             self.pickShips(self.shipCount)
         else:
-            self.shipcount=GameSize
-            #here is where we need to place the cpu's ships
-
-
-
+            self.shipcount = GameSize
+            # here is where we need to place the cpu's ships
 
     # @pre - none
     # @param - none

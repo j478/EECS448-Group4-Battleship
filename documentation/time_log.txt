@@ -120,6 +120,11 @@ BL:
 
 
 AJ:
+3/5 -- 1 hr team meeting
+3/6 -- .5 hr famaliarizing with python
+3/10 -- 2 hr meeting with Jake on CPU
+3/10 -- 1.5 implementing CPU functionality
+3/12 -- 1 hr bug fixing
 
 AG:
 3/10 -- 1 hr worked on power class

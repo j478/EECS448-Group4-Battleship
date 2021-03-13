@@ -124,6 +124,7 @@ AJ:
 AG:
 3/10 -- 1 hr worked on power class
 3/12 -- 1 hr bug fixing
+3/13 -- 2 hr bug fixing and implementing power-ups
 
 JD:
 3/6 -- 1 hr Reviewed python syntax and functionality

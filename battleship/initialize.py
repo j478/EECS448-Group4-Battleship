@@ -21,11 +21,11 @@ class Initialize:
         #AI buttons
         #self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
         #self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
-        
+
         #self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
         #self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
         #self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
-    
+
         self.b1 = Button((0, 250, 0), 0, 0, 500, 99, '1 Ship')  # first set of buttons definition
         self.b2 = Button((0, 250, 0), 0, 100, 500, 99, '2 Ship')
         self.b3 = Button((0, 250, 0), 0, 200, 500, 99, '3 Ship')
@@ -53,18 +53,18 @@ class Initialize:
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-         
-         
-         
-         #here we need to add a way to choose CPU or no CPU -alexj 
-       # active=True
+
+
+
+         #here we need to add a way to choose CPU or no CPU -alexj
+        self.active = active
         #dif=1
         #ai.difficulty=dif
         #self.active=True
         #here it goes
         ai.shipnum=GameSize
         ai.place_ship()
-       
+
         # player 1 will take this path
         if ChooseGameSize:
             self.shipCount = 0
@@ -76,10 +76,10 @@ class Initialize:
         else:
             self.shipcount=GameSize
             #here is where we need to place the cpu's ships
-            
 
 
-      
+
+
     # @pre - none
     # @param - none
     # @post - draws the first set of buttons to determine ship count and checks when theyve been clicked

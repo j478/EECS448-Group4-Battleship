@@ -47,10 +47,10 @@ def main():
     clock = pygame.time.Clock()
 
     ai = CPU(None)
-    initial1 = Initialize(WIN, True, 0,None, ai)
+    initial1 = Initialize(WIN, True, 0, None, ai)
     initial2 = Initialize(WIN, False, initial1.shipCount, None, ai)
 
-    if initial1.active==True:
+    if initial1.active:
         pass
         # initial2.active = True
 

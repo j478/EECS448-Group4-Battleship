@@ -30,9 +30,10 @@ class Board:
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
 
         # Power up data.
-        self.power = Power(row=random.randint(1, 10), col=random.randint(1, 10), difficulty=0)  # TODO: set difficulty
-        self.player0_power = None
-        self.player1_power = None
+        # TODO: set difficulty programmatically.
+        self.power = Power(row=random.randint(1, 9), col=random.randint(1, 9), difficulty=3)
+        self.player0_has_power = False
+        self.player1_has_power = False
 
     # @pre - player_hits_misses array is empty
     # @param - None
@@ -154,6 +155,8 @@ class Board:
     # @post - marks a hit in the Ship class if relevant, and marks either hit or miss in self.player_hits_misses
     # @return - None
     def hit_ship(self, player, row, col):
+        self.hit_power(player, row, col)  # Check if power-up hit.
+
         # hits and misses against player 0 are in player_hits_misses[0]
         if player == 0:
             other_player = 1
@@ -170,6 +173,21 @@ class Board:
         self.player_hits_misses[other_player][row][col] = 1
         print(f'(PLAYER {player}) Missed attack at : ({row}, {col})')
         return None
+
+    # @pre - Game and power is initialized.
+    # @param - row, column a shot has been fired at
+    # @post - assigns power-up to player if hit, marks power-up as hit
+    # @return - None
+    def hit_power(self, player, row, col):
+        if row == self.power.row and col == self.power.col and self.power.was_hit is not True:
+            if player == 0:
+                self.player0_has_power = True
+            else:
+                self.player1_has_power = True
+
+            self.power.was_hit = True
+            self.power.active = True
+            print("Player", player+1, "will have a power-up on their next turn!")
 
     # @pre - draws the display and updates the pygame display
     # @param - player

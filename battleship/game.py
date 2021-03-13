@@ -20,36 +20,53 @@ class Game:
         self.active = active
         self.ai = ai
 
+    # @pre - Game initialized.
+    # @param -
+    # @post - None
+    # @return - Bool indicating whether power will be used this turn.
+    def power_will_happen(self):
+        if self.board.player0_has_power and self.player_turn == 0:
+            return True
+        elif self.board.player1_has_power and self.player_turn == 1:
+            return True
+        else:
+            return False
+
     # @pre - Checks for a hit in the Board class on the opposing player's ship
     # @param - passed row and col of attempted hit
     # @post - updates data structures in Board class and any hit Ship
     # @return - None
     def hit_ship(self, row, col):
-        # TODO: check if player hits power-up and assign if so.
-        # TODO: check if player has power-up and modify shot if so.
-        if self.player_turn == 0 and self.board.player0_power is not None:
-            pass  # TODO: Player 0 power.
-        elif self.player_turn == 1 and self.board.player1_power is not None:
-            pass  # TODO: Player 1 power.
+        hit_ships = list()
+        if self.power_will_happen():
+            for square in self.board.power.squares(row, col):
+                ship = self.board.hit_ship(self.player_turn, square[0], square[1])
+                self.print_hit(ship)
+                hit_ships.append(ship)
 
-        #  if self.player_turn==0 or self.active==False
-        ship = self.board.hit_ship(self.player_turn, row, col)
-        self.print_hit(ship)
+            self.board.power.active = False
+            self.board.player0_has_power = False
+            self.board.player1_has_power = False
+        else:
+            ship = self.board.hit_ship(self.player_turn, row, col)
+            self.print_hit(ship)
+            hit_ships.append(ship)
 
-        if ship is not None:
-            if ship.is_destroyed():
-                if self.player_turn == 0:
-                    self.player_1_ships -= 1
-                else:
-                    self.player_0_ships -= 1
+        for ship in hit_ships:
+            if ship is not None:
+                if ship.is_destroyed():
+                    if self.player_turn == 0:
+                        self.player_1_ships -= 1
+                    else:
+                        self.player_0_ships -= 1
 
     # @pre - Prints the result of an attempted hit or miss
-    # @param - passed a Ship object or 0
+    # @param - passed a Ship object or None
     # @post - prints result of attempt to User
     # @return - None
     def print_hit(self, ship):
         self.win.fill(GRAY)
-        if ship != 0:
+        if ship:
             if ship.is_destroyed():
                 txt = f"Player {self.player_turn + 1} sunk a battleship!"
             else:

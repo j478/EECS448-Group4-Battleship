@@ -45,14 +45,14 @@ def winner(game):
 def main():
     running = True
     clock = pygame.time.Clock()
-
     ai = CPU(None)
     initial1 = Initialize(WIN, True, 0, False, ai)
-    initial2 = Initialize(WIN, False, initial1.shipCount, False, ai)
+    if initial1.active:
+        ai = CPU(initial1.difficulty)
+    initial2 = Initialize(WIN, False, initial1.shipCount, initial1.active, ai)
 
     if initial1.active:
-        pass
-        # initial2.active = True
+        initial2.active = True
 
     p0ships = initial1.returnShip()
     p1ships = initial2.returnShip()

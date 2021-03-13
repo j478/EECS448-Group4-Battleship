@@ -19,12 +19,12 @@ class Initialize:
         self.shipList = []  # list that will be appended later and passed to the board
         self.ai= ai
         # AI buttons
-        # self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
-        # self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
+        self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
+        self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
 
-        # self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
-        # self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
-        # self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
+        self.d1 = Button((0, 250, 0), 0, 0, 500, 99, 'Easy Mode')
+        self.d2 = Button((0, 250, 0), 0, 100, 500, 99, 'Medium Mode')
+        self.d3 = Button((0, 250, 0), 0, 200, 500, 99, 'Hard Mode')
 
         self.b1 = Button((0, 250, 0), 0, 0, 500, 99, '1 Ship')  # first set of buttons definition
         self.b2 = Button((0, 250, 0), 0, 100, 500, 99, '2 Ship')
@@ -57,6 +57,7 @@ class Initialize:
 
         # here we need to add a way to choose CPU or no CPU -alexj
         self.active = active
+        self.difficulty = 0
         # dif=1
         # ai.difficulty=dif
         # self.active=True
@@ -90,6 +91,38 @@ class Initialize:
     # @post - draws the first set of buttons to determine ship count and checks when theyve been clicked
     # @return - none
     def gameSize(self):
+        choice = False
+        while choice == False:
+            pygame.display.update()
+            self.m1.draw(self.win)
+            self.m2.draw(self.win)
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pos = pygame.mouse.get_pos()
+                    if self.m1.hover(pos) == True:
+                        choice = True
+                        print("player mode")
+                    if self.m2.hover(pos) == True:
+                        choice = True
+                        self.active = True
+                        print("CPU mode")
+        while self.difficulty == 0 and self.active:
+            pygame.display.update()
+            self.d1.draw(self.win)
+            self.d2.draw(self.win)
+            self.d3.draw(self.win)
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pos = pygame.mouse.get_pos()
+                    if self.d1.hover(pos) == True:
+                        self.difficulty = 1
+                        print("difficulty 1")
+                    if self.d2.hover(pos) == True:
+                        self.difficulty = 2
+                        print("difficulty 2")						
+                    if self.d3.hover(pos) == True:
+                       self.difficulty = 3
+                       print("difficulty 3")
         while self.gameSizeSelected == False:
             pygame.display.update()
             # draws the game size selection buttons

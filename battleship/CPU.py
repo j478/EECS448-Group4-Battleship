@@ -36,24 +36,26 @@ class CPU:
     self.direction_counter = 1
     self.ship_count = 0
     self.active = False
+    self.shipnum =0
     self.vert =[]
     self.row =[]
     self.col =[]
+
 
   # @pre - AI mode is activated
   # @param - none
   # @post - AI ships placed on game board
   # @return - none
   def place_ship(self):
-    for i in range (shipNum):
+    for i in range (self.shipnum):
       vert = False
       if random.randint(0,1)==0:
         vert=True
       row = random.randint(0,9)
       col = random.randint(0,9)
       self.vert.append(vert)
-      self.row.sppend(row)
-      self.col.sppend(col)
+      self.row.append(row)
+      self.col.append(col)
   # @pre -
   # @param - first hit, last hit
   # @post -

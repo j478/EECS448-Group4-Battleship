@@ -62,7 +62,8 @@ class Initialize:
         #ai.difficulty=dif
         #self.active=True
         #here it goes
-       
+        ai.shipnum=GameSize
+        ai.place_ship()
        
         # player 1 will take this path
         if ChooseGameSize:

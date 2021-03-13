@@ -17,7 +17,8 @@ class Initialize:
         self.win = win  # window
         self.shipsSelected = 0  # amount of ships in the game
         self.shipList = []  # list that will be appended later and passed to the board
-
+        self.ai= ai
+        self.aishipList =[]
         # AI buttons
         # self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
         # self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
@@ -61,8 +62,7 @@ class Initialize:
         # ai.difficulty=dif
         # self.active=True
         # here it goes
-        ai.shipnum = GameSize
-        ai.place_ship()
+       
 
         # player 1 will take this path
         if ChooseGameSize:
@@ -74,6 +74,16 @@ class Initialize:
             self.pickShips(self.shipCount)
         else:
             self.shipcount = GameSize
+            self.ai.ship_count=self.shipcount
+            self.ai.place_ship()
+            for i in self.shipcount:
+                if ai.vert[i]==0:
+                    aishipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - 1, self.ai.col[i]))
+                if ai.vert[i]==1:
+                    aishipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - 1))
+
+
+
             # here is where we need to place the cpu's ships
 
     # @pre - none

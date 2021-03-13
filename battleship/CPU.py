@@ -16,59 +16,58 @@ import code
 # needs to be able to see the other player's ship locations(hard mode)
 
 class CPU:
-    # @pre - AI mode is activated, player selected level of difficulty
-    # @param - AI mode difficulty
-    # @post - AI mode is initialized
-    # @return - none
-    def __init__(self, difficulty):
-        self.difficulty = difficulty
-        self.switcher = {
-            1: self.easy_AI,
-            2: self.mid_AI,
-            3: self.hard_AI
-        }
-        self.last_shot = False
-        self.current_ship_status = False
-        self.found_ship = False
-        self.found_direction = False
-        self.last_hit = [0, 0]
-        self.first_hit = [0, 0]
-        self.ship_direction = [0, 0]
-        self.direction_counter = 1
-        self.ship_count = 0
-        self.active = False
-        self.shipnum = 0
-        self.vert = []
-        self.row = []
-        self.col = []
+  # @pre - AI mode is activated, player selected level of difficulty
+  # @param - AI mode difficulty
+  # @post - AI mode is initialized
+  # @return - none
+  def __init__(self, difficulty):
+    self.difficulty = difficulty
+    self.switcher = {
+      1: self.easy_AI,
+      2: self.mid_AI,
+      3: self.hard_AI
+    }
+    self.last_shot = False
+    self.current_ship_status = False
+    self.found_ship = False
+    self.found_direction = False
+    self.last_hit = [0,0]
+    self.first_hit = [0,0]
+    self.ship_direction = [0,0]
+    self.direction_counter = 1
+    self.ship_count = 0
+    self.active = False
+    self.vert =[]
+    self.row =[]
+    self.col =[]
 
-    # @pre - AI mode is activated
-    # @param - none
-    # @post - AI ships placed on game board
-    # @return - none
-    def place_ship(self):
-        for i in range(self.shipnum):
-            vert = False
-            if random.randint(0, 1) == 0:
-                vert = True
-            row = random.randint(0, 9)
-            col = random.randint(0, 9)
-            self.vert.append(vert)
-            self.row.append(row)
-            self.col.append(col)
 
-    # @pre -
-    # @param - first hit, last hit
-    # @post -
-    # @return -
-    def find_direction(self, first_hit, last_hit):
-        if (first_hit - last_hit) < 0:
-            direction = 1
-        elif (first_hit - last_hit) > 0:
-            direction = -1
-        else:
-            direction = 0
-        return direction
+  # @pre - AI mode is activated
+  # @param - none
+  # @post - AI ships placed on game board
+  # @return - none
+  def place_ship(self):
+    for i in range (self.ship_count):
+      vert = False
+      if random.randint(0,1)==0:
+        vert=True
+      row = random.randint(0,9)
+      col = random.randint(0,9)
+      self.vert.append(vert)
+      self.row.append(row)
+      self.col.append(col)
+  # @pre -
+  # @param - first hit, last hit
+  # @post -
+  # @return -
+  def find_direction(self,first_hit,last_hit):
+    if (first_hit - last_hit) < 0:
+      direction = 1
+    elif (first_hit - last_hit) > 0:
+      direction = -1
+    else:
+      direction = 0
+    return direction
 
     # @pre -
     # @param -

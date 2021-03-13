@@ -109,6 +109,12 @@ KL:
 3/9 -- 3.5 hr learning/coding
 
 BL:
+3/7 -- 1.5 hr reviewing python
+3/8 -- 0.5 hr reviewing python
+3/9 -- 1 hr going over the codes
+3/10 -- 0.5 hr code writing
+3/12 -- 0.5 hr code writing
+
 
 AJ:
 

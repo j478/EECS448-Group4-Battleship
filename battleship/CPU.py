@@ -36,7 +36,6 @@ class CPU:
     self.direction_counter = 1
     self.ship_count = 0
     self.active = False
-    self.shipnum =0
     self.vert =[]
     self.row =[]
     self.col =[]
@@ -47,7 +46,7 @@ class CPU:
   # @post - AI ships placed on game board
   # @return - none
   def place_ship(self):
-    for i in range (self.shipnum):
+    for i in range (self.ship_count):
       vert = False
       if random.randint(0,1)==0:
         vert=True

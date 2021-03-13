@@ -7,108 +7,108 @@ Our estimation was as follows:
 4 hours putting code together and hashing out bugs
 
 Explanation:
-I, Jake, made the estimation near the start of the project because I had the 
-experience in pygame that led us to choose the language. I chose it because I 
-was confident in a tutorial that would help everyone get up to speed quickly 
+I, Jake, made the estimation near the start of the project because I had the
+experience in pygame that led us to choose the language. I chose it because I
+was confident in a tutorial that would help everyone get up to speed quickly
 and then we could use python in a way that would create a nice user interface
-(compared to the command line). The tutorial was about 2 hours long, plus time 
+(compared to the command line). The tutorial was about 2 hours long, plus time
 for setting up the proper python installations. I estimated 3 hours for design
-as I figured this was about as long as I guessed that it would take me to do it. 
-I made the estimates for the length it would take to code as I guessed this was 
-as long as I thought it would take me. I accounted for 4 hours to put the code 
-together because I assumed that with different people coding there would be 
-some issues with the code working succinctly. 
+as I figured this was about as long as I guessed that it would take me to do it.
+I made the estimates for the length it would take to code as I guessed this was
+as long as I thought it would take me. I accounted for 4 hours to put the code
+together because I assumed that with different people coding there would be
+some issues with the code working succinctly.
 
 Review of the estimation:
 I did not account for the time meeting with the team, or for time working on
 the documentation of the code(whether it be during the coding or afterwards). I
 also did not account for the unfamiliarity of all members of the team on GitHub
-which led to added time to get the code to work together. The estimation for 
-coding time was also ambitious because assuming that the teammates could code 
+which led to added time to get the code to work together. The estimation for
+coding time was also ambitious because assuming that the teammates could code
 their parts in the same time as I could after just learning Python( three members
 had not seen the language before)
 
 
 TIME_LOG
 
-JW: 
-2/13 -- 1 hour team meeting 
-2/13 -- 1 hour coding 
-2/13 -- 3.5 hours designing 
+JW:
+2/13 -- 1 hour team meeting
+2/13 -- 1 hour coding
+2/13 -- 3.5 hours designing
 2/14 -- 1 hour team meeting
 2/16 -- 1 hour team meeting
-2/16 -- 1.5 hours coding 
-2/19 -- 2 hour team meeting 
+2/16 -- 1.5 hours coding
+2/19 -- 2 hour team meeting
 2/20 -- 2.5 hours coding
 2/20 -- 2.5 hour team meeting
-2/20 -- 1 hour documenting 
-2/21 -- 3.5 hours putting code together/documenting 
+2/20 -- 1 hour documenting
+2/21 -- 3.5 hours putting code together/documenting
 
 
 MR:
-2/11 -- 1.5 hours learning 
+2/11 -- 1.5 hours learning
 2/13 -- 1 hour team meeting
 2/13 -- 2.5 hours learning/coding
 2/14 -- 3.5 hours learning/coding
 2/15 -- 1.5 hours coding
 2/16 -- 1 hour team meeting
-2/16 -- 1.5 hours coding 
+2/16 -- 1.5 hours coding
 2/17 -- 1.5 hour coding
-2/19 -- 1 hour documenting 
+2/19 -- 1 hour documenting
 2/19 -- 2 hour team meeting
-2/20 -- 2.5 hour team meeting 
+2/20 -- 2.5 hour team meeting
 
 UK:
-2/13 -- 1 hour team meeting 
-2/14 -- 3 hours coding 
-2/15 -- 2.5 hours coding 
-2/16 -- 1.5 hour coding 
+2/13 -- 1 hour team meeting
+2/14 -- 3 hours coding
+2/15 -- 2.5 hours coding
+2/16 -- 1.5 hour coding
 2/16 -- 1 hour team meeting
-2/17 -- 1.5 hours coding 
-2/18 -- 2.5 hours coding 
+2/17 -- 1.5 hours coding
+2/18 -- 2.5 hours coding
 2/19 -- 2 hour team meeting
-2/20 -- 2.5 hour team meeting 
+2/20 -- 2.5 hour team meeting
 
 MH:
 2/13 -- 1 hour team meeting
 2/14 -- 2 hours learning
-2/15 -- 1.5 hour learning/coding 
+2/15 -- 1.5 hour learning/coding
 2/16 -- 2.5 hours coding
 2/16 -- 1 hour team meeting
-2/17 -- 2.5 hours coding 
-2/18 -- 1.5 hours coding 
-2/19 -- 2 hour team meeting 
+2/17 -- 2.5 hours coding
+2/18 -- 1.5 hours coding
+2/19 -- 2 hour team meeting
 2/19 -- 2.5 hours coding
-2/20 -- 2.5 hour team meeting 
+2/20 -- 2.5 hour team meeting
 
 RB:
 2/13 -- 1 hour team meeting
 2/16 -- 1 hour team meeting
-2/16 -- 2.5 hours learning/coding 
-2/18 -- 2 hours learning/coding 
-2/19 -- 1 hours coding 
+2/16 -- 2.5 hours learning/coding
+2/18 -- 2 hours learning/coding
+2/19 -- 1 hours coding
 2/19 -- 2 hour team meeting
-2/20 -- 3 hours coding 
-2/20 -- 2.5 hour team meeting 
+2/20 -- 3 hours coding
+2/20 -- 2.5 hour team meeting
 
 TOTAL HOURS ==> 6.5 hours of team meetings + 58 individual hours
 
 ——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-Team 6 Time log 
+Team 6 Time log
 
 Estimation:
 2.5 hr group meeting + 30 hr individual work = 32.5 hr total
 
-Estimation Explanation: 
-We arrive at the estimation by comparing the level of difficulty of this lab with our last project. 
-Looking at the project requirement, we believe this project should take approximately 8hr less of invividual work time compared to our last project. 
+Estimation Explanation:
+We arrive at the estimation by comparing the level of difficulty of this lab with our last project.
+Looking at the project requirement, we believe this project should take approximately 8hr less of invividual work time compared to our last project.
 
 TIME_LOG
 
-KL: 
+KL:
 3/9 -- 3.5 hr learning/coding
-3/10 -- 0.5 hr code writing 
-3/11 -- 0.5 hr code writing 
+3/10 -- 0.5 hr code writing
+3/11 -- 0.5 hr code writing
 3/12 -- 0.5 hr reviewing code
 
 BL:
@@ -122,6 +122,8 @@ BL:
 AJ:
 
 AG:
+3/10 -- 1 hr worked on power class
+3/12 -- 1 hr bug fixing
 
 JD:
 3/6 -- 1 hr Reviewed python syntax and functionality

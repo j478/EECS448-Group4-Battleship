@@ -170,12 +170,7 @@ class Game:
             self.change_turn()
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
-                if self.ai.difficulty == 1:
-                    row, col = self.ai.easy()
-                elif self.ai.difficulty == 2:
-                    row, col = self.ai.medium()
-                elif self.ai.difficulty == 3:
-                    row, col = self.ai.hard()
+                row,col = self.ai.take_shot()
                 self.hit_ship(row, col)
                 self.change_turn()
                 self.switch_players()

@@ -4,6 +4,53 @@ CPU<br><br>
 Variables: <br><br>
 
 Methods: <br><br>
+# @pre --> AI mode is activated, player selected level of difficulty<br>
+# @param --> AI mode difficulty<br>
+# @post --> AI mode is initialized<br>
+# @return --> none<br>
+def __init__(self, difficulty)<br><br>
+
+# @pre - AI mode is activated<br>
+# @param --> none<br>
+# @post --> AI ships placed on game board<br>
+# @return --> none<br>
+def place_ship(self)<br><br>
+
+# @pre --> AI mode is activated<br>
+# @param --> first hit, last hit<br>
+# @post --> the direction of medium hit is set<br>
+# @return --> direction of ship <br>
+def find_direction(self,first_hit,last_hit)<br><br>
+
+# @pre --> AI mode is activated<br>
+# @param --> hit/miss, row, column, is destroyed (true false)<br>
+# @post --> Update the player on AI status <br>
+# @return --> none<br>
+def CPU_update(self, hm, row, col, is_destroyed)<br><br>
+
+# @pre --> AI mode is activated, player selected level of difficulty<br>
+# @param --> self<br>
+# @post --> AI fires at the player's board<br>
+# @return --> the location of where the cpu will fire at<br>
+def easy_AI(self)<br><br>
+
+# @pre --> AI mode is activated, player selected level of difficulty<br>
+# @param --> self<br>
+# @post --> AI fires at the player's board<br>
+# @return --> the location of where cpu will fire at<br>
+def mid_AI(self)<br><br>
+
+# @pre --> AI mode is activated, player selected level of difficulty<br>
+# @param --> self<br>
+# @post --> AI fires at the player's board<br>
+# @return --> none<br>
+def hard_AI(self)<br><br>
+
+# @pre --> AI mode is activated<br>
+# @param --> self<br>
+# @post --> <br>
+# @return --> <br>
+def take_shot(self)<br><br><br><br>
 
 
 <!--POWER CLASS-->

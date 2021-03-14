@@ -1,4 +1,5 @@
 import pydoc
+import pygame
 
 class Power:
     # @pre - Difficulty selected.

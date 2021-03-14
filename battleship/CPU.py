@@ -79,20 +79,20 @@ class CPU:
         self.last_shot = hm
         if hm:
             if self.found_ship == False:
-                print("we found a ship!")
+                # print("we found a ship!")
                 self.found_ship = True
                 self.first_hit = [row, col]
                 self.last_hit = [row, col]
                 self.current_ship_status = is_destroyed
             if self.current_ship_status:
-                print("The ship was sunk!")
+                # print("The ship was sunk!")
                 self.found_direction = False
                 self.found_ship = False
                 self.ship_direction = [0,0]
                 self.last_hit = [0,0]
                 self.first_hit = [0,0]
             else:
-                print("looking for direction!")
+                # print("looking for direction!")
                 self.last_hit = [row, col]
                 self.ship_direction[0] = self.find_direction(self.first_hit[0], self.last_hit[0])
                 self.ship_direction[1] = self.find_direction(self.first_hit[1], self.last_hit[1])
@@ -115,28 +115,28 @@ class CPU:
     def mid_AI(self):
         if self.found_ship and self.current_ship_status:
             if self.last_shot and self.found_direction:
-                print("razing ship")
+                # print("razing ship")
                 row = self.last_hit[0] + self.ship_direction[0]
                 col = self.last_hit[1] + self.ship_direction[1]
             elif self.found_direction:
-                print("trying other direction")
+                # print("trying other direction")
                 row = self.first_hit[0] + self.ship_direction[0] * (-1)
                 col = self.first_hit[1] + self.ship_direction[1] * (-1)
             else:
                 if self.direction_counter == 1:
-                    print("checking UP")
+                    # print("checking UP")
                     row = self.last_hit[0] + 1
                     col = self.last_hit[1]
                 if self.direction_counter == 2:
-                    print("checking RIGHT")
+                    # print("checking RIGHT")
                     row = self.last_hit[0]
                     col = self.last_hit[1] + 1
                 if self.direction_counter == 3:
-                    print("checking DOWN")
+                    # print("checking DOWN")
                     row = self.last_hit[0] - 1
                     col = self.last_hit[1]
                 if self.direction_counter == 4:
-                    print("checking LEFT")
+                    # print("checking LEFT")
                     row = self.last_hit[0]
                     col = self.last_hit[1] - 1
             self.direction_counter += 1
@@ -150,7 +150,7 @@ class CPU:
     # @post - AI fires at the player's board
     # @return - none
     def hard_AI(self):
-        print("Hard Shot")
+        # print("Hard Shot")
         for ship in self.other_ships:
             for coord in ship.locations:
                 if coord[2] != True:

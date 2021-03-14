@@ -17,7 +17,7 @@ class Initialize:
         self.win = win  # window
         self.shipsSelected = 0  # amount of ships in the game
         self.shipList = []  # list that will be appended later and passed to the board
-        self.ai= ai
+        self.ai = ai
         # AI buttons
         self.m1 = Button((0, 250, 0), 0, 0, 500, 99, 'Player Mode')
         self.m2 = Button((0, 250, 0), 0, 100, 500, 99, 'CPU Mode')
@@ -62,7 +62,7 @@ class Initialize:
         # ai.difficulty=dif
         # self.active=True
         # here it goes
-       
+
 
         # player 1 will take this path
         if ChooseGameSize:
@@ -115,15 +115,20 @@ class Initialize:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
-                    if self.d1.hover(pos) == True:
+                    if self.d1.hover(pos):
                         self.difficulty = 1
                         print("difficulty 1")
-                    if self.d2.hover(pos) == True:
+                    if self.d2.hover(pos):
                         self.difficulty = 2
-                        print("difficulty 2")						
-                    if self.d3.hover(pos) == True:
-                       self.difficulty = 3
-                       print("difficulty 3")
+                        print("difficulty 2")
+                    if self.d3.hover(pos):
+                        self.difficulty = 3
+                        print("difficulty 3")
+
+        # Avoid crash in Player mode.
+        if self.difficulty == 0:
+            self.difficulty = 1
+
         while self.gameSizeSelected == False:
             pygame.display.update()
             # draws the game size selection buttons

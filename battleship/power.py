@@ -72,10 +72,9 @@ class Power:
 
         return self.trimmed_list(diag_squares + self.medium_squares(clicked_row, clicked_col))
 
-    
     # @pre - Power-up active.
-    # @param - 
+    # @param -
     # @post - None
-    # @return - 
+    # @return -
     def trimmed_list(self, square_list):
         return list([s for s in square_list if (0 <= s[0] <= 9 and 0 <= s[1] <= 9)])

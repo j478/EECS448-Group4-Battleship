@@ -42,26 +42,26 @@ class CPU:
         self.col =[]
         self.other_ships = []
 
-
     # @pre - AI mode is activated
     # @param - none
     # @post - AI ships placed on game board
     # @return - none
     def place_ship(self):
-        for i in range (self.ship_count):
-          vert = False
-          if random.randint(0,1)==0:
-            vert=True
-          row = random.randint(0,9)
-          col = random.randint(0,9)
-          self.vert.append(vert)
-          self.row.append(row)
-          self.col.append(col)
+        for i in range(self.ship_count):
+            vert = False
+            if random.randint(0, 1) == 0:
+                vert=True
+            row = random.randint(0, 9)
+            col = random.randint(0, 9)
+            self.vert.append(vert)
+            self.row.append(row)
+            self.col.append(col)
+            print("Demo mode: CPU placed ship at row ", row, ", col ", col)
 
     # @pre - AI mode is activated
     # @param - first hit, last hit
     # @post - the direction of medium hit is set
-    # @return - direction of ship 
+    # @return - direction of ship
     def find_direction(self,first_hit,last_hit):
         if (first_hit - last_hit) < 0:
             direction = 1
@@ -73,7 +73,7 @@ class CPU:
 
     # @pre - AI mode is activated
     # @param - hit/miss, row, column, is destroyed (true false)
-    # @post - Update the player on AI status 
+    # @post - Update the player on AI status
     # @return - none
     def CPU_update(self, hm, row, col, is_destroyed):
         self.last_shot = hm
@@ -141,10 +141,9 @@ class CPU:
                     col = self.last_hit[1] - 1
             self.direction_counter += 1
         else:
-            print("guessing random")
             row = random.randint(0, 9)
             col = random.randint(0, 9)
-        return (row, col)
+        return row, col
 
     # @pre - AI mode is activated, player selected level of difficulty
     # @param - self

@@ -16,7 +16,7 @@ class Board:
     # @param - passes the pygame window, and arrays of each players ships
     # @post - if the position is valid, then it will attempt a hit and then change players
     # @return - None
-    def __init__(self, win, player0ships, player1ships, active):
+    def __init__(self, win, player0ships, player1ships, active, difficulty):
         self.player0ships = player0ships
         self.player1ships = player1ships
         self.player_ships = [self.player0ships, self.player1ships]
@@ -30,8 +30,7 @@ class Board:
         self.player_hits_misses = [self.player0_hits_misses, self.player1_hits_misses]
 
         # Power up data.
-        # TODO: set difficulty programmatically.
-        self.power = Power(row=random.randint(1, 9), col=random.randint(1, 9), difficulty=3)
+        self.power = Power(row=random.randint(1, 9), col=random.randint(1, 9), difficulty=difficulty)
         self.player0_has_power = False
         self.player1_has_power = False
 
@@ -187,7 +186,7 @@ class Board:
 
             self.power.was_hit = True
             self.power.active = True
-            print("Player", player+1, "will have a power-up on their next turn!")
+            print("PLAYER", player, "will have a power-up on their next turn!")
 
     # @pre - draws the display and updates the pygame display
     # @param - player

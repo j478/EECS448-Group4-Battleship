@@ -12,8 +12,8 @@ class Game:
     # @param - passed Pygame window and arrays of ships for players 1 and 2
     # @post - Creates a Board class. Stores the current player's turn
     # @return - None
-    def __init__(self, win, p0ships, p1ships, active, ai):
-        self.board = Board(win, p0ships, p1ships, active)
+    def __init__(self, win, p0ships, p1ships, active, ai, difficulty):
+        self.board = Board(win, p0ships, p1ships, active, difficulty)
         self.player_turn = 0
         self.player_0_ships, self.player_1_ships = len(p0ships), len(p1ships)
         self.win = win
@@ -178,7 +178,7 @@ class Game:
             self.change_turn()
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
-                row,col = self.ai.take_shot() 
+                row,col = self.ai.take_shot()
                 hit,destroyed = self.hit_ship(row, col)
                 self.ai.CPU_update(hit,row,col,destroyed)
                 self.change_turn()

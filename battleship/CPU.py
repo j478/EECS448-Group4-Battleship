@@ -77,21 +77,24 @@ class CPU:
     # @return - none
     def CPU_update(self, hm, row, col, is_destroyed):
         self.last_shot = hm
+        self.current_ship_status = is_destroyed
         if hm:
             if self.found_ship == False:
                 print("we found a ship!")
                 self.found_ship = True
                 self.first_hit = [row, col]
                 self.last_hit = [row, col]
-                self.current_ship_status = is_destroyed
             if self.current_ship_status:
                 print("The ship was sunk!")
                 self.found_direction = False
                 self.found_ship = False
+                self.current_ship_status = False
+                self.last_shot = False
+				self.direction_counter = 1
                 self.ship_direction = [0,0]
                 self.last_hit = [0,0]
                 self.first_hit = [0,0]
-            else:
+            if self.found_ship and self.current_ship_status is False:
                 print("looking for direction!")
                 self.last_hit = [row, col]
                 self.ship_direction[0] = self.find_direction(self.first_hit[0], self.last_hit[0])
@@ -113,7 +116,7 @@ class CPU:
     # @post - AI fires at the player's board
     # @return - the location of where cpu will fire at
     def mid_AI(self):
-        if self.found_ship and self.current_ship_status:
+        if self.found_ship and self.current_ship_status is False:
             if self.last_shot and self.found_direction:
                 print("razing ship")
                 row = self.last_hit[0] + self.ship_direction[0]

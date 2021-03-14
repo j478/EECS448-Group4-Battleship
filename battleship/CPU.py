@@ -83,7 +83,7 @@ class CPU:
                 self.first_hit = [row, col]
                 self.last_hit = [row, col]
                 self.current_ship_status = is_destroyed
-            if self.current_ship_status == False:
+            if self.current_ship_status:
                 print("The ship was sunk!")
                 self.found_direction = False
                 self.found_ship = False

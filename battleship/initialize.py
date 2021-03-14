@@ -78,11 +78,11 @@ class Initialize:
             self.ai.place_ship()
             
             for i in range(self.shipcount):
-                while ai.vert[i]==0 and (self.ai.row[i]+self.shipcount-i-1)>9):
+                while ai.vert[i]==0 and ((self.ai.row[i]+self.shipcount-i-1)>9):
                     self.ai.place_ship()
                     while ai.vert[i]==1:
                         self.ai.place_ship()
-                while ai.vert[i]==1 and (self.ai.col[i]+self.shipcount-i-1)>9):
+                while ai.vert[i]==1 and ((self.ai.col[i]+self.shipcount-i-1)>9):
                     self.ai.place_ship()
                     while ai.vert[i]==0:
                         self.ai.place_ship()

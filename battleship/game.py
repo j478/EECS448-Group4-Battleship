@@ -21,7 +21,7 @@ class Game:
         self.ai = ai
 
     # @pre - Game initialized.
-    # @param -
+    # @param - Self
     # @post - None
     # @return - Bool indicating whether power will be used this turn.
     def power_will_happen(self):

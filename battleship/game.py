@@ -41,7 +41,7 @@ class Game:
         if self.power_will_happen():
             for square in self.board.power.squares(row, col):
                 ship = self.board.hit_ship(self.player_turn, square[0], square[1])
-                self.print_hit(ship)
+                # self.print_hit(ship)
                 hit_ships.append(ship)
 
             self.board.power.active = False
@@ -49,23 +49,35 @@ class Game:
             self.board.player1_has_power = False
         else:
             ship = self.board.hit_ship(self.player_turn, row, col)
-            self.print_hit(ship)
+            # self.print_hit(ship)
             hit_ships.append(ship)
-        for ship in hit_ships:
-            if ship is not None:
-                hit = True
-                if ship.is_destroyed():
-                    destroyed = True
-                    if self.player_turn == 0:
-                        self.player_1_ships -= 1
+
+        # Check if no ships were hit.
+        if len([s for s in hit_ships if s is not None]) == 0:
+            self.print_hit(None)
+            return False, False
+        else:
+            hit = False
+            destroyed = False
+
+            for ship in hit_ships:
+                if ship is not None:
+                    hit = True
+                    self.print_hit(ship)
+                    if ship.is_destroyed():
+                        destroyed = True
+                        if self.player_turn == 0:
+                            self.player_1_ships -= 1
+                        else:
+                            self.player_0_ships -= 1
+
+                        if self.game_over():
+                            return hit, destroyed
+
                     else:
-                        self.player_0_ships -= 1
-                else:
-                    destroyed = False
-            else:
-               destroyed = False
-               hit = False
-        return hit,destroyed
+                        destroyed = False
+
+            return hit, destroyed
 
     # @pre - Prints the result of an attempted hit or miss
     # @param - passed a Ship object or None
@@ -171,15 +183,19 @@ class Game:
     # @post - if the position is valid, then it will attempt a hit and then change players
     # @return - None
     def select(self, pos):
-        hit= False
         row, col = self.get_row_col_from_pos(pos)
         if row != -1 and col != -1:
             self.hit_ship(row, col)
+
+            # Check game over immediately after shot.
+            if self.game_over():
+                return
+
             self.change_turn()
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
-                row,col = self.ai.take_shot()
-                hit,destroyed = self.hit_ship(row, col)
-                self.ai.CPU_update(hit,row,col,destroyed)
+                row, col = self.ai.take_shot()
+                hit, destroyed = self.hit_ship(row, col)
+                self.ai.CPU_update(hit, row, col, destroyed)
                 self.change_turn()
                 self.switch_players()

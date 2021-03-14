@@ -78,9 +78,9 @@ class Initialize:
             self.ai.place_ship()
             for i in range(self.shipcount):
                 if ai.vert[i]==0:
-                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - 1, self.ai.col[i]))
+                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - i-1, self.ai.col[i]))
                 if ai.vert[i]==1:
-                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - 1))
+                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - i-1))
 
 
 

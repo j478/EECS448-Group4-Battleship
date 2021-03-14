@@ -126,6 +126,7 @@ AJ:
 3/10 -- 2 hr meeting with Jake on CPU
 3/10 -- 1.5 implementing CPU functionality
 3/12 -- 1 hr bug fixing
+3/14 -- 2.5 hr not allowing ships to be stacked/off board
 
 AG:
 3/10 -- 1 hr worked on power class

@@ -57,10 +57,10 @@ class CPU:
           self.row.append(row)
           self.col.append(col)
 
-    # @pre -
+    # @pre - AI mode is activated
     # @param - first hit, last hit
-    # @post -
-    # @return -
+    # @post - the direction of medium hit is set
+    # @return - direction of ship 
     def find_direction(self,first_hit,last_hit):
         if (first_hit - last_hit) < 0:
             direction = 1

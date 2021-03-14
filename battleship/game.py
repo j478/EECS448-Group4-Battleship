@@ -53,15 +53,19 @@ class Game:
             hit_ships.append(ship)
         for ship in hit_ships:
             if ship is not None:
+                hit = True
                 if ship.is_destroyed():
+                    destroyed = True
                     if self.player_turn == 0:
                         self.player_1_ships -= 1
-                        destroyed = True
                     else:
                         self.player_0_ships -= 1
-                        destroyed = False
-            destroyed = False
-        return destroyed
+                else:
+                    destroyed = False
+            else:
+               destroyed = False
+               hit = False
+        return hit,destroyed
 
     # @pre - Prints the result of an attempted hit or miss
     # @param - passed a Ship object or None
@@ -69,7 +73,7 @@ class Game:
     # @return - None
     def print_hit(self, ship):
         self.win.fill(GRAY)
-        if ship:
+        if ship is not None:
             if ship.is_destroyed():
                 txt = f"Player {self.player_turn + 1} sunk a battleship!"
             else:
@@ -174,10 +178,8 @@ class Game:
             self.change_turn()
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
-
-                destroyed = self.hit_ship(row, col)
-                if destroyed==True:
-                    hit==True
+                row,col = self.ai.take_shot()
+                hit,destroyed = self.hit_ship(row, col)
                 self.ai.CPU_update(hit,row,col,destroyed)
                 self.change_turn()
                 self.switch_players()

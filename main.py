@@ -53,6 +53,7 @@ def main():
 
     if initial1.active:
         initial2.active = True
+        ai.other_ships = initial1.returnShip()
 
     p0ships = initial1.returnShip()
     p1ships = initial2.returnShip()

@@ -40,6 +40,7 @@ class CPU:
         self.vert =[]
         self.row =[]
         self.col =[]
+        self.other_ships = []
 
 
     # @pre - AI mode is activated
@@ -119,7 +120,7 @@ class CPU:
                 col = self.last_hit[1] + self.ship_direction[1]
             elif self.found_direction:
                 print("trying other direction")
-                row = self.first_hit[0] + self.ship_direction[0](-1)
+                row = self.first_hit[0] + self.ship_direction[0] * (-1)
                 col = self.first_hit[1] + self.ship_direction[1] * (-1)
             else:
                 if self.direction_counter == 1:
@@ -151,6 +152,10 @@ class CPU:
     # @return - none
     def hard_AI(self):
         print("Hard Shot")
+        for ship in self.other_ships:
+            for coord in ship.locations:
+                if coord[2] != True:
+                    return coord[0],coord[1]
 
     # @pre - AI mode is activated
     # @param - self

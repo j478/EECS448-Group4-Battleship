@@ -2,6 +2,7 @@
 # Date: 2/18/21
 
 import pygame
+import pydoc
 from .constants import *
 from .board import *
 import time

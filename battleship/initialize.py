@@ -1,5 +1,5 @@
 import pygame
-import pydoc
+
 from .button import Button
 from .constants import *
 from .ship import Ship
@@ -78,17 +78,21 @@ class Initialize:
             
             
             for j in range(self.shipcount):  
-                self.ai.place_ship(j)
+                failtracker=0
+                self.ai.place_ship(j,failtracker)
                 z=(self.shipcount-j)
                 a=ai.row[j]
                 b=ai.col[j]
                 c=ai.vert[j]
                 while self.aivalid(a,b,c,z)==False:
-                    self.ai.place_ship(j)
+                    failtracker=1
+                    self.ai.place_ship(j,failtracker)
                     a=ai.row[j]
                     b=ai.col[j]
                     c=ai.vert[j]
                     print("i am in here")
+                    break
+                    print(self.aivalid(a,b,c,z))
                 
                 if ai.vert[j]==0:
                     self.shipList.append(Ship(self.ai.row[j], self.ai.col[j], self.ai.row[j] +self.shipcount - j-1, self.ai.col[j]))

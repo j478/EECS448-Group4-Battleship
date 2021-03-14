@@ -167,6 +167,7 @@ class Game:
     # @post - if the position is valid, then it will attempt a hit and then change players
     # @return - None
     def select(self, pos):
+        hit= False
         row, col = self.get_row_col_from_pos(pos)
         if row != -1 and col != -1:
             self.hit_ship(row, col)
@@ -174,7 +175,9 @@ class Game:
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
                 row,col = self.ai.take_shot()
-                hit,destroyed = self.hit_ship(row, col)
+                destroyed = self.hit_ship(row, col)
+                if destroyed==True:
+                    hit==True
                 self.ai.CPU_update(hit,row,col,destroyed)
                 self.change_turn()
                 self.switch_players()

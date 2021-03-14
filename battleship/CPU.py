@@ -90,7 +90,7 @@ class CPU:
                 self.found_ship = False
                 self.current_ship_status = False
                 self.last_shot = False
-				self.direction_counter = 1
+                self.direction_counter = 1
                 self.ship_direction = [0,0]
                 self.last_hit = [0,0]
                 self.first_hit = [0,0]

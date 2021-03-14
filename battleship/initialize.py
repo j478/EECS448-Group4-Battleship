@@ -90,9 +90,10 @@ class Initialize:
                     a=ai.row[j]
                     b=ai.col[j]
                     c=ai.vert[j]
-                    print("i am in here")
-                    break
-                    print(self.aivalid(a,b,c,z))
+                   
+                    if self.aivalid(a,b,c,z):
+                        break
+                    
                 
                 if ai.vert[j]==0:
                     self.shipList.append(Ship(self.ai.row[j], self.ai.col[j], self.ai.row[j] +self.shipcount - j-1, self.ai.col[j]))

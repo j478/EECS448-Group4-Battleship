@@ -1,5 +1,5 @@
 import pygame
-
+import pydoc
 from .button import Button
 from .constants import *
 from .ship import Ship

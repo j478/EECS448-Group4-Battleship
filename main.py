@@ -58,7 +58,7 @@ def main():
     p1ships = initial2.returnShip()
     # this can be left unchanged as long as we allow the CPU to change the shiplist
 
-    game = Game(WIN, p0ships, p1ships, initial1.active, ai)
+    game = Game(WIN, p0ships, p1ships, initial1.active, ai, initial1.difficulty)
     game.switch_players()
     while running:
         clock.tick(FPS)

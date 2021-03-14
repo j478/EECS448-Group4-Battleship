@@ -40,7 +40,7 @@ class Game:
         hit_ships = list()
         if self.power_will_happen():
             for square in self.board.power.squares(row, col):
-                ship,hit = self.board.hit_ship(self.player_turn, square[0], square[1])
+                ship = self.board.hit_ship(self.player_turn, square[0], square[1])
                 self.print_hit(ship)
                 hit_ships.append(ship)
 
@@ -48,7 +48,7 @@ class Game:
             self.board.player0_has_power = False
             self.board.player1_has_power = False
         else:
-            ship,hit = self.board.hit_ship(self.player_turn, row, col)
+            ship = self.board.hit_ship(self.player_turn, row, col)
             self.print_hit(ship)
             hit_ships.append(ship)
         for ship in hit_ships:
@@ -61,7 +61,7 @@ class Game:
                         self.player_0_ships -= 1
                         destroyed = False
             destroyed = False
-        return hit,destroyed
+        return destroyed
 
     # @pre - Prints the result of an attempted hit or miss
     # @param - passed a Ship object or None

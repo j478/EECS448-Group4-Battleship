@@ -57,10 +57,10 @@ class CPU:
           self.row.append(row)
           self.col.append(col)
 
-    # @pre -
+    # @pre - AI mode is activated
     # @param - first hit, last hit
-    # @post -
-    # @return -
+    # @post - the direction of medium hit is set
+    # @return - direction of ship 
     def find_direction(self,first_hit,last_hit):
         if (first_hit - last_hit) < 0:
             direction = 1
@@ -70,9 +70,9 @@ class CPU:
             direction = 0
         return direction
 
-    # @pre -
-    # @param -
-    # @post -
+    # @pre - AI mode is activated
+    # @param - hit/miss, row, column, is destroyed (true false)
+    # @post - Update the player on AI status 
     # @return - none
     def CPU_update(self, hm, row, col, is_destroyed):
         self.last_shot = hm
@@ -152,7 +152,7 @@ class CPU:
     def hard_AI(self):
         print("Hard Shot")
 
-    # @pre -
+    # @pre - AI mode is activated
     # @param - self
     # @post -
     # @return -

@@ -74,7 +74,7 @@ class CPU:
     # @param -
     # @post -
     # @return - none
-    def CPU_update(self, hm, row, col):
+    def CPU_update(self, hm, row, col, is_destroyed):
         self.last_shot = hm
         if hm:
             if self.found_ship == False:
@@ -82,14 +82,14 @@ class CPU:
                 self.found_ship = True
                 self.first_hit = [row, col]
                 self.last_hit = [row, col]
-                # self.current_ship_status = ship_status(this will be a parameter)
-            # if self.current_ship_status == False:
-            # print("The ship was sunk!")
-            # self.found_direction = False
-            # self.found_ship = False
-            # self.ship_direction = [0,0]
-            # self.last_hit = [0,0]
-            # self.first_hit = [0,0]
+                self.current_ship_status = is_destroyed
+            if self.current_ship_status == False:
+                print("The ship was sunk!")
+                self.found_direction = False
+                self.found_ship = False
+                self.ship_direction = [0,0]
+                self.last_hit = [0,0]
+                self.first_hit = [0,0]
             else:
                 print("looking for direction!")
                 self.last_hit = [row, col]

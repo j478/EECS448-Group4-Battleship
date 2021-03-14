@@ -1,3 +1,5 @@
+import pydoc
+
 class Power:
     # @pre - Difficulty selected.
     # @param - row, column, level of difficulty (easy = 1, medium = 2, hard = 3)

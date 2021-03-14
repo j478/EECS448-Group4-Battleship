@@ -81,6 +81,7 @@ class Initialize:
                     self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - i-1, self.ai.col[i]))
                 if ai.vert[i]==1:
                     self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - i-1))
+                print(self.shipList)
 
 
 

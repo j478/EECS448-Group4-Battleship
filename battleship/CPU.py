@@ -53,10 +53,14 @@ class CPU:
                 vert=True
             row = random.randint(0, 9)
             col = random.randint(0, 9)
+            while ((row+self.ship_count-i)>9 and vert==False):
+                row=random.randint(0,9)
+            while ((col+self.ship_count-i)>9 and vert == True):
+                col=random.randint(0,9)
             self.vert.append(vert)
             self.row.append(row)
             self.col.append(col)
-            print("Demo mode: CPU placed ship at row ", row, ", col ", col)
+            print("Demo mode: CPU placed ship at row ", row, ", col ", col, "i= ", i, "  Vert: ", vert)
 
     # @pre - AI mode is activated
     # @param - first hit, last hit

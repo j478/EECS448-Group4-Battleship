@@ -1,6 +1,7 @@
 # Author: Jacob Wagner
 # Date: 2021.02.13
 
+import pydoc
 import pygame
 from battleship.CPU import *
 from battleship.constants import WIDTH, HEIGHT

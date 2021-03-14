@@ -46,21 +46,22 @@ class CPU:
     # @param - none
     # @post - AI ships placed on game board
     # @return - none
-    def place_ship(self):
-        for i in range(self.ship_count):
-            vert = False
-            if random.randint(0, 1) == 0:
-                vert=True
-            row = random.randint(0, 9)
-            col = random.randint(0, 9)
-            while ((row+self.ship_count-i)>9 and vert==False):
-                row=random.randint(0,9)
-            while ((col+self.ship_count-i)>9 and vert == True):
-                col=random.randint(0,9)
-            self.vert.append(vert)
-            self.row.append(row)
-            self.col.append(col)
-            print("Demo mode: CPU placed ship at row ", row, ", col ", col, "i= ", i, "  Vert: ", vert)
+    def place_ship(self,index):
+        vert = False
+        if random.randint(0, 1) == 0:
+            vert=True
+
+        row = random.randint(0, 9)
+        col = random.randint(0, 9)
+        while ((row+self.ship_count-index)>9 and vert==False):
+            row=random.randint(0,9)
+        while ((col+self.ship_count-index)>9 and vert == True):
+            col=random.randint(0,9)
+
+        self.vert.append(vert)
+        self.row.append(row)
+        self.col.append(col)
+        print("Demo mode: CPU placed ship at row ", row, ", col ", col, "i= ", index, "  Vert: ", vert)
 
     # @pre - AI mode is activated
     # @param - first hit, last hit

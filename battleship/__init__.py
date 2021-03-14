@@ -1,4 +1,5 @@
 import pygame
+import pydoc
 
 # draw starting window
 # -window

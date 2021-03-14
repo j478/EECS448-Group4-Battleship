@@ -174,7 +174,7 @@ class Game:
             self.change_turn()
             self.switch_players()
             if self.player_turn == 1 and self.active == True:
-                row,col = self.ai.take_shot()
+                
                 destroyed = self.hit_ship(row, col)
                 if destroyed==True:
                     hit==True

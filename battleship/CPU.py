@@ -1,4 +1,3 @@
-import pydoc
 import pygame
 from .constants import *
 import random
@@ -47,7 +46,7 @@ class CPU:
     # @param - none
     # @post - AI ships placed on game board
     # @return - none
-    def place_ship(self,index):
+    def place_ship(self,index,counter):
         vert = False
         if random.randint(0, 1) == 0:
             vert=True
@@ -59,9 +58,14 @@ class CPU:
         while ((col+self.ship_count-index)>9 and vert == True):
             col=random.randint(0,9)
 
-        self.vert.append(vert)
-        self.row.append(row)
-        self.col.append(col)
+        if counter==0:
+            self.vert.append(vert)
+            self.row.append(row)
+            self.col.append(col)
+        else:
+            self.col[index]=col
+            self.row[index]=row
+            self.vert[index]=vert
         print("Demo mode: CPU placed ship at row ", row, ", col ", col, "i= ", index, "  Vert: ", vert)
 
     # @pre - AI mode is activated

@@ -76,7 +76,18 @@ class Initialize:
             self.shipcount = GameSize
             self.ai.ship_count=self.shipcount
             self.ai.place_ship()
+            
             for i in range(self.shipcount):
+                while ai.vert[i]==0 and (self.ai.row[i]+self.shipcount-i-1)>9):
+                    self.ai.place_ship()
+                    while ai.vert[i]==1:
+                        self.ai.place_ship()
+                while ai.vert[i]==1 and (self.ai.col[i]+self.shipcount-i-1)>9):
+                    self.ai.place_ship()
+                    while ai.vert[i]==0:
+                        self.ai.place_ship()
+                    
+                #self.ai.place_ship()
                 if ai.vert[i]==0:
                     self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - i-1, self.ai.col[i]))
                 if ai.vert[i]==1:

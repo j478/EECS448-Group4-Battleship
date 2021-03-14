@@ -75,14 +75,25 @@ class Initialize:
         else:
             self.shipcount = GameSize
             self.ai.ship_count=self.shipcount
-            self.ai.place_ship()
             
-            for i in range(self.shipcount):  
-                #self.ai.place_ship()
-                if ai.vert[i]==0:
-                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i] +self.shipcount - i-1, self.ai.col[i]))
-                if ai.vert[i]==1:
-                    self.shipList.append(Ship(self.ai.row[i], self.ai.col[i], self.ai.row[i], self.ai.col[i] + self.shipcount - i-1))
+            
+            for j in range(self.shipcount):  
+                self.ai.place_ship(j)
+                z=(self.shipcount-j)
+                a=ai.row[j]
+                b=ai.col[j]
+                c=ai.vert[j]
+                while self.aivalid(a,b,c,z)==False:
+                    self.ai.place_ship(j)
+                    a=ai.row[j]
+                    b=ai.col[j]
+                    c=ai.vert[j]
+                    print("i am in here")
+                
+                if ai.vert[j]==0:
+                    self.shipList.append(Ship(self.ai.row[j], self.ai.col[j], self.ai.row[j] +self.shipcount - j-1, self.ai.col[j]))
+                if ai.vert[j]==1:
+                    self.shipList.append(Ship(self.ai.row[j], self.ai.col[j], self.ai.row[j], self.ai.col[j] + self.shipcount - j-1))
                 print(self.shipList)
 
 
@@ -418,3 +429,33 @@ class Initialize:
     # @return - Returns list of ships
     def returnShip(self):
         return self.shipList
+
+    def aivalid(self,row,col,vert,shipNum):
+        validRow=True
+        validColumn=True
+        if vert == False:
+            for z in range(10):
+                if z >= row and z < row + shipNum:
+                    if self.shipArray[z][col] == 1:
+                        validColumn = False
+
+        # check if Horizontal ship is going to overlap
+        if vert == True:
+            for z in range(10):
+                if z >= col and z < col + shipNum:
+                    if self.shipArray[row][z] == 1:
+                        validRow = False
+
+        if validColumn and validRow:
+            # adds the valid ship to the array so future ships can be checked off of it and sends back a true
+            if vert == False:
+                for z in range(10):
+                    if z >= row and z < row + shipNum:
+                        self.shipArray[z][col] = 1
+            if vert == True:
+                for z in range(10):
+                    if z >= col and z < col + shipNum:
+                        self.shipArray[row][z] = 1
+            return True
+        else:
+            return False

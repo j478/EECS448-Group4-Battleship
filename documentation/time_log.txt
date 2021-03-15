@@ -137,6 +137,10 @@ JD:
 3/6 -- 1 hr Reviewed python syntax and functionality
 3/7 -- 0.5 hr Reviewed pygame syntax and functionality
 3/9 -- 0.5 hr Started on the AI/CPU class
+3/10 -- 2 hr Met with Alex Jones and discussed implimenting the rest of the CPU
+3/11 -- 1 hr Put together the easy and medium mode
+3/13 -- 1.5 hr Hooked up CPU to game
+3/14 -- 2 hr bug fixing and polish
 
 
 Group:

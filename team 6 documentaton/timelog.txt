@@ -23,7 +23,8 @@ BL:
 3/9 -- 1 hr going over the codes
 3/10 -- 0.5 hr code writing
 3/12 -- 0.5 hr code writing
-3/14 -- 2 hr running game and bug fixes
+3/13 -- 2 hr running game and bug fixes
+3/14 -- 1.5 documentation
 
 
 AJ:

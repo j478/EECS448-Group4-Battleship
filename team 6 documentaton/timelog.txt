@@ -1,1 +1,54 @@
+Team 6 Time log
+
+Estimation:
+2.5 hr group meeting + 30 hr individual work = 32.5 hr total
+
+Estimation Explanation:
+We arrive at the estimation by comparing the level of difficulty of this lab with our last project.
+Looking at the project requirement, we believe this project should take approximately 8hr less of invividual work time compared to our last project.
+
+TIME_LOG
+
+KL:
+3/9 -- 3.5 hr learning/coding
+3/10 -- 0.5 hr code writing
+3/11 -- 0.5 hr code writing
+3/12 -- 0.5 hr reviewing code
+
+BL:
+3/7 -- 1.5 hr reviewing python
+3/8 -- 0.5 hr reviewing python
+3/9 -- 1 hr going over the codes
+3/10 -- 0.5 hr code writing
+3/12 -- 0.5 hr code writing
+3/14 -- 2 hr running game and bug fixes
+
+
+AJ:
+3/5 -- 1 hr team meeting
+3/6 -- .5 hr famaliarizing with python
+3/10 -- 2 hr meeting with Jake on CPU
+3/10 -- 1.5 implementing CPU functionality
+3/12 -- 1 hr bug fixing
+3/14 -- 2.5 hr not allowing ships to be stacked/off board
+
+AG:
+3/10 -- 1 hr worked on power class
+3/12 -- 1 hr bug fixing
+3/13 -- 2 hr bug fixing and implementing power-ups
+
+JD:
+3/6 -- 1 hr Reviewed python syntax and functionality
+3/7 -- 0.5 hr Reviewed pygame syntax and functionality
+3/9 -- 0.5 hr Started on the AI/CPU class
+3/10 -- 2 hr Met with Alex Jones and discussed implimenting the rest of the CPU
+3/11 -- 1 hr Put together the easy and medium mode
+3/13 -- 1.5 hr Hooked up CPU to game
+3/14 -- 2 hr bug fixing and polish
+
+
+Group:
+3/5 -- 0.5 hr team meeting disucssing individual roles and organization
+
+TOTAL HOURS ==> X of team meetings + X individual hours
 

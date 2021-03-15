@@ -10,5 +10,4 @@ Pygame Documentation -- https://www.pygame.org/docs/
 Text display Pygame -- https://www.geeksforgeeks.org/python-display-text-to-pygame-window/
 
 ASCII conversion Python -- https://stackoverflow.com/questions/4528982/convert-alphabet-letters-to-number-in-python
-_________________________________________________________________________________________________________________________________________________________________________________
-Team 6 Work Cited:
+

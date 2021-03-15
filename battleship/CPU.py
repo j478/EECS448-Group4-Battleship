@@ -136,19 +136,19 @@ class CPU:
                 row = self.first_hit[0] + self.ship_direction[0] * (-1)
                 col = self.first_hit[1] + self.ship_direction[1] * (-1)
             else:
-                if self.direction_counter == 1:
+                if self.direction_counter == 1 and self.last_hit[0] is not 0:
                     # print("checking UP")
-                    row = self.last_hit[0] + 1
+                    row = self.last_hit[0] - 1
                     col = self.last_hit[1]
-                if self.direction_counter == 2:
+                if self.direction_counter == 2 and self.last_hit[1] is not 9:
                     # print("checking RIGHT")
                     row = self.last_hit[0]
                     col = self.last_hit[1] + 1
-                if self.direction_counter == 3:
+                if self.direction_counter == 3 and self.last_hit[0] is not 9:
                     # print("checking DOWN")
-                    row = self.last_hit[0] - 1
+                    row = self.last_hit[0] + 1
                     col = self.last_hit[1]
-                if self.direction_counter == 4:
+                if self.direction_counter == 4 and self.last_hit[1] is not 0:
                     # print("checking LEFT")
                     row = self.last_hit[0]
                     col = self.last_hit[1] - 1

@@ -53,5 +53,5 @@ JD:
 Group:
 3/5 -- 0.5 hr team meeting disucssing individual roles and organization
 
-TOTAL HOURS ==> 0.5 hr of team meetings + X individual hours
+TOTAL HOURS ==> 0.5 hr of team meetings + 35.5 individual hours
 

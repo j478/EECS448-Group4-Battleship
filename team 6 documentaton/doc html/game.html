@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module game</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/beckylin/Desktop/team666/battleship/game.py">/Users/beckylin/Desktop/team666/battleship/game.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Author:&nbsp;Rishab&nbsp;Bhat<br>
+#&nbsp;Date:&nbsp;2/18/21</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pydoc.html">pydoc</a><br>
+</td><td width="25%" valign=top><a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="game.html#Game">Game</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Game">Game</a>(win,&nbsp;p0ships,&nbsp;p1ships,&nbsp;active,&nbsp;ai,&nbsp;difficulty)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self, win, p0ships, p1ships, active, ai, difficulty)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Game-change_turn"><strong>change_turn</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;Changes&nbsp;the&nbsp;player_turn<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;self.<strong>player_turn</strong>&nbsp;is&nbsp;reversed<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-game_over"><strong>game_over</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;determines&nbsp;if&nbsp;the&nbsp;game&nbsp;should&nbsp;be&nbsp;over<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;causes&nbsp;game&nbsp;to&nbsp;end&nbsp;if&nbsp;one&nbsp;of&nbsp;the&nbsp;players&nbsp;has&nbsp;0&nbsp;ships&nbsp;left<br>
+#&nbsp;@return&nbsp;-&nbsp;True&nbsp;or&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="Game-get_row_col_from_pos"><strong>get_row_col_from_pos</strong></a>(self, pos)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;uses&nbsp;the&nbsp;pixel&nbsp;position&nbsp;in&nbsp;x&nbsp;and&nbsp;y&nbsp;to&nbsp;get&nbsp;the&nbsp;row&nbsp;and&nbsp;column&nbsp;on&nbsp;the&nbsp;left&nbsp;grid<br>
+#&nbsp;@param&nbsp;-&nbsp;passed&nbsp;pos&nbsp;(x,y)<br>
+#&nbsp;@post&nbsp;-&nbsp;gives&nbsp;corresponding&nbsp;row&nbsp;and&nbsp;column&nbsp;to&nbsp;the&nbsp;<a href="#Game-hover">hover</a>()&nbsp;method<br>
+#&nbsp;@return&nbsp;-&nbsp;row,&nbsp;col</tt></dd></dl>
+
+<dl><dt><a name="Game-hit_ship"><strong>hit_ship</strong></a>(self, row, col)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;Checks&nbsp;for&nbsp;a&nbsp;hit&nbsp;in&nbsp;the&nbsp;Board&nbsp;class&nbsp;on&nbsp;the&nbsp;opposing&nbsp;player's&nbsp;ship<br>
+#&nbsp;@param&nbsp;-&nbsp;passed&nbsp;row&nbsp;and&nbsp;col&nbsp;of&nbsp;attempted&nbsp;hit<br>
+#&nbsp;@post&nbsp;-&nbsp;updates&nbsp;data&nbsp;structures&nbsp;in&nbsp;Board&nbsp;class&nbsp;and&nbsp;any&nbsp;hit&nbsp;Ship<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-hover"><strong>hover</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;If&nbsp;the&nbsp;mouse&nbsp;is&nbsp;on&nbsp;the&nbsp;left&nbsp;grid,&nbsp;it&nbsp;will&nbsp;show&nbsp;to&nbsp;the&nbsp;user&nbsp;which&nbsp;row&nbsp;and&nbsp;col&nbsp;is&nbsp;currently&nbsp;selected<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;draws&nbsp;a&nbsp;green&nbsp;circle&nbsp;in&nbsp;the&nbsp;middle&nbsp;of&nbsp;a&nbsp;box&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;on&nbsp;the&nbsp;grid<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-power_will_happen"><strong>power_will_happen</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;<a href="#Game">Game</a>&nbsp;initialized.<br>
+#&nbsp;@param&nbsp;-&nbsp;Self<br>
+#&nbsp;@post&nbsp;-&nbsp;None<br>
+#&nbsp;@return&nbsp;-&nbsp;Bool&nbsp;indicating&nbsp;whether&nbsp;power&nbsp;will&nbsp;be&nbsp;used&nbsp;this&nbsp;turn.</tt></dd></dl>
+
+<dl><dt><a name="Game-print_hit"><strong>print_hit</strong></a>(self, ship)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;Prints&nbsp;the&nbsp;result&nbsp;of&nbsp;an&nbsp;attempted&nbsp;hit&nbsp;or&nbsp;miss<br>
+#&nbsp;@param&nbsp;-&nbsp;passed&nbsp;a&nbsp;Ship&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;prints&nbsp;result&nbsp;of&nbsp;attempt&nbsp;to&nbsp;User<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-select"><strong>select</strong></a>(self, pos)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;if&nbsp;the&nbsp;mouse&nbsp;makes&nbsp;a&nbsp;click&nbsp;in&nbsp;a&nbsp;relevant&nbsp;position(on&nbsp;the&nbsp;left&nbsp;grid),&nbsp;then&nbsp;it&nbsp;attepts&nbsp;a&nbsp;hit<br>
+#&nbsp;@param&nbsp;-&nbsp;pos&nbsp;(x,y)&nbsp;in&nbsp;pixels<br>
+#&nbsp;@post&nbsp;-&nbsp;if&nbsp;the&nbsp;position&nbsp;is&nbsp;valid,&nbsp;then&nbsp;it&nbsp;will&nbsp;attempt&nbsp;a&nbsp;hit&nbsp;and&nbsp;then&nbsp;change&nbsp;players<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-switch_players"><strong>switch_players</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;will&nbsp;print&nbsp;to&nbsp;the&nbsp;players&nbsp;to&nbsp;switch&nbsp;users<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;Prints&nbsp;to&nbsp;the&nbsp;board&nbsp;"Switching&nbsp;player&nbsp;in&nbsp;2&nbsp;seconds"<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Game-update"><strong>update</strong></a>(self)</dt><dd><tt>#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;prints&nbsp;the&nbsp;grids&nbsp;and&nbsp;ships&nbsp;of&nbsp;the&nbsp;window<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>BLUE</strong> = (0, 170, 204)<br>
+<strong>BOTTOM_PADDING</strong> = 25<br>
+<strong>COLS</strong> = 10<br>
+<strong>DGRAY</strong> = (64, 64, 64)<br>
+<strong>GRAY</strong> = (128, 128, 128)<br>
+<strong>GREEN</strong> = (0, 128, 0)<br>
+<strong>GRID_HEIGHT</strong> = 550<br>
+<strong>GRID_WIDTH</strong> = 550<br>
+<strong>HEIGHT</strong> = 650<br>
+<strong>LEFT_PADDING</strong> = 25<br>
+<strong>MIDDLE_PADDING</strong> = 50<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>RIGHT_PADDING</strong> = 25<br>
+<strong>ROWS</strong> = 10<br>
+<strong>SQUARE_SIZE</strong> = 50<br>
+<strong>TOP_PADDING</strong> = 75<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>WIDTH</strong> = 1200</td></tr></table>
+</body></html>

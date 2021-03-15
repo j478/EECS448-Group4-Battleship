@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module board</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>board</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/beckylin/Desktop/team666/battleship/board.py">/Users/beckylin/Desktop/team666/battleship/board.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Author:&nbsp;Umar&nbsp;Khan<br>
+#&nbsp;Date:&nbsp;2/15/2021<br>
+#&nbsp;Start:&nbsp;8:40&nbsp;PM</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pydoc.html">pydoc</a><br>
+</td><td width="25%" valign=top><a href="pygame.html">pygame</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="board.html#Board">Board</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Board">class <strong>Board</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Board">Board</a>(win,&nbsp;player0ships,&nbsp;player1ships,&nbsp;active,&nbsp;difficulty)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Board-__init__"><strong>__init__</strong></a>(self, win, player0ships, player1ships, active, difficulty)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Board-draw"><strong>draw</strong></a>(self, player)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;will&nbsp;display&nbsp;the&nbsp;hits&nbsp;and&nbsp;misses&nbsp;of&nbsp;both&nbsp;players,&nbsp;and&nbsp;the&nbsp;ships&nbsp;of&nbsp;the&nbsp;current&nbsp;player&nbsp;on&nbsp;the&nbsp;right&nbsp;grid<br>
+#&nbsp;@param&nbsp;-&nbsp;player<br>
+#&nbsp;@post&nbsp;-&nbsp;draws&nbsp;the&nbsp;display<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-draw_background"><strong>draw_background</strong></a>(self, player)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;draws&nbsp;the&nbsp;text&nbsp;and&nbsp;grids&nbsp;of&nbsp;the&nbsp;battleship&nbsp;display<br>
+#&nbsp;@param&nbsp;-&nbsp;player<br>
+#&nbsp;@post&nbsp;-&nbsp;draws&nbsp;the&nbsp;given&nbsp;player's&nbsp;text&nbsp;label<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-draw_grid"><strong>draw_grid</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;draws&nbsp;the&nbsp;right&nbsp;and&nbsp;left&nbsp;grids<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;draws&nbsp;the&nbsp;right&nbsp;and&nbsp;left&nbsp;grids<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-hit_power"><strong>hit_power</strong></a>(self, player, row, col)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;Game&nbsp;and&nbsp;power&nbsp;is&nbsp;initialized.<br>
+#&nbsp;@param&nbsp;-&nbsp;row,&nbsp;column&nbsp;a&nbsp;shot&nbsp;has&nbsp;been&nbsp;fired&nbsp;at<br>
+#&nbsp;@post&nbsp;-&nbsp;assigns&nbsp;power-up&nbsp;to&nbsp;player&nbsp;if&nbsp;hit,&nbsp;marks&nbsp;power-up&nbsp;as&nbsp;hit<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-hit_ship"><strong>hit_ship</strong></a>(self, player, row, col)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;determines&nbsp;if&nbsp;the&nbsp;hit&nbsp;is&nbsp;a&nbsp;ship,&nbsp;if&nbsp;it&nbsp;does&nbsp;it&nbsp;marks&nbsp;the&nbsp;hit&nbsp;in&nbsp;self.<strong>player_hits_misses</strong>&nbsp;and&nbsp;the&nbsp;Ship&nbsp;class<br>
+#&nbsp;@param&nbsp;-&nbsp;player,&nbsp;row,&nbsp;col<br>
+#&nbsp;@post&nbsp;-&nbsp;marks&nbsp;a&nbsp;hit&nbsp;in&nbsp;the&nbsp;Ship&nbsp;class&nbsp;if&nbsp;relevant,&nbsp;and&nbsp;marks&nbsp;either&nbsp;hit&nbsp;or&nbsp;miss&nbsp;in&nbsp;self.<strong>player_hits_misses</strong><br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-info"><strong>info</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;for&nbsp;testing<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;prints&nbsp;current&nbsp;state&nbsp;of&nbsp;data&nbsp;structures&nbsp;to&nbsp;the&nbsp;console<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-initialize_hits_misses"><strong>initialize_hits_misses</strong></a>(self)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;player_hits_misses&nbsp;array&nbsp;is&nbsp;empty<br>
+#&nbsp;@param&nbsp;-&nbsp;None<br>
+#&nbsp;@post&nbsp;-&nbsp;initialize&nbsp;the&nbsp;arrays&nbsp;with&nbsp;zeros<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Board-update"><strong>update</strong></a>(self, player)</dt><dd><tt>#&nbsp;@pre&nbsp;-&nbsp;draws&nbsp;the&nbsp;display&nbsp;and&nbsp;updates&nbsp;the&nbsp;pygame&nbsp;display<br>
+#&nbsp;@param&nbsp;-&nbsp;player<br>
+#&nbsp;@post&nbsp;-&nbsp;draws&nbsp;the&nbsp;display&nbsp;and&nbsp;updates&nbsp;the&nbsp;pygame&nbsp;display<br>
+#&nbsp;@return&nbsp;-&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BLACK</strong> = (0, 0, 0)<br>
+<strong>BLUE</strong> = (0, 170, 204)<br>
+<strong>BOTTOM_PADDING</strong> = 25<br>
+<strong>COLS</strong> = 10<br>
+<strong>DGRAY</strong> = (64, 64, 64)<br>
+<strong>GRAY</strong> = (128, 128, 128)<br>
+<strong>GREEN</strong> = (0, 128, 0)<br>
+<strong>GRID_HEIGHT</strong> = 550<br>
+<strong>GRID_WIDTH</strong> = 550<br>
+<strong>HEIGHT</strong> = 650<br>
+<strong>LEFT_PADDING</strong> = 25<br>
+<strong>MIDDLE_PADDING</strong> = 50<br>
+<strong>RED</strong> = (255, 0, 0)<br>
+<strong>RIGHT_PADDING</strong> = 25<br>
+<strong>ROWS</strong> = 10<br>
+<strong>SQUARE_SIZE</strong> = 50<br>
+<strong>TOP_PADDING</strong> = 75<br>
+<strong>WHITE</strong> = (255, 255, 255)<br>
+<strong>WIDTH</strong> = 1200</td></tr></table>
+</body></html>

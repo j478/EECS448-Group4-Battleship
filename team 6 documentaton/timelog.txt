@@ -14,6 +14,8 @@ KL:
 3/10 -- 0.5 hr code writing
 3/11 -- 0.5 hr code writing
 3/12 -- 0.5 hr reviewing code
+3/13 -- 0.5 hr game testing 
+3/14 -- 1.5 hr documentation 
 
 BL:
 3/7 -- 1.5 hr reviewing python

@@ -132,8 +132,8 @@ class CPU:
                 row = self.last_hit[0] + self.ship_direction[0]
                 col = self.last_hit[1] + self.ship_direction[1]
                 if (row < 0 or row > 9) or (col < 0 or col > 9):
-				    row = self.first_hit[0] + self.ship_direction[0] * (-1)
-					col = self.first_hit[1] + self.ship_direction[1] * (-1)
+                    row = self.first_hit[0] + self.ship_direction[0] * (-1)
+                    col = self.first_hit[1] + self.ship_direction[1] * (-1)
             elif self.found_direction:
                 # print("trying other direction")
                 row = self.first_hit[0] + self.ship_direction[0] * (-1)
